@@ -1,0 +1,10 @@
+//Name: Prabhjot Bhandal
+//Date: October 4th, 2022
+/*You’ve deposited $500 into your bank account and will leave it untouched for one year. 
+How much will you earn in interest if the bank pays 2.5% interest per year?*/
+
+public class Problem6a {
+  public static void main(String[] args) {
+  
+  }
+}
