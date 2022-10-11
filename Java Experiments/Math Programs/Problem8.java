@@ -21,7 +21,7 @@ public class Problem8 {
             //Calculates numberOfSmallBoxes
             int numberOfSmallBoxes = remainingPotsFromLarge % 4;
             //Prints the numberOfPots, numberOfLargeBoxes, numberOfMediumBoxes, numberOfSmallBoxes
-            System.out.println("Since we have a total of" + numberOfPots + " pots, we will need " + numberofLargeBoxes + " large boxes, " + numberOfMediumBoxes + " medium boxes and " + numberOfSmallBoxes + " small boxes to transport them all.");
+            System.out.println("Since we have a total of " + numberOfPots + " pots, we will need " + numberofLargeBoxes + " large boxes, " + numberOfMediumBoxes + " medium boxes and " + numberOfSmallBoxes + " small boxes to transport them all.");
         }
 }
 }

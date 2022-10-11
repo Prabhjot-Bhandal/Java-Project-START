@@ -12,13 +12,17 @@ public class Problem6b {
         //Gets amountOfMoney
         double amountOfMoney = in.nextDouble();
         //Introduction for yearlyInterest
-        System.out.print("Please enter the yearly interest : $");
+        System.out.print("Please enter the yearly interest: ");
         //Gets yearlyInterest
         double yearlyInterest = in.nextDouble();
+        //Introduction for yearsTime
+        System.out.print("Please enter the amount of time in years the loan has been taken out for/the money has been invest for: ");
+        //Gets yearsTime
+        double yearsTime = in.nextDouble();
         //Calculates the interest 
-        double interestMoney = amountOfMoney * yearlyInterest;
+        double interestMoney = amountOfMoney * yearlyInterest * yearsTime;
         //Prints out interestMoney
-        System.out.print("Therefore, the earned interest from the bank account will be $" + interestMoney + ".");
+        System.out.print("The amount of money invested/taken out for a loan was $" + amountOfMoney + ", the yearly interest was " + yearlyInterest + "% and the amount of years the interest has built for is " + yearsTime + " years. \nTherefore, the earned interest from the bank account will be $" + interestMoney + ".");
   }
   }
 }
