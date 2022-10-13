@@ -19,7 +19,11 @@ public class Problem4 {
             //Get c
             double c = in.nextInt();
 
-            
+            double posRoot = ((b * -1) + Math.sqrt(Math.pow(b, 2) - (4 * a * c)))/(2 * a);
+            double negRoot = ((b * -1) - Math.sqrt(Math.pow(b, 2) - (4 * a * c)))/(2 * a);
+
+            System.out.println("Your quadratic equation is y=" + a + "x^2+" + b + "x+" + c);
+            System.out.println("Therefore, the solutions to this eqaution are " + posRoot + " and " + negRoot + ".");
         }
     }
 }
