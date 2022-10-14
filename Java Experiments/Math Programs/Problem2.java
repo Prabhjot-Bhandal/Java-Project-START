@@ -6,7 +6,8 @@ public class Problem2 {
     public static void main(String[] args) {
         //Randomized diceRoll variable that has a range of 1-6 that will output a whole number
         double diceRoll = (int)(Math.random() * 6 + 1);
+
         //Prints diceRoll
-        System.out.println(diceRoll);
+        System.out.println("The dice has rolled a " + diceRoll + ".");
 }
 }

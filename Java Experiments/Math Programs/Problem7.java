@@ -11,6 +11,7 @@ public class Problem7 {
             System.out.print("Type a three-digit number: ");
             //Gets threeDigitNumber
             int threeDigitNumber = in.nextInt();
+            
             //Determine firstDigit
             int firstDigit = threeDigitNumber / 100;
             //Determine secondDigit
@@ -19,6 +20,7 @@ public class Problem7 {
             int thirdDigit = threeDigitNumber % 10;
             //Determines the threeDigitNumber's sum
             int threeDigitSum = firstDigit + secondDigit + thirdDigit;
+
             //Prints the user's threeDigitNumber and the sum
             System.out.println("Your three-digit number was " + threeDigitNumber + " and the sum of the three digits in " + threeDigitNumber + " is " + threeDigitSum + ".");
         }

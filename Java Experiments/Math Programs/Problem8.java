@@ -12,6 +12,7 @@ public class Problem8 {
             System.out.print("Enter the number of pots: ");
             //Gets numberOfPots
             int numberOfPots = in.nextInt();
+            
             //Calculates numberOfLargeBoxes
             int numberofLargeBoxes = numberOfPots / 9;
             //Calculates the remaining pots
@@ -20,6 +21,7 @@ public class Problem8 {
             int numberOfMediumBoxes = remainingPotsFromLarge / 4;
             //Calculates numberOfSmallBoxes
             int numberOfSmallBoxes = remainingPotsFromLarge % 4;
+
             //Prints the numberOfPots, numberOfLargeBoxes, numberOfMediumBoxes, numberOfSmallBoxes
             System.out.println("Since we have a total of " + numberOfPots + " pots, we will need " + numberofLargeBoxes + " large boxes, " + numberOfMediumBoxes + " medium boxes and " + numberOfSmallBoxes + " small boxes to transport them all.");
         }

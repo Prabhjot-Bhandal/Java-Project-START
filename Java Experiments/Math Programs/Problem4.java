@@ -9,21 +9,27 @@ public class Problem4 {
             //Intro for a
             System.out.print("Input a: ");
             //Gets a
-            double a = in.nextInt();
+            double a = in.nextDouble();
             //Intro for b
             System.out.print("Input b: ");
-            //Get b
-            double b = in.nextInt();
+            //Gets b
+            double b = in.nextDouble();
             //Intro for c
             System.out.print("Input c: ");
-            //Get c
-            double c = in.nextInt();
+            //Gets c
+            double c = in.nextDouble();
 
-            double posRoot = ((b * -1) + Math.sqrt(Math.pow(b, 2) - (4 * a * c)))/(2 * a);
-            double negRoot = ((b * -1) - Math.sqrt(Math.pow(b, 2) - (4 * a * c)))/(2 * a);
-
-            System.out.println("Your quadratic equation is y=" + a + "x^2+" + b + "x+" + c);
-            System.out.println("Therefore, the solutions to this eqaution are " + posRoot + " and " + negRoot + ".");
+            //Determines discriminant, discriminant must be positive or else produces "NaN," stands for Not a Number
+            double discriminant = Math.pow(b, 2) - (4 * a * c);
+            //Determines one of the roots by adding to -b
+            double posRoot = (-b + Math.sqrt(discriminant)) / (2 * a);
+            //Determines one of the roots by subtracting from -b
+            double negRoot = (-b - Math.sqrt(discriminant)) / (2 * a);
+            
+            //Prints the user's data into a quadratic equation
+            System.out.println("Your quadratic equation is y=" + a + "x^2+(" + b + "x)+(" + c + ").");
+            //Prints the solutions to the user's quadratic equation
+            System.out.println("Therefore, the solutions to this eqaution are " + posRoot + " and " + negRoot + ". \nIf the roots are NaN, that means there are no real roots because the discriminant is negative.");
         }
     }
 }

@@ -10,8 +10,10 @@ public class Problem6a {
       //Gets moneyDeposited and yearlyInterest
       double moneyDeposited = 500;
       double yearlyInterest = 0.025;
+      
       //Calculates earnedInterest
       double earnedInterest = moneyDeposited * yearlyInterest;
+
       //Displays earnedInterest
       System.out.print("Therefore, the earned interest from the bank account will be $" + earnedInterest + ".");
   }

@@ -36,7 +36,9 @@ public class Problem10 {
            int daysAlive = (yearDays - minusBirthDays) + plusCurrentDays;
            //Calculates totalHoursSlepy by multiplying daysAlive by 8 hours of sleep per day
            int totalHoursSlept = daysAlive * 8;
-           System.out.println("Your date of birth is " + birthMonth + "/" + birthDay + "/" + birthYear + " and the current date is " + currentMonth + "/" + currentDay + "/" + birthYear + ".\nThus, you have slept for a total of " + totalHoursSlept + " hours in your entire life.");
+
+           //Prints birthMonth, birthDay, birthYear, currentMonth, currentDay, currentYear and totalHoursSlept
+           System.out.println("Your date of birth is " + birthMonth + "/" + birthDay + "/" + birthYear + " and the current date is " + currentMonth + "/" + currentDay + "/" + currentYear + ".\nThus, you have slept for a total of " + totalHoursSlept + " hours in your entire life.");
         }
 }
 }

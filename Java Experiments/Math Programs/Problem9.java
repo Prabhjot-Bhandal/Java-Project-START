@@ -12,6 +12,7 @@ public class Problem9 {
             System.out.print("Enter your change in cents (ex. 85): ");
             //Gets change
             int change = in.nextInt();
+
             //Calculates numberOfQuarters
             int numberOfQuarters = change / 25;
             //Calculates the quartersRemainder to see how much change is left after 
@@ -24,6 +25,7 @@ public class Problem9 {
             int numberOfNickels = dimesRemainder / 5;
             //Calculates numberOfPennies by getting the remainder of the remaining change left after calculating the numberOfDimes
             int numberOfPennies = dimesRemainder % 5;
+            
             //Prints change, numberOfQuarters, numberOfDimes, numberOfNickels and numberOfPennies
             System.out.println("Since our total change is $" + change + ", we will have " + numberOfQuarters + " quarters, " + numberOfDimes + " dimes, " + numberOfNickels + " nickels and " + numberOfPennies + " pennies to make up the amount of change we have.");
         }

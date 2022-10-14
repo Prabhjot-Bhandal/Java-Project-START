@@ -19,8 +19,10 @@ public class Problem6b {
         System.out.print("Please enter the amount of time in years the loan has been taken out for/the money has been invest for: ");
         //Gets yearsTime
         double yearsTime = in.nextDouble();
+        
         //Calculates the interest 
         double interestMoney = amountOfMoney * yearlyInterest * yearsTime;
+
         //Prints out interestMoney
         System.out.print("The amount of money invested/taken out for a loan was $" + amountOfMoney + ", the yearly interest was " + yearlyInterest + "% and the amount of years the interest has built for is " + yearsTime + " years. \nTherefore, the earned interest from the bank account will be $" + interestMoney + ".");
   }

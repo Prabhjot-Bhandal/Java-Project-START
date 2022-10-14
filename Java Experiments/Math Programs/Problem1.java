@@ -25,6 +25,8 @@ public class Problem1 {
            double tax = Math.round((subTotal * 0.13) / hundredth) * hundredth;
            //Calculates total
            double total = Math.round((tax + subTotal) / hundredth) * hundredth;
+
+           //Prints quantity, name, price, subTotal, tax and total
            System.out.println("Qty: " + quantity + "\nName: " + name + "\nUnitPrice: $" + price + "\nExtPrice: $" + price + "\nSub-Total: $" + subTotal + "\nTax(13%): $" + tax + "\nTotal: $" + total);
 
         }
