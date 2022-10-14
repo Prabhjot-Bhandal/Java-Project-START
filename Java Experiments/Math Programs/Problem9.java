@@ -26,8 +26,10 @@ public class Problem9 {
             //Calculates numberOfPennies by getting the remainder of the remaining change left after calculating the numberOfDimes
             int numberOfPennies = dimesRemainder % 5;
             
-            //Prints change, numberOfQuarters, numberOfDimes, numberOfNickels and numberOfPennies
-            System.out.println("Since our total change is $" + change + ", we will have " + numberOfQuarters + " quarters, " + numberOfDimes + " dimes, " + numberOfNickels + " nickels and " + numberOfPennies + " pennies to make up the amount of change we have.");
+            /*Prints change, numberOfQuarters, numberOfDimes, numberOfNickels and numberOfPennies
+             * Multiplied change by 0.01 to output in dollars instead of cents
+            */
+            System.out.println("Since our total change is $" + (change * 0.01) + ", we will have " + numberOfQuarters + " quarters, " + numberOfDimes + " dimes, " + numberOfNickels + " nickels and " + numberOfPennies + " pennies to make up the amount of change we have.");
         }
 }
 }
