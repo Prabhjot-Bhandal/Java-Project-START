@@ -40,8 +40,8 @@ public class CalorieCounter {
             /*Print name, age, favFood, calories, servingsPerWeek, weeklyCalories, monthlyCalories, 
             yearlyCalories and calories when 25. I split up the print statements so that one prints what the 
             user inputted while the other prints the calorie calculations to make the program more organized.*/
-            System.out.println(name + " is " + age + " years old and your favourite food is " + favFood + ".\n You have " + servingsPerWeek + " servings of " + favFood + " per week with " + calories + " calories per serving.");
-            System.out.println("\nTherefore, if you continue to eat your favourite food at this current rate, you will have eaten " + weeklyCalories + " calories per week, " + monthlyCalories + " calories per month, " + yearlyCalories + " calories per year and you will have consumed " + caloriesWhen25 + " calories of your favourite food once you hit the age of 25.");
+            System.out.println("\n" + name + " is " + age + " years old and your favourite food is " + favFood + ".\nYou have " + servingsPerWeek + " servings of " + favFood + " per week with " + calories + " calories per serving.");
+            System.out.println("\nTherefore, if you continue to eat your favourite food at this current rate, you will have eaten " + weeklyCalories + " calories per week, \n" + monthlyCalories + " calories per month, \n" + yearlyCalories + " calories per year and \nyou will have consumed " + caloriesWhen25 + " calories of your favourite food once you hit the age of 25.");
             System.out.println("Now, I know that may seem like alot of calories, but if you exercise and/or work out consistently, you will be maintain your current body weight.");
         }
     }
