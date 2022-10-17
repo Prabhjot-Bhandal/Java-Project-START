@@ -4,9 +4,10 @@ import java.util.Scanner;
 /*Determines how many calories the user consumes from their favourite food per week, per month, per year 
 and how many they will have consumed once they hit the age of 25.*/
 
-public class TAC {
+public class CalorieCounter {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
+            //Input
             System.out.println("What is your name?");
             //gets name
             String name = in.next();
@@ -23,6 +24,7 @@ public class TAC {
             //gets servingsPerWeek
             int servingsPerWeek = in.nextInt();
 
+            //Process
             //Determines weeklyCalories 
             int weeklyCalories = calories * servingsPerWeek;
             //Determines monthlyCalories, assuming that there are 4 weeks in a month
@@ -34,6 +36,7 @@ public class TAC {
             when they turn 25.*/
             int caloriesWhen25 = (25 - age) * yearlyCalories;
 
+            //Output
             /*Print name, age, favFood, calories, servingsPerWeek, weeklyCalories, monthlyCalories, 
             yearlyCalories and calories when 25. I split up the print statements so that one prints what the 
             user inputted while the other prints the calorie calculations to make the program more organized.*/
