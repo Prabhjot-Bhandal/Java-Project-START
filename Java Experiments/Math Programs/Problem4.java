@@ -1,7 +1,8 @@
 import java.util.Scanner;
 //Name: Prabhjot Bhandal
 //Date: October 12th, 2022
-/*Write a program that simulates the rolling of a fair die. Output what shows on the face that is up.*/
+/*Write a program that generates a Quadratic Equation based on key input values, 
+displays the equation and solves it.*/
 
 public class Problem4 {
     public static void main(String[] args) {
@@ -27,9 +28,9 @@ public class Problem4 {
             double negRoot = (-b - Math.sqrt(discriminant)) / (2 * a);
             
             //Prints the user's data into a quadratic equation
-            System.out.println("Your quadratic equation is y=" + a + "x^2+(" + b + "x)+(" + c + ").");
+            System.out.println("Your quadratic equation is " + a + "x^2+(" + b + "x)+(" + c + ") = 0.");
             //Prints the solutions to the user's quadratic equation
-            System.out.println("Therefore, the solutions to this eqaution are " + posRoot + " and " + negRoot + ". \nIf the roots are NaN, that means there are no real roots because the discriminant is negative.");
+            System.out.println("Therefore, the solutions to this eqaution are (" + posRoot + ", 0) and (" + negRoot + ", 0). \nIf the roots are NaN, that means there are no real roots because the discriminant is negative.");
         }
     }
 }
