@@ -22,7 +22,7 @@ public class Task2 {
             String babyFirstLetter = in.next();
 
             //Determine's the babyName by joining baybFirstLetter, and the second letters of the parents' names
-            String babyName = babyFirstLetter + partner1.charAt(1) + partner2.charAt(1);
+            String babyName = babyFirstLetter + partner1.substring(1, 3) + partner2.substring(1, 3);
 
             //Prints the parents' names, the babyFirstLetter and the babyName
             System.out.println("The parents' names are " + partner1 + " and " + partner2 + ".\nThe first letter of the baby's name is " + babyFirstLetter + ".\nTherefore, the baby's name will be " + babyName + ".");
