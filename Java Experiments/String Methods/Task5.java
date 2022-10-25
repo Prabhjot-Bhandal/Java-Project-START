@@ -14,7 +14,7 @@ public class Task5 {
             System.out.println("The initial playlist goes as follows: " + playlist + ".");
 
             //Moves the first song to the end
-            String button1 = playlist.substring(3, playlist.length()) + ", " + playlist.charAt(0);
+            String button1 = playlist.substring(3) + ", " + playlist.charAt(0);
             //Prints the outcome of button1
             System.out.println(button1);
 
@@ -22,6 +22,11 @@ public class Task5 {
             String button2 = playlist.substring(playlist.length() - 1) + ", " + playlist.charAt(0) + playlist.substring(1, playlist.lastIndexOf(", E"));
             //Prints the outcome of button2
             System.out.println(button2);
+
+            //Swaps the first two songs
+            String button3 = playlist.substring(3, 6) + playlist.substring(0, 3) + playlist.substring(6);
+            //Prints the outcome of button3
+            System.out.println(button3);
         }
     }
 }
