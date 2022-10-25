@@ -11,10 +11,13 @@ public class Task4 {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
             //Introduction for the numberOfPlayers
-            System.out.print("Please enter the number of players currently playing: ");
+            System.out.print("Please enter the number of players that are currently playing: ");
             //Gets numberOfPlayers
             int numberOfPlayers = in.nextInt();
-
+            //Introduction to player1Phrase
+            System.out.println("Please enter a phrase:");
+            //Gets numberOfPlayers
+            String player1Phrase = in.next();
             
         }
     }
