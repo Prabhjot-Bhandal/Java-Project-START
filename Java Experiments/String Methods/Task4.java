@@ -1,6 +1,6 @@
 import java.util.Scanner;
 //Name: Prabhjot Bhandal
-//Date: October 25, 2022
+//Date: October 25th, 2022
 /*Purpose: For this version of the game decide on the number of players. Next, get a sentence from the 
 first player. Apply a variety of String methods to one or more String methods as the phrase is 
 “whispered” to the next player so the message is changed in some way. Apply String methods to the 
