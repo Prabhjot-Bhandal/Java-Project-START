@@ -15,16 +15,17 @@ public class Task5 {
 
             //Moves the first song to the end
             String button1 = playlist.substring(3) + ", " + playlist.charAt(0);
-            //Prints the outcome of button1
-            System.out.println(button1);
-
             //Moves the last song to the front
-            String button2 = playlist.substring(playlist.length() - 1) + ", " + playlist.charAt(0) + playlist.substring(1, playlist.lastIndexOf(", E"));
-            //Prints the outcome of button2
-            System.out.println(button2);
-
+            String button2 = playlist.substring(playlist.length() - 1) + ", " + playlist.substring(0, playlist.lastIndexOf(", E"));
             //Swaps the first two songs
             String button3 = playlist.substring(3, 6) + playlist.substring(0, 3) + playlist.substring(6);
+            
+
+            //Button 4 just stops rearranging the playlist and outputs the playlist
+            //Prints the outcome of button1
+            System.out.println(button1);
+            //Prints the outcome of button2
+            System.out.println(button2);
             //Prints the outcome of button3
             System.out.println(button3);
         }

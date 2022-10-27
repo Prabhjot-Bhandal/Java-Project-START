@@ -5,7 +5,7 @@ import java.util.Scanner;
 first and third characters of the original word. The program should output the original word and the new 
 word.*/
 
-public class PlusCar {
+public class InsertCar {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
             //Introduction for word
