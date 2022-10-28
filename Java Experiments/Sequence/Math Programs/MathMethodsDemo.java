@@ -1,5 +1,5 @@
 import java.util.Scanner;
-//Name: prabhjot Bhandal
+//Name: Prabhjot Bhandal
 //Date: October 11, 2022
 //Purpose: To showcase different math methods
 
