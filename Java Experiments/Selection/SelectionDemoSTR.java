@@ -18,12 +18,17 @@ public class SelectionDemoSTR {
             String secondStr = in.nextLine();
 
             //If both strings are the same
-            if (firstStr.equals(secondStr)) {
-                //True, prints that both strings are the same
-                System.out.println("Both strings are the same.");
-            } else if (firstStr.compareTo(secondStr) < 0) {
-                //False, prints that both strings are NOT the same
-                System.out.println("Therefore " + firstStr + " comes before " + secondStr + " alphabetically.");
+            if (firstStr.compareToIgnoreCase(secondStr) == 0) {
+                //Prints that both strings are the same
+                System.out.println("\nBoth strings are the same.");
+            } 
+            //If firstStr comes before secondStr
+            else if (firstStr.compareToIgnoreCase(secondStr) < 0) {
+                System.out.println("\n\"" + firstStr + "\" comes before \"" + secondStr + "\" alphabetically.");
+            } 
+            //If secondStr comes before firstStr
+            else if (firstStr.compareToIgnoreCase(secondStr) > 0) {
+                System.out.println("\n\"" + secondStr + "\" comes before \"" + firstStr + "\" alphabetically.");
             }
 
             //If false, skips if statement and goes straight to the end
