@@ -14,7 +14,7 @@ public class shortScanner {
             System.out.println("Hello " + name + "!");
 
             System.out.println("What is your favourite double-digit number? \n");
-            short shortNumber = in.nextShort();
+            //short shortNumber = in.nextShort();
         }
     }
 }

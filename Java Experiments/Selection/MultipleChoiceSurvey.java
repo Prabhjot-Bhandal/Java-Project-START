@@ -40,7 +40,7 @@ public class MultipleChoiceSurvey {
             }
 
             //Outputs score
-            System.out.println("\n\n" + name + "'s score for this survey is " + userScore + " points");
+            System.out.println("\n\n" + name + "'s score for this survey is " + userScore + " points.");
         }
     }
 }
