@@ -1,20 +1,19 @@
 import java.util.Scanner;
 //Name: Prabhjot Bhandal
 //Date: November 11th, 2022
-/*Purpose: Classifies a person depending on their age*/
+/*Purpose: Determines the total movie ticket price for the user and their group.*/
 
-public class AgeClassification {
+public class MovieTicketPrices {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
             //Introduction
-            System.out.println("Hello! This program gets your age, then uses your age to put you into a specific age category.");
+            System.out.println("Hello! This program calculates the total price for you and your group to go to the movie theater.");
 
             
-            //Intro for age
-            System.out.print("Let's get started!\nPlease input your age: ");
-            //Gets age
+            //Gets group
+            System.out.print("Let's get started!\nPlease input the number of people in your group: ");
             int age = in.nextInt();
-
+            //Create a for loop that loops for the number of people in the group
 
             //Invalid age
             if (age < 0) {
