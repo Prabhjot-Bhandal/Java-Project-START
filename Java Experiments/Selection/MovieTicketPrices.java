@@ -1,6 +1,6 @@
 import java.util.Scanner;
 //Name: Prabhjot Bhandal
-//Date: November 11th, 2022
+//Date: November 14th, 2022
 /*Purpose: Determines the total movie ticket price for the user and their group.*/
 
 public class MovieTicketPrices {
@@ -32,9 +32,9 @@ public class MovieTicketPrices {
             System.out.println("Please enter the number of seniors in the group: ");
             int seniors = in.nextInt();
             //Determines movieBalance
-            //Don't remember the ticket prices 
-            double movieBalance = 0;
+            double movieBalance = (children * 8) + (teens * 16) + (adults * 20) + (seniors * 16);
 
+            //Outputs group, number of people in different age classes and total movie ticket balance
             System.out.println("There are " + group + " people in your group.");
             System.out.println("There are " + infants + " infants, " + toddlers + " toddlers, " + children + " children, " + teens + " teens, " + adults + " adults and " + seniors + " seniors in your group.");
             System.out.println("Therefore, your total movie ticket balance will be $" + movieBalance + ".");

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 //Name: Prabhjot Bhandal
-//Date: November 11th, 2022
+//Date: November 11.th, 2022
 /*Purpose: Classifies a person depending on their age*/
 
 public class AgeClassification {
@@ -17,7 +17,7 @@ public class AgeClassification {
 
 
             //Invalid age
-            if (age < 0) {
+            if (age < 0 && age > 121) {
                 System.out.println("Your age is invalid. Please restart the program and enter a valid age.");
             }
             //Infant
@@ -38,10 +38,10 @@ public class AgeClassification {
             }
             //Adult
             else if (age >= 20 && age < 65) {
-                System.out.println("You are an adult");
+                System.out.println("You are an adult.");
             }
             //Senior
-            else if (age >= 65) {
+            else if (age >= 65 && age <= 121) {
                 System.out.println("You are a senior.");
             }
         }
