@@ -12,37 +12,32 @@ public class MovieTicketPrices {
             
             //Gets group
             System.out.print("Let's get started!\nPlease input the number of people in your group: ");
-            int age = in.nextInt();
-            //Create a for loop that loops for the number of people in the group
+            int group = in.nextInt();
+            //Gets infants
+            System.out.println("Please enter the number of infants in the group: ");
+            int infants = in.nextInt();
+            //Gets toddlers
+            System.out.println("Please enter the number of toddlers in the group: ");
+            int toddlers = in.nextInt();
+            //Gets children
+            System.out.println("Please enter the number of children in the group: ");
+            int children = in.nextInt();
+            //Gets teens
+            System.out.println("Please enter the number of teens in the group: ");
+            int teens = in.nextInt();
+            //Gets adults
+            System.out.println("Please enter the number of adults in the group: ");
+            int adults = in.nextInt();
+            //Gets seniors
+            System.out.println("Please enter the number of seniors in the group: ");
+            int seniors = in.nextInt();
+            //Determines movieBalance
+            //Don't remember the ticket prices 
+            double movieBalance = 0;
 
-            //Invalid age
-            if (age < 0) {
-                System.out.println("Your age is invalid. Please restart the program and enter a valid age.");
-            }
-            //Infant
-            else if (age >= 0 && age < 2) {
-                System.out.println("You are a infant.");
-            }
-            //Toddler
-            else if (age >= 2 && age < 4) {
-                System.out.println("You are a toddler.");
-            }
-            //Child
-            else if (age >= 4 && age < 13) {
-                System.out.println("You are a child.");
-            }
-            //Teen
-            else if (age >= 13 && age < 20) {
-                System.out.println("You are a teen.");
-            }
-            //Adult
-            else if (age >= 20 && age < 65) {
-                System.out.println("You are an adult");
-            }
-            //Senior
-            else if (age >= 65) {
-                System.out.println("You are a senior.");
-            }
+            System.out.println("There are " + group + " people in your group.");
+            System.out.println("There are " + infants + " infants, " + toddlers + " toddlers, " + children + " children, " + teens + " teens, " + adults + " adults and " + seniors + " seniors in your group.");
+            System.out.println("Therefore, your total movie ticket balance will be $" + movieBalance + ".");
         }
     }
 }
