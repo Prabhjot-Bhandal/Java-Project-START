@@ -53,7 +53,6 @@ public class SwitchDayOfWeek {
     
                 default: dayName = "Invalid day number";
                 System.out.println(dayName);
-                break;
             }
         }
     }
