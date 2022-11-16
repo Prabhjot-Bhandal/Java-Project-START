@@ -18,23 +18,23 @@ public class MultipleChoiceWithSwitch {
             //Question 1
             System.out.println("What relaxation method relaxes you the most? \nA. Going outside for a walk \nB. Listening to music \nC. Engaging in your hobbies \nD. Other");
             String answer = in.next();
-            switch (answer) {
-                case "A" || "a":
+            switch (answer.toUpperCase()) {
+                case "A":
                     //Adds 10 points
                     userScore += 10;
                     break;
                 
-                case "B" || "b":
+                case "B":
                     //Adds 15 points
                     userScore += 15;
                     break;
                 
-                case "C" || "c":
+                case "C":
                     //Adds 25 points
                     userScore += 25;
                     break;
                 
-                case "D" || "d":
+                case "D":
                     //Adds 40 points
                     userScore += 40;
                     break;
