@@ -14,7 +14,7 @@ public class MovieTicketPricesWithLoop {
             int group = in.nextInt();
             //Counter for loop, used for which person we are on
             int counter = 1; 
-            //For number of people in each age category going to the movies
+            //Initializes each age category's number of people
             int infantsAndToddlers = 0;
             int children = 0;
             int teens = 0;
@@ -61,8 +61,8 @@ public class MovieTicketPricesWithLoop {
                 }
                 //Adult
                 else if (age >= 20 && age < 65) {
-                    //Adds a $20.00 adult ticket to movieBalance
-                    movieBalance += 20.00;
+                    //Adds a $21.00 adult ticket to movieBalance
+                    movieBalance += 21.00;
                     //Adds 1 to how many adults are going to the movies
                     adults++;
                     //Adds 1 to the counter for the next person
@@ -79,6 +79,10 @@ public class MovieTicketPricesWithLoop {
                 }
                 //End of loop
             }
+
+            //Adds tax onto the movieBalance
+            movieBalance *= 1.13;
+
             System.out.println("There are " + group + " people in your group.");
             System.out.println("There are " + infantsAndToddlers + " infants and toddlers, " + children + " children, " + teens + " teens, " + adults + " adults and " + seniors + " seniors in your group.");
             System.out.println("Therefore, your total movie ticket balance will be $" + movieBalance + ".");
