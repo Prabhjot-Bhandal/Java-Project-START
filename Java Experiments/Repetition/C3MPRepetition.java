@@ -22,13 +22,6 @@ public class C3MPRepetition {
             System.out.println("PLAYLIST START\n" + playlist);
 
 
-            //Moves the first song to the end
-            String button1 = playlist.substring(1) + playlist.substring(0, 1);
-            //Moves the last song to the front
-            String button2 = playlist.substring(playlist.length() - 1) + playlist.substring(0, playlist.lastIndexOf("E"));
-            //Swaps the first two songs
-            String button3 = playlist.substring(1, 2) + playlist.substring(0, 1) + playlist.substring(2);
-
             //While button4 has not been pressed, the playlist will keep looping
             while (button4 == false) {
                 System.out.print("Another shuffle?: ");
@@ -37,15 +30,18 @@ public class C3MPRepetition {
                 switch(input) {
                     //Prints the outcome of button1 if button1 is pressed
                     case 1:
-                        playlist = button1 + "\n";
+                        //Moves the first song to the end
+                        playlist = playlist.substring(1) + playlist.substring(0, 1);
                         break;
                     //Prints the outcome of button2 if button2 is pressed
                     case 2:
-                        playlist = button2 + "\n";
+                        //Moves the last song to the front
+                        playlist = playlist.substring(playlist.length() - 1) + playlist.substring(0, playlist.length() - 1);
                         break;
                     //Prints the outcome of button3 if button3 is pressed
                     case 3:
-                        playlist = button3 + "\n";
+                        //Swaps the first two songs
+                        playlist = playlist.substring(1, 2) + playlist.substring(0, 1) + playlist.substring(2);
                         break;
                     //Sets button4 to true to end the loop
                     case 4:
@@ -53,17 +49,17 @@ public class C3MPRepetition {
                         break;
                     //Default case is initial playlist   
                     default:
-                        playlist = initialPlaylist;
+                        System.out.println("Please enter a valid button.");
                         break;
-                }
+                }//End of switch
             //Prints playlist after the switch statement checks for different input
-            System.out.println(playlist);
+            System.out.println("\n" + playlist);
             }
             //End of loop
             //Prints out final shuffled playlist
-            System.out.print("Your final shuffle was: " + playlist);
+            System.out.print("\nYour final shuffle was: " + playlist);
             //Indicates playlist has ended
-            System.out.println("END OF PLAYLIST");
+            System.out.println("\nEND OF PLAYLIST");
         }
     }
 }
