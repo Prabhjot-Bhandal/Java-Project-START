@@ -8,16 +8,33 @@ public class CountedRepetitionTask {
         try (Scanner in = new Scanner(System.in)) {
             //Gets startNum
             System.out.print("Please enter your starting integer: ");
-            int startNum = in.nextInt();
+            int num1 = in.nextInt();
             //Gets endNum
             System.out.print("Please enter your ending integer: ");
-            int endNum = in.nextInt();
-            //Initializes the sum
+            int num2 = in.nextInt();
+            //Initializes the sum, startNum and endNum
             int sum = 0;
+            int startNum = 0;
+            int endNum = 0;
 
+            
+            //Checks which number is bigger and which is smaller
+            //If num1 is bigger than num2
+            if (num1 > num2) {
+                //startNum is the small integer
+                startNum = num2;
+                //endNum is the bigger integer
+                endNum = num1;
+            } 
+            //If num1 is smaller than num2
+            else {
+                startNum = num1;
+                endNum = num2;
+            }
 
             //Starts at startNum, adds 1 each time, runs until the counter > endNum
             for (int counter = startNum; counter <= endNum; counter += 1) {
+                //Adds counter to the sum each time the lop runs
                sum += counter;
             }
 
