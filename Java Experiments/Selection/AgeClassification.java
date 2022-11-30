@@ -1,6 +1,6 @@
 import java.util.Scanner;
 //Name: Prabhjot Bhandal
-//Date: November 11.th, 2022
+//Date: November 11th, 2022
 /*Purpose: Classifies a person depending on their age*/
 
 public class AgeClassification {
