@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
-public class Hehehehaw {
+
+public class QuadraticCalcRepetition {
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
             double aValue;
