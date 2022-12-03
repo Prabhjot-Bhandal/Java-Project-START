@@ -28,6 +28,7 @@ public class DoubleAndHalveMultiplication {
                     //Prints invalid
                     System.out.println("Your integers are invalid. Your integers must be positive.\n\n");
                 }
+                //If all integers get past all the validity checks
                 else {
                     //Prints format for the chart
                     System.out.println("\nnum1 | num2\n");
