@@ -1,0 +1,154 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch AgeClassification",
+            "request": "launch",
+            "mainClass": "AgeClassification",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch C3MPRepetition",
+            "request": "launch",
+            "mainClass": "C3MPRepetition",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch CountedRepetitionTask",
+            "request": "launch",
+            "mainClass": "CountedRepetitionTask",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch DetermineAge",
+            "request": "launch",
+            "mainClass": "DetermineAge",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch DetermineAgeV2",
+            "request": "launch",
+            "mainClass": "DetermineAgeV2",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch DiceMinigame",
+            "request": "launch",
+            "mainClass": "DiceMinigame",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch DoubleAndHalveMultiplication",
+            "request": "launch",
+            "mainClass": "DoubleAndHalveMultiplication",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch FactorialCalc",
+            "request": "launch",
+            "mainClass": "FactorialCalc",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch KeyboardInputDEMO",
+            "request": "launch",
+            "mainClass": "KeyboardInputDEMO",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch MiniIfGame",
+            "request": "launch",
+            "mainClass": "MiniIfGame",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch MovieTicketPrices",
+            "request": "launch",
+            "mainClass": "MovieTicketPrices",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch MultipleChoiceSurvey",
+            "request": "launch",
+            "mainClass": "MultipleChoiceSurvey",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch NumberGuesser",
+            "request": "launch",
+            "mainClass": "NumberGuesser",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch PasswordCheck",
+            "request": "launch",
+            "mainClass": "PasswordCheck",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch PasswordCheckDoWhile",
+            "request": "launch",
+            "mainClass": "PasswordCheckDoWhile",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch SelectionDemoNum",
+            "request": "launch",
+            "mainClass": "SelectionDemoNum",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch SelectionDemoSTR",
+            "request": "launch",
+            "mainClass": "SelectionDemoSTR",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch SimpleCalculator",
+            "request": "launch",
+            "mainClass": "SimpleCalculator",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch TrueFalseQuiz",
+            "request": "launch",
+            "mainClass": "TrueFalseQuiz",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "Launch shortScanner",
+            "request": "launch",
+            "mainClass": "shortScanner",
+            "projectName": "Java-Project-START_8c052a0f"
+        }
+    ]
+}
