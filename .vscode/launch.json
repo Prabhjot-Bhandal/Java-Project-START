@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch TextTranslator",
+            "request": "launch",
+            "mainClass": "TextTranslator",
+            "projectName": "Java-Project-START_74eaed6a"
+        },
+        {
+            "type": "java",
             "name": "Launch RockPaperScissors",
             "request": "launch",
             "mainClass": "RockPaperScissors",

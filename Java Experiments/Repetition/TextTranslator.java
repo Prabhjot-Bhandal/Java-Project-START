@@ -62,7 +62,7 @@ public class TextTranslator {
                         break;
                     //For errors/abbreviations not in the list
                     default:
-                    System.out.println("\n\nSorry, please enter a valid abbreviation.\n");
+                    System.out.println("\nSorry, please enter a valid abbreviation.\n\n");
                     break;
                 }
             }//End of while loop
