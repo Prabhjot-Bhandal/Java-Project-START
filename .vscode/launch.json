@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch WhoHasSeenTheWind",
+            "request": "launch",
+            "mainClass": "WhoHasSeenTheWind",
+            "projectName": "Java-Project-START_74eaed6a"
+        },
+        {
+            "type": "java",
             "name": "Launch TextTranslator",
             "request": "launch",
             "mainClass": "TextTranslator",
