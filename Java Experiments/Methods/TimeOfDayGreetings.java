@@ -4,8 +4,6 @@ import java.util.Scanner;
 //To greet the user depending on the time of day they input
 
 public class TimeOfDayGreetings {
-    //Methods are just functions 
-
     //This makes in a class varialble, not a local variable
     static Scanner in = new Scanner(System.in);
 
@@ -23,13 +21,14 @@ public class TimeOfDayGreetings {
             //Gets stringOrInt
             System.out.print("\nWould you like to input the current time of day with words or hours?: ");
             //Takes all the spaces out of the string and turns the string lowercase
-            stringOrInt = in.next().replaceAll(" ", "").toLowerCase();
+            stringOrInt = in.nextLine().replaceAll(" ", "").toLowerCase();
 
             //Returns an error message if the user enters an incorrect input
-            if (!stringOrInt.equalsIgnoreCase("words") || !stringOrInt.equalsIgnoreCase("hours")) {
+            if (!stringOrInt.equalsIgnoreCase("words") && !stringOrInt.equalsIgnoreCase("hours")) {
                 System.out.println("You must input either \"words\" or \"hours\" for your answer. Please try again.\n");
             }
-        } while (!stringOrInt.equalsIgnoreCase("words") || !stringOrInt.equalsIgnoreCase("hours"));
+
+        } while (!stringOrInt.equalsIgnoreCase("words") && !stringOrInt.equalsIgnoreCase("hours"));
 
         //If the user wants to input the time of day in words
         if (stringOrInt.equalsIgnoreCase("words")) {
@@ -90,23 +89,34 @@ public class TimeOfDayGreetings {
     
     //Methods that gets the time of day
         public static String getTimeOfDay() {
-            //Gets timeOfDay
-            System.out.print("Please enter the time of day: ");
-            //Changes the whole string to lower case and takes out all the spaces
-            String timeOfDay = in.next().toLowerCase().replaceAll(" ", "");
+            //Initializes timeOfDay
+            String timeOfDay = "";
+            //Loops back if the user does input either morning, afternoon, evening or night for the time of day
+            do {
+                //Gets timeOfDay
+                System.out.print("\nPlease enter the time of day: ");
+                //Changes the whole string to lower case and takes out all the spaces
+                timeOfDay = in.next().replaceAll(" ", "");
+
+                //Gives the user an error message if they do not input either morning, noon, afternoon, evening or night for the time of day
+                if (!timeOfDay.equalsIgnoreCase("morning") && !timeOfDay.equalsIgnoreCase("noon") && !timeOfDay.equalsIgnoreCase("afternoon") && !timeOfDay.equalsIgnoreCase("evening") && !timeOfDay.equalsIgnoreCase("night")) {
+                    System.out.println("You must input either \"morning\", \"noon\", \"afternoon\", \"evening\" or night for your answer.\nPlease try again.\n");
+                }
+
+            } while (!timeOfDay.equalsIgnoreCase("morning") && !timeOfDay.equalsIgnoreCase("noon") && !timeOfDay.equalsIgnoreCase("afternoon") && !timeOfDay.equalsIgnoreCase("evening") && !timeOfDay.equalsIgnoreCase("night"));
 
             return timeOfDay;
         } //getTimeOfDay
 
-
         public static int getHourOfDay() {
             //Initializes hourOfDay
-            int hourOfDay = 0;
+            //Initialized at -1 instead of 0 since 0 is a valid hour
+            int hourOfDay = -1;
 
             //Loops back if user inputs an invalid hour of the day (less than 0 or greater than 23)
             do {
                 //Gets hourOfDay
-                System.out.print("\nPlease enter a valid hour of the day (in the 24-hour clock): ");
+                System.out.print("\nPlease enter the current hour of the day (in the 24-hour clock): ");
                 hourOfDay = in.nextInt();
 
                 //Tells user input is invalid if hour is less than 0 or greater than 23
@@ -139,6 +149,6 @@ public class TimeOfDayGreetings {
             } //Evening greeting
             
             public static void greetingNight() {
-                System.out.println("Hello darkness my old friend...");
+                System.out.println("\nYou should head to bed.");
             } //Night greeting
 }

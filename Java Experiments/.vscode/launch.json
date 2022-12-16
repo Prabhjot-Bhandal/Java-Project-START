@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ElapsedTime",
+            "request": "launch",
+            "mainClass": "ElapsedTime",
+            "projectName": "Java Experiments_198ddb18"
+        },
+        {
+            "type": "java",
+            "name": "Launch TimeOfDayGreetings",
+            "request": "launch",
+            "mainClass": "TimeOfDayGreetings",
+            "projectName": "Java Experiments_198ddb18"
+        },
+        {
+            "type": "java",
             "name": "Launch FergusonballRatings",
             "request": "launch",
             "mainClass": "FergusonballRatings",
