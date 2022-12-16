@@ -3,8 +3,6 @@ import java.util.Scanner;
 //December 15th, 2022
 //Write a method called elapsedTime() that returns the difference of two integer parameters
 
-import javax.print.event.PrintEvent;
-
 public class ElapsedTime {
     //Makes in a class variable
     static Scanner in = new Scanner(System.in);

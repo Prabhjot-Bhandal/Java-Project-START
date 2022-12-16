@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch WordFormatting",
+            "request": "launch",
+            "mainClass": "WordFormatting",
+            "projectName": "Java-Project-START_74eaed6a"
+        },
+        {
+            "type": "java",
+            "name": "Launch ProperFormatWords",
+            "request": "launch",
+            "mainClass": "ProperFormatWords",
+            "projectName": "Java-Project-START_74eaed6a"
+        },
+        {
+            "type": "java",
             "name": "Launch TimeOfDayGreetings",
             "request": "launch",
             "mainClass": "TimeOfDayGreetings",
