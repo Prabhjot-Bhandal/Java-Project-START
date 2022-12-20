@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch DoubleAndHalveMultiplication",
+            "request": "launch",
+            "mainClass": "DoubleAndHalveMultiplication",
+            "projectName": "Java-Project-START_74eaed6a"
+        },
+        {
+            "type": "java",
             "name": "Launch ElapsedTime",
             "request": "launch",
             "mainClass": "ElapsedTime",

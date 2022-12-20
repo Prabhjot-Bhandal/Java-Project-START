@@ -33,8 +33,8 @@ public class DoubleAndHalveMultiplication {
                     //Prints format for the chart
                     System.out.println("\nnum1 | num2\n");
 
-                    //Will stop after for loop if num2Calculation is equal to less than 1 and num2Calculation is divided by 2 each time
-                    //Must run num1Calculation as for loop parameters as it only does it once if done in loop
+                    //Will stop for loop if num2Calculation is equal to less than 1 and num2Calculation is divided by 2 each time
+                    //Must run num1Calculation as a for loop parameter since if we put the command is in the loop, it only runs it once
                     for (int num2Calculation = num2, num1Calculation = num1; num2Calculation > 0; num2Calculation /= 2, num1Calculation *= 2) {
                         //If num2 is currently odd, adds num1Calculation to totalProduct
                         if (num2Calculation % 2 == 1) {
