@@ -51,6 +51,8 @@ public class DoubleAndHalveMultiplication {
                     
                     //Outputs num1, num2 and totalProduct
                     System.out.println("\nThe product of " + num1 + " and " + num2 + " is " + totalProduct + ".\n\n");
+                    //Resets the sum
+                    totalProduct = 0;
                 }
 
             }// || operator is used instead of && because && breaks the logic of the code and would cause it to go on forever
