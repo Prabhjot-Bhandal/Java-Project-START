@@ -27,14 +27,24 @@ public class ArraysDemo {
         //Calls appendPhrase() to append " is enough!" to each string in the array
         String appendedClassList[] = appendPhrase(classList);
         //Prints students name with the phrase
-        for (int index = 0; index < appendedClassList.length; index++) {
-            System.out.println("\n\n" + appendedClassList[index]);
-        }
+        printArraySTR(appendedClassList);
 
         //Processing - Numbers
         //Calls studentNumSum() to determine sum of all students' numbers
         studentNumSum(studentNum);
     } //main
+
+    public static void printArraySTR (String[] array) {
+        for (int index = 0; index < array.length; index++) {
+            System.out.println("\n\n" + array[index]);
+        }
+    }
+
+    public static void printArrayINT (int[] array) {
+        for (int index = 0; index < array.length; index++) {
+            System.out.println("\n\n" + array[index]);
+        }
+    }
 
     public static String[] classListMethod () {
         //Creates classList array, gets students names and puts them in array
@@ -44,7 +54,7 @@ public class ArraysDemo {
         classList = new String[7];
         //Input for arrays
         for (int index = 0; index < classList.length; index++) {
-            System.out.print("\nEnter each student's name: ");
+            System.out.print("\nEnter student " + (index + 1) + "'s name: ");
             classList[index] = in.next();
         }
 
