@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch SimulationStrife",
+            "request": "launch",
+            "mainClass": "SimulationStrife",
+            "projectName": "Java-Project-START_74eaed6a"
+        },
+        {
+            "type": "java",
             "name": "Launch ArraysDemo",
             "request": "launch",
             "mainClass": "ArraysDemo",
