@@ -16,8 +16,12 @@ public class SimulationStrife {
     Even indices are Physical attacks
     Odd indices are Magic attacks
     Indices 7 and 8 are Neutral attacks
-    Index 0 is heal*/
-    static String playerMoves[] = {"Curaga", "Upper Slash", "Fire", "Aerial Sweep", "Gravira", "Groundbreaker", "Thunderaga", "Triple Rush", "Backspin"};
+    Index 0 is heal
+    Append each object into playerMoves[] array in a for loop*/
+    static String playerMagicMoves[] = {"Fire", "Gravira", "Thunderaga", "Backspin"};
+    static String playerPhysicalMoves[] = {"Upper Slash", "Aerial Sweep", "Groundbreaker", "Triple Rush"};
+    static String playerHeal = "Curaga";
+    static String playerMoves[] = new String[9];
 
     //Enemy stats
     static int enemyHP = 100;
