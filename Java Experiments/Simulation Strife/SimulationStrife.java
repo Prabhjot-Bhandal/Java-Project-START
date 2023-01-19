@@ -53,15 +53,16 @@ public class SimulationStrife {
       playerMP = 10;
       enemyHP = 100;
 
-      //Intializes playerTurn, moveDuplicate
+      //Intializes playerChoice, move1, move2, move3
       int playerChoice = 0;
+      int move1 = -1;
+      int move2 = -1;
+      int move3 = -1;
       boolean moveDuplicate = true;
       do {
+        //If statements for ensuring no duplicate moves
         do {
           //Randomizes the first index of the cycle
-          //Figure out a way to take an element out of an array
-          int firstMove = randomizer(playerMoves);
-
           //Shows player's current stats and the enemy's currents stats
           System.out.println("HP: " + playerHP + "/100\t\t\t\t" + currentEnemy + "'s HP: " + enemyHP + "/100\nMP: " + playerMP + "/100\n");
           Thread.sleep(1000);
@@ -94,7 +95,7 @@ public class SimulationStrife {
   public static boolean introduction() throws InterruptedException{
     //Introduces the game, asks the user if they want to play, returns a boolean
 
-    System.out.println("Welcome to Simulation Strife!\n\nThis program simulates a text and turn-based battle (or strife), similar to many battles found in RPG games today. In Simulation Strife, each battle is against a singular, randomized enemy and your job is to defeat your enemy in battle. However, each move is a one-time use and your list of moves shuffles each time you play. This means that if you use one move, you cannot use that move again and the next move in the cycle replaces the move you just used. In addition to that, specific enemy attacks make it more difficult for you to defeat the enemy. If you’re not careful, your enemy will defeat you, so think your moves through and play carefully.");
+    System.out.println("Welcome to Simulation Strife!\n\nThis program simulates a text and turn-based battle (or strife), similar to many battles found in RPG games today. In Simulation Strife, each battle is against a singular, randomized enemy and your job is to defeat your enemy in battle. However, each time it is the player’s turn, they have a randomized moveset.\nIn addition to that, specific enemy attacks make it more difficult for you to defeat the enemy.\nIf you’re not careful, your enemy will defeat you, so think your moves through and play carefully.");
     
     //Initializes runQuestion
     String runQuestion = "";
