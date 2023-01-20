@@ -20,6 +20,7 @@ public class SimulationStrife {
     Append each object into playerMoves[] array in a for loop*/
     static String playerMagicMoves[] = {"Fire", "Gravira", "Thunderaga", "Backspin"};
     static String playerPhysicalMoves[] = {"Upper Slash", "Aerial Sweep", "Groundbreaker", "Triple Rush"};
+    static String playerNeutalMoves[] = {"Groundbreaker", "Triple Rush"};
     static String playerHeal = "Curaga";
     static String playerMoves[] = new String[9];
 
@@ -48,44 +49,124 @@ public class SimulationStrife {
       int currentEnemyIndex = enemyRandomizer();
       String currentEnemy = enemyList[currentEnemyIndex];
 
+      //Puts in and correctly orders cure, magic, physical and neutral moves in playerMoves[]
+      playerMoves = definePlayerMoves(playerMoves, playerHeal, playerMagicMoves, playerPhysicalMoves, playerNeutalMoves);
+
       //Initializes stats so it refreshes everytime the player starts a new game
       playerHP = 100;
       playerMP = 10;
       enemyHP = 100;
 
-      //Intializes playerChoice, move1, move2, move3
-      int playerChoice = 0;
-      int move1 = -1;
-      int move2 = -1;
-      int move3 = -1;
-      boolean moveDuplicate = true;
+      //Intializes playerChoiceInt, playerChoiceStr, move1, move2, move3
+      int playerChoiceInt = 0;
+      String playerMoveStr = "";
+      int playerMoveIndex = -2;
+      String moveChoice1 = "";
+      int moveChoice1Index = 0;
+      String moveChoice2 = "";
+      int moveChoice2Index = 0;
+      String moveChoice3 = "";
+      int moveChoice3Index = 0;
       do {
+        //Gets a random index in playerMoves for each move choice
+        moveChoice1Index = randomizer(playerMoves);
+        moveChoice2Index = randomizer(playerMoves);
+        moveChoice3Index = randomizer(playerMoves);
+       
         //If statements for ensuring no duplicate moves
+        //If move choice 1 and 2 are the same
+        if (moveChoice1Index == moveChoice2Index) {
+          //Rerolls moveChoice2Index
+          moveChoice2Index = randomizer(playerMoves);
+        } 
+        //If move choices 1 and 3 are the same
+        else if (moveChoice1Index == moveChoice3Index) {
+          //Rerolls moveChoice3Index
+          moveChoice3Index = randomizer(playerMoves);
+        }
+        else if (moveChoice2Index == moveChoice3Index) {
+          //Rerolls moveChoice3Index
+          moveChoice3Index = randomizer(playerMoves);
+        }
+
+        //Assigns move choice indexes to corresponding move choice
+        moveChoice1 = playerMoves[moveChoice1Index];
+        moveChoice2 = playerMoves[moveChoice2Index];
+        moveChoice3 = playerMoves[moveChoice3Index];
+
         do {
           //Randomizes the first index of the cycle
           //Shows player's current stats and the enemy's currents stats
           System.out.println("HP: " + playerHP + "/100\t\t\t\t" + currentEnemy + "'s HP: " + enemyHP + "/100\nMP: " + playerMP + "/100\n");
           Thread.sleep(1000);
-          //Gets player's current turn
-          System.out.print("YOUR TURN\n1) " + playerMoves[firstMove] + "\n2) " + playerMoves[firstMove + 1] + "\n3) " + playerMoves[firstMove + 2] + "\n4) Guard" + "\n\nYOUR CHOICE: ");
-          playerChoice = in.nextInt();
+          //Gets player's current turn and displays which moves the player has to pick from
+          System.out.print("YOUR TURN\n1) " + moveChoice1 + "\n2) " + moveChoice2 + "\n3) " + moveChoice3 + "\n4) Guard" + "\n\nYOUR CHOICE: ");
+          playerChoiceInt = in.nextInt();
 
           //Keeps looping if user does not enter either 1, 2, 3 or 4
-        } while(playerChoice != 1 && playerChoice != 2 && playerChoice != 3 && playerChoice != 4);
+        } while(playerChoiceInt != 1 && playerChoiceInt != 2 && playerChoiceInt != 3 && playerChoiceInt != 4);
 
-        //Once the player enters a valid integer, player's turn will run
-        playerTurn(playerChoice, currentEnemyIndex);
+        //Switch case for the player picking which move they want to use
+        switch (playerChoiceInt) {
+          //If the player pressed 1
+          case 1:
+            playerMoveStr = moveChoice1;
+            playerMoveIndex = moveChoice1Index;
+            break;
+
+          //If the player pressed 2
+          case 2:
+            playerMoveStr = moveChoice2;
+            playerMoveIndex = moveChoice2Index;
+            break;
+
+          //If the player pressed 3
+          case 3:
+            playerMoveStr = moveChoice3;
+            playerMoveIndex = moveChoice3Index;
+            break;
+
+          //If the player pressed 4 (will always be guard)
+          case 4:
+            playerMoveStr = "Guard";
+            playerMoveIndex = -1;
+            break;
+        }
+
+        //Tells player what move they picked
+        System.out.println("\n\nYou have chosen to use " + playerMoveStr.toUpperCase() + "!");
+
+        //After player picks a move, playerTurn will run
+        playerTurn(playerMoveIndex, playerMoveStr, currentEnemyIndex);
 
         //After player's turn runs, it's the enemy's turn
         //Gets enemyIndex for enemyMove and enemyDMG
-        int enemyIndex = (int) (Math.random() * 3);
+        int enemyMoveIndex = (int) (Math.random() * 3);
         //With currentEnemy and enemyIndex, gets which move the enemy is doing
-        String enemyMove = enemyMove(currentEnemyIndex, enemyIndex);
+        String enemyMove = enemyMove(currentEnemyIndex, enemyMoveIndex);
         //With enemyIndex, gets how much damage the enemy has done
-        int enemyDMG = enemyDMG(enemyIndex);
+        int enemyDMG = enemyDMG(enemyMoveIndex);
 
         //Keeps looping until either the playerHP == 0 or enemyHP == 0
       } while (playerHP != 0 && enemyHP != 0);
+
+      //If statements that show who won this round
+      //If the enemy and player tie
+      if (enemyHP == playerHP) {
+        System.out.println("No way! HOW DID YOUR SIMULATION STRIFE WITH " + currentEnemy.toUpperCase() + " END IN A DRAW!?!");
+      }
+      //If the enemy loses
+      else if (enemyHP == 0) {
+        //Prints enemy's name in upper case
+        System.out.println("\n\nCongratulations! You have defeated " + currentEnemy.toUpperCase() + " in this simulation strife!");
+
+      } 
+      //If the player loses
+      else if (playerHP == 0) {
+        //Prints that the player lost to their specific enemy, enemy name in upper case
+        System.out.println("\n\nOh no! You were defeated by " + currentEnemy.toUpperCase() + " in this simulation strife! Better luck next time!");
+      }
+
 
     } while (run == true); //Game loop
   } //main
@@ -121,11 +202,48 @@ public class SimulationStrife {
 
 
 
+  public static String[] definePlayerMoves(String[] playerMoves, String playerHeal, String[] playerMagicMoves, String[] playerPhysicalMoves, String[] playerNeutalMoves) {
+    //Assigns and correctly orders the different types of moves into playerMoves[]
+
+    for (int index = 0; index < playerMoves.length; index++) {
+      //Initializes additional counters to make adding elements into playerMoves[] from other arrays easier
+      int magicIndex = 0;
+      int physicalIndex = 0;
+      int neutralIndex = 0;
+
+      //If 0, sets index 0 of playerMoves to heal
+      if (index == 0) {
+        playerMoves[index] = playerHeal;
+      }
+      //If the index is 7 or 8, sets the current index of player moves to corresponding index in playerNeutralMoves using neutralIndex
+      if (index == 7 || index == 8) {
+        playerMoves[index] = playerNeutalMoves[neutralIndex];
+        //Adds 1 to neutralIndex
+        neutralIndex++;
+      }
+      //If odd, sets current index of playerMoves to corresponding index in playerMagicMoves using magicIndex
+      else if (index % 2 == 1) {
+        playerMoves[index] = playerMagicMoves[magicIndex];
+        //Adds 1 to magicIndex
+        magicIndex++;
+      }
+      //If even, sets current index of playerMoves to corresponding index in playerPhysicalMoves using physicalIndex
+      else if (index % 2 == 0) {
+        playerMoves[index] = playerPhysicalMoves[physicalIndex];
+        //Adds 1 to physicalIndex
+        physicalIndex++;
+      }
+    } 
+
+    return playerMoves;
+  } //definePlayerMoves
+
+
 //Randomizers
   public static int randomizer(String[] array) {
     //Gets a random int for the playerMove's array index
 
-    //Gets a random integer between 0 and one less the array's length
+    //Gets a random integer between the arrays first and last index
     int index = (int)(Math.random() * (array.length - 1));
 
     return index;
@@ -133,7 +251,6 @@ public class SimulationStrife {
 
   public static int enemyRandomizer() {
     //Gets a random int between 0 and 3
-
     int index = (int) (Math.random() * 3);
 
     return index;
@@ -143,7 +260,13 @@ public class SimulationStrife {
 
 //Player turn
 //Work in progress
-  public static int playerTurn(int choice, int enemyIndex) {
+  public static int playerTurn(int moveIndex, String moveStr, int enemyIndex) {
+    //If statements to determine moveType
+
+    //If moveIndex == 0, heal
+    //If moveIndex == 7 || moveIndex == 8, neutral attack
+    //If moveIndex % 2 == 1, magic attack
+    //If moveIndex % 2 == 0, physical attack
     int playerDMG = 0;
     return playerDMG;
   }
