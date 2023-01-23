@@ -45,7 +45,7 @@ public class SimulationStrife {
     
     //Keeps running game 
     do {
-      //Gets an interger between 0 and 3 for what the current enemy is
+      //Gets an integer between 0 and 3 for what the current enemy is
       int currentEnemyIndex = enemyRandomizer();
       String currentEnemy = enemyList[currentEnemyIndex];
 
