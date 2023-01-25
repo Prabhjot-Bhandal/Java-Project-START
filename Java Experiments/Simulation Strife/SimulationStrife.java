@@ -12,7 +12,7 @@ public class SimulationStrife {
     //Player stats and moves
     static int playerHP = 100;
     static int playerMP = 10;
-    /*We'll start with 8, minimum 6
+    /*We'll have a move pool of 8 moves
     Even indices are Physical attacks
     Odd indices are Magic attacks
     Indices 7 and 8 are Neutral attacks
@@ -57,16 +57,20 @@ public class SimulationStrife {
       playerMP = 10;
       enemyHP = 100;
 
-      //Intializes playerChoiceInt, playerChoiceStr, move1, move2, move3
+      /*Intializes playerChoiceInt, playerMoveStr, playerMoveIndex
+      Used for storing the move the player has selected*/
       int playerChoiceInt = 0;
       String playerMoveStr = "";
       int playerMoveIndex = -2;
+
+      /*Intializes moveChoice 1, 2 and 3 and moveChoice indices
+      Used to store randomized moves and display them*/
       String moveChoice1 = "";
-      int moveChoice1Index = 0;
+      int moveChoice1Index = -1;
       String moveChoice2 = "";
-      int moveChoice2Index = 0;
+      int moveChoice2Index = -1;
       String moveChoice3 = "";
-      int moveChoice3Index = 0;
+      int moveChoice3Index = -1;
       do {
         //Gets a random index in playerMoves for each move choice
         moveChoice1Index = randomizer(playerMoves);
@@ -106,7 +110,7 @@ public class SimulationStrife {
           //Keeps looping if user does not enter either 1, 2, 3 or 4
         } while(playerChoiceInt != 1 && playerChoiceInt != 2 && playerChoiceInt != 3 && playerChoiceInt != 4);
 
-        //Switch case for the player picking which move they want to use
+        //Switch case for the player picking which move they want to use and assigns the move's string to playerMoveStr and the move's index to playerMoveIndex
         switch (playerChoiceInt) {
           //If the player pressed 1
           case 1:
@@ -137,7 +141,7 @@ public class SimulationStrife {
         System.out.println("\n\nYou have chosen to use " + playerMoveStr.toUpperCase() + "!");
 
         //After player picks a move, playerTurn will run
-        playerTurn(playerMoveIndex, playerMoveStr, currentEnemyIndex);
+        int playerDMG = playerTurn(playerMoveIndex, playerMoveStr, currentEnemyIndex);
 
         //After player's turn runs, it's the enemy's turn
         //Gets enemyIndex for enemyMove and enemyDMG
@@ -183,11 +187,12 @@ public class SimulationStrife {
 
     Thread.sleep(4000);
 
-    //Loop keeps running if the user does not input Y or N
+    //Loop keeps running if the user does not input y or n
     do {
       //Updates runQuestion with user input
       System.out.print("\nDo you want to play? (Y/N): ");
-      runQuestion = in.next();
+      //Takes all of the spaces out of user's response, changes its case to lower case and only gets the first character of the string
+      runQuestion = in.next().replaceAll(" ", "").toLowerCase().substring(0, 1);
     } while (!runQuestion.equalsIgnoreCase("Y") && !runQuestion.equalsIgnoreCase("N")); //End of do-while
 
     //If the user wants to play (responds with Y), returns true
@@ -261,12 +266,33 @@ public class SimulationStrife {
 //Player turn
 //Work in progress
   public static int playerTurn(int moveIndex, String moveStr, int enemyIndex) {
-    //If statements to determine moveType
+    //During player's turn, determines which move the player is using, the type of move and then 
 
-    //If moveIndex == 0, heal
-    //If moveIndex == 7 || moveIndex == 8, neutral attack
-    //If moveIndex % 2 == 1, magic attack
-    //If moveIndex % 2 == 0, physical attack
+    //Initializes moveType, which will store the move's type
+    String moveType = "";
+    //If statements to determine moveType
+    //If moveIndex is equal to 0, heal
+    if (moveIndex == 0) {
+      moveType = "Heal";
+    }
+    //If moveIndex is equal to 7 or 8, neutral attack
+    else if (moveIndex == 7 || moveIndex == 8) {
+      moveType = "Neutral";
+    }
+    //If moveIndex is odd, magic attack
+    else if (moveIndex % 2 == 1) {
+      moveType = "Magic";
+    }
+    //If moveIndex is even, physical attack
+    else if (moveIndex % 2 == 0) {
+      moveType = "Physical";
+    }
+
+    //Healing gives back 30 HP
+    //Physical attacks are 35 DMG
+    //Magic attacks are 20 DMG
+    //Neutral attacks are 25 DMG
+    //If statements for the damage 
     int playerDMG = 0;
     return playerDMG;
   }
@@ -327,14 +353,15 @@ public class SimulationStrife {
     else if (enemyIndex == 1) {
       return dmg = 15;
     }
-    else if (enemyIndex == 1) {
+    else if (enemyIndex == 2) {
       return dmg = 20;
     }
-    else if (enemyIndex == 1) {
+    else if (enemyIndex == 3) {
       return dmg = 25;
     }
     else {
       return dmg;
     }
   } //enemyDMG
+
 }
