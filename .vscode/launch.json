@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "NameGameCS12",
+            "request": "launch",
+            "mainClass": "NameGameCS12",
+            "projectName": "Java-Project-START_3308d8a2"
+        },
+        {
+            "type": "java",
+            "name": "NameGameGr12",
+            "request": "launch",
+            "mainClass": "NameGameGr12",
+            "projectName": "Java-Project-START_3308d8a2"
+        },
+        {
+            "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "mainClass": "Main",
