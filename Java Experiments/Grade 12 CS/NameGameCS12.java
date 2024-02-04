@@ -80,7 +80,10 @@ public class NameGameCS12 {
             //Generates randomized index using randomIndexGenerator
             int randIndex = randomIndexGenerator(names, alreadyCalled, currentCalledIndex);
 
-            //If randIndex has already been called, re-runs the method to re-roll randIndex
+            /*If randIndex has already been called, re-runs the method to re-roll randIndex,
+            if we just called randomIndexGenerator again and the index was still a repeated one,
+            it would return -1 and that would be used to print the next name and food, which cannot
+            happen as -1 is outside of the array's bounds*/
             if (randIndex < 0) {
                 randomizedPrint();
             }
