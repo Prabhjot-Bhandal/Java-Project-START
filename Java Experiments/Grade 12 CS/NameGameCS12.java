@@ -55,7 +55,7 @@ public class NameGameCS12 {
                     alreadyCalled[index] = -2;
                 }
 
-                //Goes to randomized printing method, done so recursion can be used
+                //Goes to randomized printing method
                 randomizedPrint();     
             }
         }
@@ -73,7 +73,7 @@ public class NameGameCS12 {
 
     public static void randomizedPrint() {
         /*This method prints out everyone's names and foods in random order, 
-        this was made into a method to rewrite repeated random indices via recursion*/
+        this was made into a method to rewrite repeated random indices so it can arecall itself*/
 
         //do while loop runs for all names in the names array
         do {
