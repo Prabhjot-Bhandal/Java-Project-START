@@ -60,7 +60,7 @@ public class NameGameCS12 {
             }
         }
         
-        System.out.println("\n\nAnd that's the everyone!");
+        System.out.println("\n\nAnd that's everyone!");
 
     } //main
 
