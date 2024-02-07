@@ -22,7 +22,8 @@ public class NameGameCS12 {
 
     public static void main(String[] args) {
         try (Scanner in = new Scanner(System.in)) {
-            //Welcomes the user, asks for input to print in order, reverse or randomized
+            /*Welcomes the user to simulate the name game, 
+            asks for input to print in order, reverse or randomized*/
             System.out.print("Welcome to the Name Game Simulation!\nTo print all names and foods in order, please press 0.\nTo print names in reverse order, please press 1.\nTo print names in randomized order, please press 2.\n\nInput: ");
             int printMode = in.nextInt();
 
@@ -66,14 +67,19 @@ public class NameGameCS12 {
 
 
     public static void nameAndFoodPrint(String[] names, String[] foods, int index) {
-        //Prints out all names and their corresponding foods
+        /*Action: Prints out all names and their corresponding foods
+         Output: A name and corresponding food printed
+         Input: names array, foods array, the loop's current index*/
+
         System.out.println(names[index] + " likes " + foods[index]);
     } //nameAndFoodPrint
 
 
     public static void randomizedPrint() {
-        /*This method prints out everyone's names and foods in random order, 
-        this was made into a method to rewrite repeated random indices so it can arecall itself*/
+        /*Action: This method prints out everyone's names and foods in random order, 
+        this was made into a method to rewrite repeated random indices so it can are call itself
+        Output: Prints out all names in randomized order
+        Input: None*/
 
         //do while loop runs for all names in the names array
         do {
@@ -98,8 +104,10 @@ public class NameGameCS12 {
 
     
     public static int randomIndexGenerator(String[] names, int[] alreadyCalled, int currentCalledIndex) {
-        /*Generatres a random index that will be used to call a name and food,
-        checks if this name and food has already been called, rerolls if so*/
+        /*Action: Generatres a random index that will be used to call a name and food,
+        checks if this name and food has already been called, rerolls if so
+        Output: A unique randomized index
+        Input: names array, alreadyCalled array and currentCalledIndex*/
 
         //Randomized integer, randIndex, within the available indices of names
         int randIndex = (int)(Math.random() * names.length);
