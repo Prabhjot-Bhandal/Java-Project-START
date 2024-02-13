@@ -4,6 +4,7 @@ import java.util.Scanner;
 //Purpose: To demonstrate how 2D arrays work.
 
 public class TwoDArrayDemo {
+    static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
 
         //Regular array
@@ -12,19 +13,41 @@ public class TwoDArrayDemo {
 
         //Irregular array
         int[][] steps;
-        steps = new int[4][];
+        steps = new int[5][]; //First column is rows, second is columns
 
-        steps[0] = new int[1]; //first row, one coloumn
-        steps[1] = new int[2];
-        steps[2] = new int[3];
-        steps[3] = new int[4];
+        //Makes the number of columns in each row random
+        steps = makeRagged(steps);
+
+        //Assigns the value that the user inputs
+        steps = assignFromUser(steps);
 
         //Prints only one element in the table array
-        System.out.println(table[0][1]);
+        //System.out.println(table[0][1]);
 
         //Prints all
         printIntTwoDArray(steps);
     } //main
+
+    public static int[][] makeRagged(int[][] twoDArray) {
+        //Action: Makes random # of columns per row
+        //Input: twoDArray
+        //Output: twoDArray that is ragged
+        for (int currentRow = 0; currentRow < twoDArray.length; currentRow++) {
+            twoDArray[currentRow] = new int[(int)(Math.random() * 5)];
+        }
+        return twoDArray;
+    }
+
+    public static int[][] assignFromUser(int[][] twoDArray) {
+        System.out.print("Please type in a desired integer value: ");
+        int userValue = in.nextInt();
+        for (int currentRow = 0; currentRow < twoDArray.length; currentRow++) {
+            for (int currentCol = 0; currentCol < twoDArray[currentRow].length; currentCol++) {
+                twoDArray[currentRow][currentCol] = userValue;
+            } //For Columns
+        } //For Rows
+        return twoDArray;
+    }
 
     public static void assign10(int[][] twoDArray) {
         //Action: Assigns a value of 10 to all of twoDArray's elements
@@ -37,7 +60,6 @@ public class TwoDArrayDemo {
             } //for columns
         } //for rows
     }
-
 
     public static void printIntTwoDArray(int[][] twoDArray) {
         /*Action: Prints our all elements in a two dimensional integer array.
