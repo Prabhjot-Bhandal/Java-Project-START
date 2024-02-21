@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class CCCPainting {
     static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
         //Black = 0, Gold = 1
