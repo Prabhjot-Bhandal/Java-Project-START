@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CalendarApp",
+            "request": "launch",
+            "mainClass": "CalendarApp",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "Main",

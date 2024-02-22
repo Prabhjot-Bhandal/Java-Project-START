@@ -1,3 +1,5 @@
+package CCC2024;
+
 //CCC 2024 S2: Heavy-Light Composition
 import java.util.Scanner;
 
