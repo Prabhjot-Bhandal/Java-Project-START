@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class CalendarApp {
     static Scanner in = new Scanner(System.in);
+    static int[] dateData = new int[3];
     public static void main(String[] args) {
         //Stores the days of the week in an array
         String[] daysOfWeek = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
-        System.out.println("Please input the current day month and year: ");
+        System.out.println("Please input the current day month and year with a space seperating the day, month and year.\nPlease write the current weekday as an integer of 1-7 (1 as in Sunday, 7 as in Saturday).\nFormat in 'DayName DD MM YYYY' (ex. 07 02 02 2024): ");
         //Gets the current month and year from the user
         //String currentMonthAndYear = in.nextLine();
 
