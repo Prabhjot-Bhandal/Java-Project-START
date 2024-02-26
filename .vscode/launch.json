@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TwoDArrayProblems",
+            "request": "launch",
+            "mainClass": "TwoDArrayProblems",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "CalendarApp",
             "request": "launch",
             "mainClass": "CalendarApp",
