@@ -21,6 +21,8 @@ public class ReadingToAFileDemo {
     }
 
     public static String[] addSuffix(String[] array) throws IOException{
+        /*Action: Fills an empty 1D array with names from a file that have a suffix */
+
         //Reads the file, so it knows it exists
         readFile = new BufferedReader (new FileReader ("C:\\Users\\prabh\\Documents\\GitHub\\Java-Project-START\\Java Experiments\\Grade 12 CS\\namesList.txt"));
 
