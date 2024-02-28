@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ReadingToAFileDemo",
+            "request": "launch",
+            "mainClass": "ReadingToAFileDemo",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
+            "name": "CalendarAppWithYear",
+            "request": "launch",
+            "mainClass": "CalendarAppWithYear",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "TwoDArrayProblems",
             "request": "launch",
             "mainClass": "TwoDArrayProblems",
