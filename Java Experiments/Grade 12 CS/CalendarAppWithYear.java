@@ -1,7 +1,7 @@
 import java.util.Scanner;
 //Name: Prabhjot Bhandal
 //Date: February 28, 2024
-//Purpose: Create a calendar using 2D array concepts
+//Purpose: Create a calendar using 2D array concepts, SPLIT IT UP, Use Read and Write Files
 
 public class CalendarAppWithYear {
     static Scanner in = new Scanner(System.in);

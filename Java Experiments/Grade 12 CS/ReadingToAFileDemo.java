@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class ReadingToAFileDemo {
     static BufferedReader readFile;
+    static BufferedWriter writeFile;
     static Scanner in = new Scanner(System.in);
     public static void main(String[] args) throws IOException{
         //Prompt for number of students in class
@@ -27,14 +28,18 @@ public class ReadingToAFileDemo {
             case 4:
                 itemsList = reverseNames(itemsList);
                 break;
+            case 5:
             //If the user puts in an invalid number, program ends and says that they had an invalid number
             default:
                 System.out.print("Invalid choice made, rerun the program.");
                 break;
         }
 
+        //Writes the new and altered array of names to a new file
+        writeToFile(itemsList);
+
         //Prints itemsList
-        printArray(itemsList);
+        //printArray(itemsList);
     } //main
 
 
@@ -128,14 +133,9 @@ public class ReadingToAFileDemo {
             //So that the element in the array is not null
             array[index] = "";
 
-            for (int stringIndex = holdString.length() - 1; stringIndex > -1; stringIndex--) {
-                //If the current stringIndex is not the last character, sets the substring to end at the one beside it
-                if (stringIndex == holdString.length() - 1) {
-                    array[index] += holdString.substring(stringIndex);
-                } 
-                else {
-                    array[index] += holdString.substring(stringIndex - 1, stringIndex);
-                }
+            for (int stringIndex = holdString.length(); stringIndex > 0; stringIndex--) {
+                //Goes from the last letter to the first letter of the string from the file to assign the last letter as the first in the current array's element
+                array[index] += holdString.substring(stringIndex - 1, stringIndex);
             }
         }
         //Closes reading the file so any other variables are not written with the data in the file
@@ -143,4 +143,23 @@ public class ReadingToAFileDemo {
 
         return array;
     } //reverseNames
+
+    public static void writeToFile(String[] array) throws IOException{
+        /*Action: Writes the altered array to a new file
+         Input: 
+        */
+
+        //Writes the contents of its one dimensional array of Strings to a file
+        writeFile = new BufferedWriter (new FileWriter ("Java Experiments\\Grade 12 CS\\namesListUpdated.txt") );
+        
+        for (int index = 0 ; index < array.length ; index++)
+        {
+            //Writes the current array index to the new file
+            writeFile.write(array[index]);
+            //Goes to next line to write
+            //
+            writeFile.newLine();
+        }
+        writeFile.close();//end of the writing
+    } //writeToFile
 }
