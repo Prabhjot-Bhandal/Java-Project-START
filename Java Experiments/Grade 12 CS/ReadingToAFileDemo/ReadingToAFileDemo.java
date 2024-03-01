@@ -1,3 +1,4 @@
+package ReadingToAFileDemo;
 import java.io.*;
 import java.util.Scanner;
 
@@ -66,7 +67,7 @@ public class ReadingToAFileDemo {
          Output A filled string array with names from the file*/
 
         //Reads the file, so it knows it exists
-        readFile = new BufferedReader (new FileReader ("Java Experiments\\Grade 12 CS\\namesList.txt"));
+        readFile = new BufferedReader (new FileReader ("Grade 12 CS\\ReadingToAFileDemo\\namesList.txt"));
 
         //Writes each index in the array based on the names stored in the file
         for (int index = 0; index < array.length; index++) {
@@ -84,7 +85,7 @@ public class ReadingToAFileDemo {
          Output A filled string array with names from the file with the added suffix to each name*/
 
         //Reads the file, so it knows it exists
-        readFile = new BufferedReader (new FileReader ("Java Experiments\\Grade 12 CS\\namesList.txt"));
+        readFile = new BufferedReader (new FileReader ("Grade 12 CS\\ReadingToAFileDemo\\namesList.txt"));
 
         //Takes in each name from the file and sets each array's index equal to some name in the file
         for (int index = 0; index < array.length; index++) {
@@ -103,7 +104,7 @@ public class ReadingToAFileDemo {
          Output A filled string array with names from the file with the added substring in the middle of each name*/
 
         //Reads the file, so it knows it exists
-        readFile = new BufferedReader (new FileReader ("Java Experiments\\Grade 12 CS\\namesList.txt"));
+        readFile = new BufferedReader (new FileReader ("Grade 12 CS\\ReadingToAFileDemo\\namesList.txt"));
 
         //Takes in each name from the file and sets each array's index equal to some name in the file
         for (int index = 0; index < array.length; index++) {
@@ -124,7 +125,7 @@ public class ReadingToAFileDemo {
          Output A filled string array with the reverses of the names from the file*/
 
         //Reads the file, so it knows it exists
-        readFile = new BufferedReader (new FileReader ("Java Experiments\\Grade 12 CS\\namesList.txt"));
+        readFile = new BufferedReader (new FileReader ("Grade 12 CS\\ReadingToAFileDemo\\namesList.txt"));
 
         //Takes in each name from the file and sets each array's index equal to some name in the file
         for (int index = 0; index < array.length; index++) {
@@ -150,7 +151,7 @@ public class ReadingToAFileDemo {
         */
 
         //Writes the contents of its one dimensional array of Strings to a file
-        writeFile = new BufferedWriter (new FileWriter ("Java Experiments\\Grade 12 CS\\namesListUpdated.txt") );
+        writeFile = new BufferedWriter (new FileWriter ("Grade 12 CS\\ReadingToAFileDemo\\namesListUpdated.txt") );
         
         for (int index = 0 ; index < array.length ; index++)
         {
