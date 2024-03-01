@@ -1,21 +1,28 @@
+package CalanderApp;
+import java.io.*;
 import java.util.Scanner;
 //Name: Prabhjot Bhandal
 //Date: February 28, 2024
 //Purpose: Create a calendar using 2D array concepts, Use Read and Write Files
 
 public class CalendarAppWithYear {
+    //Creates a scanner object for input that can be used across the entire class
     static Scanner in = new Scanner(System.in);
+    //Creates a 1D int array that holds the data of the user's current date
     static int[] dateData = new int[4];
-    public static void main(String[] args) {
+    //Stores the current month as a string
+    static String monthString;
+    //Stores the offset for printing the monthCalander
+    static int holdOffset;
+    //Creates a writer object for writing to a file
+    static BufferedWriter writeFile;
+
+    public static void main(String[] args) throws IOException {
         //Stores the days of the week in an array
         String[] daysOfWeek = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
         //Initializes the monthCalander with the maximum number of rows and columns
         int[][] monthCalander = new int[5][7];
         int maximumDays = -1;
-        //To make it appear cleaner and seperated from the user's input
-        System.out.println("\n\n");
-        //To center the month and year 
-        System.out.print("\t\t    ");
 
         //Keeps looping if the user does not put in a valid month for their date
         do {
@@ -25,12 +32,16 @@ public class CalendarAppWithYear {
             maximumDays = getMaximumDays();
         } while (maximumDays < 0);
 
+        //Prints out the current month and year
+        System.out.println("\n\n\t\t    " + monthString + " " + dateData[3] + "\n");
+
         //Prints out the days of the week header for the calander
         printDaysOfTheWeek(daysOfWeek);
 
         /*Gets the offset for the first week of the month and assigns it as the initial value of the daysOfWeekCounter 
         so the loop that prints the calander skips those many days*/
         int daysOfWeekCounter = getWeekOffset();
+        
 
         //Prints out tabs to skip the days that are not included on the calender
         for (int index = 0; index < daysOfWeekCounter - 1; index++) {
@@ -39,6 +50,9 @@ public class CalendarAppWithYear {
 
         //Fills the monthCalander with all of the data available to generate it
         monthCalander = fillAndPrintmonthCalander(monthCalander, maximumDays, daysOfWeekCounter);
+
+        //Creates a calander file
+        createCalanderFile(daysOfWeek, monthCalander);
 
     } //main
 
@@ -69,49 +83,48 @@ public class CalendarAppWithYear {
 
         switch (dateData[2]) {
             case 1: 
-                //Prints month name and current year
-                System.out.println("JANUARY " + dateData[3] + "\n");
+                //Stores the current month as a string
+                monthString = "JANUARY";
                 //Stores one more than the maximum number of days in the month, better for the for loop when printing
                 return 32;
             case 2: 
+                monthString = "FEBRUARY";
                 //Sets 29 days in February if it's a leap year (the year is divisible by 4)
                 if (dateData[3] % 4 == 0)
                 {
-                    System.out.println("FEBRUARY " + dateData[3] + "\n");
                     return 30;
                 } else {
-                    System.out.println("FEBRUARY " + dateData[3] + "\n");
                     return 29;
                 }
             case 3: 
-                System.out.println("MARCH " + dateData[3] + "\n");
+                monthString = "MARCH";
                 return 32;
             case 4:
-                System.out.println("APRIL " + dateData[3] + "\n");
+                monthString = "APRIL";
                 return 31;
             case 5:
-                System.out.println("MAY " + dateData[3] + "\n");
+                monthString = "MAY";
                 return 32;
             case 6:
-                System.out.println("JUNE " + dateData[3] + "\n");
+                monthString = "JUNE";
                 return 31;
             case 7:
-                System.out.println("JULY " + dateData[3] + "\n");
+                monthString = "JULY";
                 return 32;
             case 8:
-                System.out.println("AUGUST " + dateData[3] + "\n");
+                monthString = "AUGUST";
                 return 32;
             case 9:
-                System.out.println("SEPTEMBER " + dateData[3] + "\n");
+                monthString = "SEPTEMBER";
                 return 31;
             case 10:
-                System.out.println("OCTOBER " + dateData[3] + "\n");
+                monthString = "OCTOBER";
                 return 32;
             case 11:
-                System.out.println("NOVEMBER " + dateData[3] + "\n");
+                monthString = "NOVEMBER";
                 return 31;
             case 12:
-                System.out.println("DECEMBER " + dateData[3] + "\n");
+                monthString = "DECEMBER";
                 return 32;
             //If a valid month is not inputted into the 
             default:
@@ -181,4 +194,49 @@ public class CalendarAppWithYear {
 
         return monthCalander;
     } //fillAndPrintmonthCalander
+
+    public static void createCalanderFile(String[] daysOfWeek, int[][] monthCalander) throws IOException {
+        /*Action: Creates a calander file that saves the current month calander made from the current date that the
+        user inputted to a file labelled with the current month and year
+        Input: dateData[3] (current year), monthString, monthCalander
+        Output: Creates a txt file that will house the current month that was generated*/
+
+        //Creates the file and file path for where the current month calander will be written to
+        writeFile = new BufferedWriter (new FileWriter ("Java Experiments\\Grade 12 CS\\CalanderApp\\" + monthString + dateData[3] + "Calander.txt"));
+
+        //Writes the current month and year
+        writeFile.write("\t\t    " + monthString + " " + dateData[3] + "\n");
+
+        //Writes the days of the week
+        //Loops through every index of daysOfWeek and writes it to the file
+        for(int currentIndex = 0; currentIndex < daysOfWeek.length; currentIndex++) {
+            //If currentIndex is less than 6 (not Saturday), prints within same line
+            if (currentIndex < daysOfWeek.length - 1) {
+                writeFile.write(daysOfWeek[currentIndex] + "\t");
+            } else {
+                writeFile.write(daysOfWeek[currentIndex]);
+                writeFile.newLine();
+            }
+        }
+
+        //Writes the calander for the month the way we printed it; not based on the array but how it's printed
+        //Starts at (0, 0), ensures it goes through every row
+        for(int currentRow = 0; currentRow < monthCalander.length; currentRow++) {
+            /*Starts at (0, 0), goes through every column in the currentRow and assigns the assignDay, 
+            increments one with each loop*/
+            for(int currentColumn = 0; currentColumn < monthCalander[currentRow].length; currentColumn++, holdOffset++) {
+                //If the day is not on a Saturday, will print in one line and concatenate a space
+                if (holdOffset < 7) {
+                    writeFile.write(monthCalander[currentRow][currentColumn] + "\t");
+                } else {
+                    writeFile.write(monthCalander[currentRow][currentColumn] + "\n");
+                    //Resets the offset
+                    holdOffset = 0;
+                }
+            }
+        }
+        
+        //Closes the writing so it saves to the file
+        writeFile.close();
+    } //createCalanderFile
 }

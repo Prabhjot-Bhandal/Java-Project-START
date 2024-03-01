@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CalendarAppWithYear",
+            "request": "launch",
+            "mainClass": "CalanderApp.CalendarAppWithYear",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "ReadingToAFileDemo",
             "request": "launch",
             "mainClass": "ReadingToAFileDemo",

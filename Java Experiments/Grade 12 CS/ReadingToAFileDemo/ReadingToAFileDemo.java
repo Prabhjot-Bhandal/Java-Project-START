@@ -147,7 +147,8 @@ public class ReadingToAFileDemo {
 
     public static void writeToFile(String[] array) throws IOException{
         /*Action: Writes the altered array to a new file
-         Input: 
+         Input: A one dimensional String array
+         Output: Writes the data in the string 1D array to a new file
         */
 
         //Writes the contents of its one dimensional array of Strings to a file
