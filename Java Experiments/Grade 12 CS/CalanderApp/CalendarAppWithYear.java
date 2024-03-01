@@ -22,6 +22,7 @@ public class CalendarAppWithYear {
         String[] daysOfWeek = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
         //Initializes the monthCalander with the maximum number of rows and columns
         int[][] monthCalander = new int[5][7];
+        //Initializes maximumDays at -1
         int maximumDays = -1;
 
         //Keeps looping if the user does not put in a valid month for their date
@@ -32,6 +33,9 @@ public class CalendarAppWithYear {
             maximumDays = getMaximumDays();
         } while (maximumDays < 0);
 
+        //Calls getMonthTasks() to get the user's current monthly tasks
+        String[]monthTasks = getMonthTasks();
+
         //Prints out the current month and year
         System.out.println("\n\n\t\t    " + monthString + " " + dateData[3] + "\n");
 
@@ -41,7 +45,7 @@ public class CalendarAppWithYear {
         /*Gets the offset for the first week of the month and assigns it as the initial value of the daysOfWeekCounter 
         so the loop that prints the calander skips those many days*/
         int daysOfWeekCounter = getWeekOffset();
-        
+        holdOffset = daysOfWeekCounter;
 
         //Prints out tabs to skip the days that are not included on the calender
         for (int index = 0; index < daysOfWeekCounter - 1; index++) {
@@ -51,8 +55,11 @@ public class CalendarAppWithYear {
         //Fills the monthCalander with all of the data available to generate it
         monthCalander = fillAndPrintmonthCalander(monthCalander, maximumDays, daysOfWeekCounter);
 
-        //Creates a calander file
-        createCalanderFile(daysOfWeek, monthCalander);
+        //Prints out the user's month tasks
+        printMonthTasks(monthTasks);
+
+        //Creates a calander file and writes the calander and tasks to it
+        createCalanderFile(daysOfWeek, monthCalander, maximumDays, monthTasks);
 
     } //main
 
@@ -169,8 +176,7 @@ public class CalendarAppWithYear {
     public static int[][] fillAndPrintmonthCalander(int[][] monthCalander, int maximumDays, int daysOfWeekCounter) {
         /*Action: Fills in the monthCalander array according to the current month and year
          Input: monthCalander, maximumDays, daysOfWeekCounter
-         Output: A filled monthCalander
-        */
+         Output: A filled monthCalander*/
         
         //Initializes the variable that will be used for filling the correct days in the calander
         int assignDay = 1;
@@ -195,28 +201,39 @@ public class CalendarAppWithYear {
         return monthCalander;
     } //fillAndPrintmonthCalander
 
-    public static void createCalanderFile(String[] daysOfWeek, int[][] monthCalander) throws IOException {
+    public static void createCalanderFile(String[] daysOfWeek, int[][] monthCalander, int maximumDays, String[] monthTasks) throws IOException {
         /*Action: Creates a calander file that saves the current month calander made from the current date that the
-        user inputted to a file labelled with the current month and year
+        user inputted to a file labelled with the current month and year. It is the same method used to print the month,
+        but instead of printing to the console, it writes it to a new file.
         Input: dateData[3] (current year), monthString, monthCalander
         Output: Creates a txt file that will house the current month that was generated*/
 
         //Creates the file and file path for where the current month calander will be written to
-        writeFile = new BufferedWriter (new FileWriter ("Java Experiments\\Grade 12 CS\\CalanderApp\\" + monthString + dateData[3] + "Calander.txt"));
+        writeFile = new BufferedWriter (new FileWriter ("C:\\Users\\prabh\\Documents\\GitHub\\Java-Project-START\\Java Experiments\\Grade 12 CS\\CalanderApp\\" + monthString + dateData[3] + "Calander.txt"));
 
-        //Writes the current month and year
-        writeFile.write("\t\t    " + monthString + " " + dateData[3] + "\n");
+        //Writes the current month and year, have to split up types of input as the .write() method can only handle one data type
+        writeFile.write("\t\t    ");
+        writeFile.write(monthString);
+        writeFile.write(" ");
+        writeFile.write(String.valueOf(dateData[3]));
+        writeFile.newLine();
 
         //Writes the days of the week
         //Loops through every index of daysOfWeek and writes it to the file
         for(int currentIndex = 0; currentIndex < daysOfWeek.length; currentIndex++) {
             //If currentIndex is less than 6 (not Saturday), prints within same line
             if (currentIndex < daysOfWeek.length - 1) {
-                writeFile.write(daysOfWeek[currentIndex] + "\t");
+                writeFile.write(String.valueOf(daysOfWeek[currentIndex]));
+                writeFile.write(" \t");
             } else {
-                writeFile.write(daysOfWeek[currentIndex]);
+                writeFile.write(String.valueOf(daysOfWeek[currentIndex]));
                 writeFile.newLine();
             }
+        }
+
+        //Writes tabs to skip the days that are not included on the calender
+        for (int index = 0; index < holdOffset - 1; index++) {
+            writeFile.write("  \t\t");
         }
 
         //Writes the calander for the month the way we printed it; not based on the array but how it's printed
@@ -224,19 +241,74 @@ public class CalendarAppWithYear {
         for(int currentRow = 0; currentRow < monthCalander.length; currentRow++) {
             /*Starts at (0, 0), goes through every column in the currentRow and assigns the assignDay, 
             increments one with each loop*/
-            for(int currentColumn = 0; currentColumn < monthCalander[currentRow].length; currentColumn++, holdOffset++) {
+            //Subtracts maximumDays until it reaches 1, then stops writing days to the calander
+            for(int currentColumn = 0; currentColumn < monthCalander[currentRow].length && maximumDays > 1; currentColumn++, maximumDays--, holdOffset++) {
                 //If the day is not on a Saturday, will print in one line and concatenate a space
                 if (holdOffset < 7) {
-                    writeFile.write(monthCalander[currentRow][currentColumn] + "\t");
+                    //Produced errors with integers, changed them to strings with the .valueOf() string method
+                    writeFile.write(String.valueOf(monthCalander[currentRow][currentColumn]));
+                    writeFile.write(" \t\t");
                 } else {
-                    writeFile.write(monthCalander[currentRow][currentColumn] + "\n");
+                    writeFile.write(String.valueOf(monthCalander[currentRow][currentColumn]));
+                    writeFile.newLine();
                     //Resets the offset
                     holdOffset = 0;
                 }
             }
         }
         
+        //Writes two new lines to the file
+        writeFile.newLine();
+
+        writeFile.write("\n\nThis Month's Tasks:\n");
+
+        //Runs for the whole array
+        for (int currentIndex = 0; currentIndex < monthTasks.length; currentIndex++) {
+            //Writes all the elements of the array in successive new lines
+            writeFile.write(monthTasks[currentIndex]);
+            writeFile.newLine();
+        }
+
         //Closes the writing so it saves to the file
         writeFile.close();
     } //createCalanderFile
+
+    public static String[] getMonthTasks () {
+        /*Action: Gets the monthly tasks the user desires to get done within the current month. This will be both printed and 
+        written to the month's calander file.
+        Input: User input of the number of tasks and what the tasks will be
+        Output: Creates the monthTasks array that houses the user's tasks
+        */
+
+        //Gets the amount of tasks the user desires to get done
+        System.out.print("\nHow many tasks do you plan to get done this month?: ");
+        int numTasks = in.nextInt();
+        //Creates the array that will house all of the tasks the user wants to get done this month
+        String[] monthTasks = new String[numTasks];
+
+        //Gets all the tasks the user wants to get done and stores them to the monthTasks array
+        for (int currentTask = 0; currentTask < numTasks; currentTask++) {
+            //Prints the current task that the user is filling out
+            System.out.println("Task " + (currentTask + 1) + ": ");
+            //Stores the user's answer in the array with all their monthly tasks
+            monthTasks[currentTask] = in.next();
+        }
+
+        return monthTasks;
+    } //getMonthTasks
+
+    public static void printMonthTasks(String[] monthTasks) {
+        /*Action: Prints out all of the user's month tasks and writes these tasks to the file
+         Input: monthTasks array
+         Output: The printing of the entire array*/
+
+        System.out.println("\n\nThis Month's Tasks:");
+
+        //Runs for the whole array
+        for (int currentIndex = 0; currentIndex < monthTasks.length; currentIndex++) {
+            //Prints all the elements of the array in successive new lines
+            System.out.println(monthTasks[currentIndex]);
+        }
+
+    } //printMonthTasks
 }
