@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RecursiveSequences",
+            "request": "launch",
+            "mainClass": "RecursiveSequences",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "RecursiveDemo",
+            "request": "launch",
+            "mainClass": "RecursiveDemo",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
             "name": "CalendarAppWithYear",
             "request": "launch",
             "mainClass": "CalanderApp.CalendarAppWithYear",
