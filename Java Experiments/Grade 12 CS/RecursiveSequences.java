@@ -9,6 +9,7 @@ class RecursiveSequences {
     static Scanner in = new Scanner(System.in);
     //Makes the number of terms the user will input static so we can print all terms in one line
     static double numOfTerms;
+    static double[] currentTermVal;
     public static void main(String[] args) {
         //Initializes userResponse
         int userResponse = 0;
@@ -22,6 +23,7 @@ class RecursiveSequences {
         System.out.print("How many terms do you want to print out?: ");
         //Gets the maximum number of terms the user desires
         numOfTerms = in.nextDouble();
+        currentTermVal = new double[(int)numOfTerms];
         
 
         //Picks to run which algorithm
@@ -30,7 +32,7 @@ class RecursiveSequences {
                 //Calls the the method
                 addPowersOfTwo(numOfTerms);
             case 2:
-                posAndNegPowersOfTwo(numOfTerms);
+                posAndNegPowersOfTwo(numOfTerms - 1);
             default:
                 break;
         }
@@ -86,58 +88,35 @@ class RecursiveSequences {
         }
 
     } //addPowersOfTwo
-
-
+    
     public static double posAndNegPowersOfTwo(double currentTerm) {
         /*Action: Prints out a sequence of numbers where all terms divisible by 2 have negative
         exponents while the others have positive exponents.
         Input: The user inputs the maximum number of terms.
         Output: The sequence up to the maximum number of terms.*/
 
-        //Initializes the variable that will store the current term's value
-        double currentTermVal;
+        //Stores 1 and 2 as the first two essential variables
+        currentTermVal[0] = 1;
+        currentTermVal[1] = 2;
 
-        //BASE CASE 1: If the current term is 0, returns one since any power with an exponent of 0 is 1
-        if (currentTerm == 0) {
-            //Prints 1
-            System.out.print(1 + ", ");
-
-            //Returns 1, the base case
-            return 1;
-        }
-        //BASE CASE 2: If the current term is 1, returns 2
-        if (currentTerm == 1) {
-            //Prints 2
-            System.out.print(2 + ", ");
-
-            //Returns 2, the base case
-            return 2;
+        //BASE CASE: If the current term is 2, will return 
+        if (currentTerm <= 2) {
+            return currentTermVal[0] / currentTermVal[1];
         }
         //RECURSIVE CASE: Keeps calling on the function until the current term (exponent) is 0
         else {
-            //If the current term is divisible by 2 and is not 0, printed as a reciprocal
-            if (currentTerm % 2 == 0 && currentTerm != 0) {
-                //Prints out the current term's value
-                if (currentTerm < numOfTerms) {
-                    System.out.print("1/" + (int)(currentTermVal) + ", ");
-                } //If the current term is not the last term, prints it in the same line
-                else {
-                    System.out.print("1/" + (int)(currentTermVal));
-                } //If the current term is the last term, creates a new line
-            }
-            //If the term isn't divisible by 2, printed regularly
+            currentTermVal[(int) currentTerm] = Math.pow(currentTermVal[(int)posAndNegPowersOfTwo(currentTerm - 1)], -1) * currentTermVal[(int)posAndNegPowersOfTwo(currentTerm - 2)];
+
+            //Prints out the current term's value
+            if (currentTerm < numOfTerms - 1) {
+                System.out.print((currentTermVal[(int)currentTerm] + ", "));
+            } //If the current term is not the last term, prints it in the same line
             else {
-                //Prints out the current term's value
-                if (currentTerm < numOfTerms) {
-                    System.out.print((int)(currentTermVal) + ", ");
-                } //If the current term is not the last term, prints it in the same line
-                else {
-                    System.out.print((int)(currentTermVal));
-                } //If the current term is the last term, creates a new line
-            }
+                System.out.println(currentTermVal[(int)currentTerm]);
+            } //If the current term is the last term, creates a new line
 
             //Returns the current term rather than the value because we aren't adding onto a sum, just need term num
-            return currentTermVal;
+            return currentTermVal[(int) currentTerm];
         }
 
     } //reciprocalPowersOfTwo
