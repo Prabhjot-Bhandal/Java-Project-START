@@ -29,6 +29,8 @@ class RecursiveSequences {
             case 1:
                 //Calls the the method
                 addPowersOfTwo(numOfTerms);
+            case 2:
+                posAndNegPowersOfTwo(numOfTerms);
             default:
                 break;
         }
@@ -41,7 +43,7 @@ class RecursiveSequences {
         Output: An integer pertaining to which algorithm the user wants to run.*/
 
         //Options and asks the user which algorithm they want to run
-        System.out.println("1. Terms of the Sequence, Add Powers of 2\n2. ");
+        System.out.println("1. Terms of the Sequence, Add Powers of 2\n2. Terms of the Sequence, Positive and Negative Exponents on 2");
         System.out.print("Which recursive algorithm do you desire to run?: ");
         //Gets the number from the user
         int response = in.nextInt();
@@ -84,4 +86,60 @@ class RecursiveSequences {
         }
 
     } //addPowersOfTwo
+
+
+    public static double posAndNegPowersOfTwo(double currentTerm) {
+        /*Action: Prints out a sequence of numbers where all terms divisible by 2 have negative
+        exponents while the others have positive exponents.
+        Input: The user inputs the maximum number of terms.
+        Output: The sequence up to the maximum number of terms.*/
+
+        //Initializes the variable that will store the current term's value
+        double currentTermVal;
+
+        //BASE CASE 1: If the current term is 0, returns one since any power with an exponent of 0 is 1
+        if (currentTerm == 0) {
+            //Prints 1
+            System.out.print(1 + ", ");
+
+            //Returns 1, the base case
+            return 1;
+        }
+        //BASE CASE 2: If the current term is 1, returns 2
+        if (currentTerm == 1) {
+            //Prints 2
+            System.out.print(2 + ", ");
+
+            //Returns 2, the base case
+            return 2;
+        }
+        //RECURSIVE CASE: Keeps calling on the function until the current term (exponent) is 0
+        else {
+            //If the current term is divisible by 2 and is not 0, printed as a reciprocal
+            if (currentTerm % 2 == 0 && currentTerm != 0) {
+                //Prints out the current term's value
+                if (currentTerm < numOfTerms) {
+                    System.out.print("1/" + (int)(currentTermVal) + ", ");
+                } //If the current term is not the last term, prints it in the same line
+                else {
+                    System.out.print("1/" + (int)(currentTermVal));
+                } //If the current term is the last term, creates a new line
+            }
+            //If the term isn't divisible by 2, printed regularly
+            else {
+                //Prints out the current term's value
+                if (currentTerm < numOfTerms) {
+                    System.out.print((int)(currentTermVal) + ", ");
+                } //If the current term is not the last term, prints it in the same line
+                else {
+                    System.out.print((int)(currentTermVal));
+                } //If the current term is the last term, creates a new line
+            }
+
+            //Returns the current term rather than the value because we aren't adding onto a sum, just need term num
+            return currentTermVal;
+        }
+
+    } //reciprocalPowersOfTwo
+
 }
