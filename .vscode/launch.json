@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RecursiveSequences",
+            "request": "launch",
+            "mainClass": "RecursiveSequences",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "RecursiveEuclidsAlgorithm",
             "request": "launch",
             "mainClass": "RecursiveEuclidsAlgorithm",

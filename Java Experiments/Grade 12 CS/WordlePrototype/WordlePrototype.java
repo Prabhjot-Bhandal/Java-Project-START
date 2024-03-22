@@ -83,6 +83,10 @@ public class WordlePrototype {
 
   //Method to facilitate user input
   public static String getUserWord(){
+    /*Action: Gets the word the user puts in and returns it to the main method so it can be compared to the selected word.
+      Input: None
+      Output: User's word*/
+
     //Initializes the inputtedWord variable to store which word the user is inputting
     String inputtedWord = "";
 
@@ -99,6 +103,12 @@ public class WordlePrototype {
   } //getUserWord
 
   public static boolean compareAllGuessesToWord(String[] userGuesses, int currentGuess) throws IOException {
+    /*Action: This compares all of the user's guesses to the word (rest assured, it only runs when the user puts in a single word).
+      With the current user's guess, this method calls other methods to compare each character of the guess to every character of the selected
+      word.
+      Input: The array with all of the user's guesses (most of the array will be empty) and the user's current guess.
+      Output: A boolean variable to tell the main method to end the game or not.*/
+
     //Stores the numbers for each letter in the guessed word that indicate if they're in the word or not
     int[] guessCharInOrNot = new int[selectedWord.length()];
     /*Calls the compareCurrentGuessLetterToWord method, which compares each letter of the guess to the selected word
@@ -128,6 +138,12 @@ public class WordlePrototype {
   } //compareAllGuessesToWord
 
   public static int compareCurrentGuessLetterToWord(String guess, String selectedWord, int currentGuessIndex) throws IOException {
+    /*Action: Compares a single character from the current guess to every character in the selected word, returns if it is in the
+      correct place, in the word or not in the word.
+      Input: The current guess' string, the selected word's string and the current index of the character we're looking at in the guess'
+      word.
+      Output: An integer that represents if the character is in the correct place, in the word or not in the word.*/
+
     //Holds the number that signifies if a letter is in the word and if it is in the right spot, used for printing
     //Initializes at -1 because if it meets none of these conditions, meaning it's not in the word, then it will say it is not in the word
     int inOrNot = -1; // Default value: letter is not in the word
@@ -185,6 +201,11 @@ public class WordlePrototype {
 
   
   public static void printLetter (int num, char currentUserLetter, int letterIndex) {
+    /*Action: Prints each letter in the current guess with symbols that represent if it is in the correct place, in the word or not in the word.
+      Input: The integer representing the character's place value, the current letter of the current guess and the letter' index in the guess.
+      Output: Prints out all letters in the guess with the appropriate symbols.
+    */
+
     //If not the last letter 
     if (letterIndex < 4) {
       //If not in the word, prints regularly
@@ -218,6 +239,13 @@ public class WordlePrototype {
   } //printLetter
 
   public static int getPoints(int[] guessCharInOrNot) {
+    /*Action: Calculates the points based on how many letters the user has in the right place.
+      If the user reaches the maximum number of possible points earned, the game ends and they win.
+      Input: The array containing integers for each letter that represent if they are in the right place,
+      in the word or not in the word. These are every letter's current point value.
+      Output: The total points the user's current guess earns.
+    */
+
     //Initializes a sum variable that holds how many points the user gains from their current guessed word, 10 = they got it
     int sum = 0;
     //Loops through every index of the array that holds the points for each letter

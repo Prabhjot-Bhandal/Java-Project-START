@@ -32,7 +32,7 @@ class RecursiveSequences {
                 //Calls the the method
                 addPowersOfTwo(numOfTerms);
             case 2:
-                posAndNegPowersOfTwo(numOfTerms - 1);
+                dividePrevPrev(numOfTerms);
             default:
                 break;
         }
@@ -45,7 +45,7 @@ class RecursiveSequences {
         Output: An integer pertaining to which algorithm the user wants to run.*/
 
         //Options and asks the user which algorithm they want to run
-        System.out.println("1. Terms of the Sequence, Add Powers of 2\n2. Terms of the Sequence, Positive and Negative Exponents on 2");
+        System.out.println("1. Terms of the Sequence, Add Powers of 2\n2. Terms of the Sequence, Dividing by the Previous-Previous Term");
         System.out.print("Which recursive algorithm do you desire to run?: ");
         //Gets the number from the user
         int response = in.nextInt();
@@ -55,7 +55,7 @@ class RecursiveSequences {
 
 
     public static double addPowersOfTwo(double currentTerm) {
-        /*Action: Prints out the last term in a sequence of numbers that increases by the next term number's power of 2
+        /*Action: Prints out the sequence of numbers that increases by the next term number's power of 2
          * Input: The maximum number of terms in the sequence
          * Output: The sequence containing the maximum number of terms*/
         //Has a return type so the method can use recursion, void = no recursion
@@ -89,36 +89,42 @@ class RecursiveSequences {
 
     } //addPowersOfTwo
     
-    public static double posAndNegPowersOfTwo(double currentTerm) {
-        /*Action: Prints out a sequence of numbers where all terms divisible by 2 have negative
-        exponents while the others have positive exponents.
-        Input: The user inputs the maximum number of terms.
-        Output: The sequence up to the maximum number of terms.*/
+   public static int dividePrevPrev(double currentTerm) {
+    /*Action: Prints a sequence of numbers that multiplies one term by the reciprocal of the next term to get
+      the next next term.
+      Input: The maximum number of terms in the sequence.
+      Output: The sequence containing the maximum number of terms.*/
 
-        //Stores 1 and 2 as the first two essential variables
-        currentTermVal[0] = 1;
-        currentTermVal[1] = 2;
+    //Initializes an array that hold all of the terms in the sequence
+    double[] terms = new double[(int) numOfTerms];
 
-        //BASE CASE: If the current term is 2, will return 
-        if (currentTerm <= 2) {
-            return currentTermVal[0] / currentTermVal[1];
-        }
-        //RECURSIVE CASE: Keeps calling on the function until the current term (exponent) is 0
+    //Creates the base case values in the array
+    terms[0] = 1;
+    terms[1] = 2;
+
+    //BASE CASE: The currentTerm is 1
+    if (currentTerm == 1) {
+        System.out.print(terms[0] + ", " + terms[1] + ", ");
+
+        //Returns the 2nd term (term 1) in the sequence
+        return (int) terms[1];
+    }
+    else {
+        //RECURSIVE CALL: The currentTerm equal to the term two terms ago divided by the previous term
+        terms[(int) currentTerm] = dividePrevPrev(currentTerm - 2) / dividePrevPrev(currentTerm - 1);
+
+        //Prints out the current term's value
+        if (currentTerm < numOfTerms) {
+            System.out.print((int)terms[(int) currentTerm] + ", ");
+        } //If the current term is not the last term, prints it in the same line
         else {
-            currentTermVal[(int) currentTerm] = Math.pow(currentTermVal[(int)posAndNegPowersOfTwo(currentTerm - 1)], -1) * currentTermVal[(int)posAndNegPowersOfTwo(currentTerm - 2)];
+            System.out.println((int)terms[(int) currentTerm]);
+        } //If the current term is the last term, creates a new line
 
-            //Prints out the current term's value
-            if (currentTerm < numOfTerms - 1) {
-                System.out.print((currentTermVal[(int)currentTerm] + ", "));
-            } //If the current term is not the last term, prints it in the same line
-            else {
-                System.out.println(currentTermVal[(int)currentTerm]);
-            } //If the current term is the last term, creates a new line
+        //Returns the current term's value
+        return (int) terms[(int) currentTerm];
+    }
 
-            //Returns the current term rather than the value because we aren't adding onto a sum, just need term num
-            return currentTermVal[(int) currentTerm];
-        }
-
-    } //reciprocalPowersOfTwo
+   } //multiplyReciprocals
 
 }
