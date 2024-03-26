@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "frogJump",
+            "request": "launch",
+            "mainClass": "frogJump",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
             "name": "RecursiveSequences",
             "request": "launch",
             "mainClass": "RecursiveSequences",
