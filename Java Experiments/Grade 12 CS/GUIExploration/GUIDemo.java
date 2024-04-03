@@ -48,4 +48,8 @@ public class GUIDemo {
 
         frame.add(button1);
     }
+
+    public static void addTextFields() {
+        
+    }
 }
