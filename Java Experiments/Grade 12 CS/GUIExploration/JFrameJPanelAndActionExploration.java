@@ -8,7 +8,7 @@ import java.util.Scanner;
 //Importing GUI componenets using swing components
 import javax.swing.*;
 
-public class GUIExploration {
+public class JFrameJPanelAndActionExploration {
     //Scanner object that can be used for user input across all methods
     Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
