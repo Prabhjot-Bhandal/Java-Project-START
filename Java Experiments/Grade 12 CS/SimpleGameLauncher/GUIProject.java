@@ -7,6 +7,7 @@ package SimpleGameLauncher;
 import javax.swing.*;
 import java.awt.*;
 import java.io.*;
+import java.util.Scanner;
 
 public class GUIProject {
     //Crates the mainFrame that houses everything, static so all methods can access it
@@ -31,6 +32,9 @@ public class GUIProject {
         menuBar();
 
         gameLibrarySideView();
+
+        mainGameInfoPanel();
+
         //Makes the mainFrame visible
         mainFrame.setVisible(true);
     } //main
@@ -173,4 +177,66 @@ public class GUIProject {
         mainFrame.pack();
 
     } //gameScrollLibrary
+
+
+    @SuppressWarnings("resource")
+    public static void mainGameInfoPanel() throws IOException {
+      /*Action: Creates the panel that houses the game's description, who owns the game and play and 
+        settings buttons
+        Input: None
+        Output: The panel will all of its components*/
+      
+      //Creates the main
+      JPanel mainGameInfoPanel = new JPanel();
+
+      //Sets the layout manager of the gameLibrary as a box layout, organizes the buttons vertically
+      mainGameInfoPanel.setLayout(new BoxLayout(mainGameInfoPanel, BoxLayout.Y_AXIS));
+
+      //Sets the current game to the first one in the array
+      int currentGame = 0;
+
+      //Gets and stores the image in a JLabel so it can be accessed later
+      JLabel currentGameDescImageLabel = new JLabel(getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameDescImg" + currentGame + ".png", 500));
+      //Adds the image label to the panel
+      mainGameInfoPanel.add(currentGameDescImageLabel);
+
+      //Gets the name for the current game
+      String currentGameNameString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameName" + currentGame + ".txt")).useDelimiter("\\A").next();
+
+      //Creates a label for the game's name
+      JLabel currentGameName = new JLabel(currentGameNameString);
+      //Sets the font of the label, if it's bolded or italisized and the font size
+      currentGameName.setFont(new Font("Arial", Font.BOLD, 40));
+      //Adds the image label to the panel
+      mainGameInfoPanel.add(currentGameName);
+
+      //Gets the desription for the current game
+      String currentGameDescString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameDesc" + currentGame + ".txt")).useDelimiter("\\A").next();
+
+      //Creates the text area that will house the description of the game
+      JTextArea currentGameDesc = new JTextArea(50, 8);
+
+      //Scroll bard for the game's description
+      JScrollPane scrollCurrentGameDesc = new JScrollPane(currentGameDesc);
+
+      //Puts the text from the txt file in the text area for the game's description
+      currentGameDesc.setText(currentGameDescString);
+
+      //Ensures that the text does not go outside of the text area horizontally
+      currentGameDesc.setLineWrap(true);
+
+      //Adds the scroll bar for the description to the panel
+      mainGameInfoPanel.add(scrollCurrentGameDesc);
+      scrollCurrentGameDesc.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+
+      //container.add(Box.createRigidArea(new Dimension(5, 0))); <- To space out the components
+
+      //Makes the panel visible
+      mainGameInfoPanel.setVisible(true);
+
+      //Sets the panel to the center in the frame's layout
+      mainFrame.getContentPane().add(mainGameInfoPanel, BorderLayout.CENTER);
+      mainFrame.pack();
+    } //mainGamePanel
 }
