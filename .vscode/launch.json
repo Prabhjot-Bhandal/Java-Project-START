@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GUIProject",
+            "request": "launch",
+            "mainClass": "SimpleGameLauncher.GUIProject",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "SimpleGameLauncher",
+            "request": "launch",
+            "mainClass": "SimpleGameLauncher.SimpleGameLauncher",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
             "name": "SimpleGameLauncher",
             "request": "launch",
             "mainClass": "SimpleGameLauncher.SimpleGameLauncher",
