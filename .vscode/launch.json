@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "linearSearch",
+            "request": "launch",
+            "mainClass": "Algorithms.linearSearch",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "GUIProject",
             "request": "launch",
             "mainClass": "SimpleGameLauncher.GUIProject",
