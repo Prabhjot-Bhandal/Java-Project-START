@@ -17,6 +17,8 @@ public class GUIProject {
     static int gameIconWidth = 150;
     //Will dictate the height of the gameLibrary panel
     static int gameLibraryHeightSum = 0;
+    //Sets the current game to the first one in the array
+    static int currentGame = 0;
     public static void main(String[] args) throws IOException {
 
         //Makes it so that the program is exited when the "x" button is hit
@@ -31,9 +33,14 @@ public class GUIProject {
         //Creates the menuBar in its entirety, appends to the mainFrame
         menuBar();
 
+        //Creates the gameLibrary side view and adds it to the left-side of the main frame
         gameLibrarySideView();
 
-        mainGameInfoPanel();
+        //Creates the current game's info panel and adds it to the center of the main frame
+        mainGameInfo();
+
+        //Creates the panel that houses the play and settings buttons and the list of friends who own the game you're looking at and adds it to the right-side of the main frame
+        gameButtonsAndStats();
 
         //Makes the mainFrame visible
         mainFrame.setVisible(true);
@@ -137,7 +144,7 @@ public class GUIProject {
 
         //Creates a new panel that will house the games on the side view
         JPanel gameLibrary = new JPanel();
-        //Sets the layout manager of the gameLibrary as a box layout, organizes the buttons vertically
+        //Sets the layout manager of the gameLibrary as a box layout, organizes the subpanels vertically
         gameLibrary.setLayout(new BoxLayout(gameLibrary, BoxLayout.Y_AXIS));
 
         //Instantiates the number of games the user has in their library
@@ -179,8 +186,8 @@ public class GUIProject {
     } //gameScrollLibrary
 
 
-    @SuppressWarnings("resource")
-    public static void mainGameInfoPanel() throws IOException {
+    @SuppressWarnings("resource") //Supresses warnings for the way the program accesses files for labels and text area
+    public static void mainGameInfo() throws IOException {
       /*Action: Creates the panel that houses the game's description, who owns the game and play and 
         settings buttons
         Input: None
@@ -189,11 +196,8 @@ public class GUIProject {
       //Creates the main
       JPanel mainGameInfoPanel = new JPanel();
 
-      //Sets the layout manager of the gameLibrary as a box layout, organizes the buttons vertically
+      //Sets the layout manager of the info panel as a box layout, organizes the buttons vertically
       mainGameInfoPanel.setLayout(new BoxLayout(mainGameInfoPanel, BoxLayout.Y_AXIS));
-
-      //Sets the current game to the first one in the array
-      int currentGame = 0;
 
       //Gets and stores the image in a JLabel so it can be accessed later
       JLabel currentGameDescImageLabel = new JLabel(getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameDescImg" + currentGame + ".png", 500));
@@ -203,7 +207,7 @@ public class GUIProject {
       //Gets the name for the current game
       String currentGameNameString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameName" + currentGame + ".txt")).useDelimiter("\\A").next();
 
-      //Creates a label for the game's name
+      //Creates a label for the game's name, SwingConstraints forces the position of the title to be in the center
       JLabel currentGameName = new JLabel(currentGameNameString);
       //Sets the font of the label, if it's bolded or italisized and the font size
       currentGameName.setFont(new Font("Arial", Font.BOLD, 40));
@@ -212,16 +216,17 @@ public class GUIProject {
 
       //Gets the desription for the current game
       String currentGameDescString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameDesc" + currentGame + ".txt")).useDelimiter("\\A").next();
-
       //Creates the text area that will house the description of the game
       JTextArea currentGameDesc = new JTextArea(50, 8);
-
+      //Makes the text area uneditable
+      currentGameDesc.setEditable(false);
       //Scroll bard for the game's description
       JScrollPane scrollCurrentGameDesc = new JScrollPane(currentGameDesc);
 
       //Puts the text from the txt file in the text area for the game's description
       currentGameDesc.setText(currentGameDescString);
-
+      //Sets the font and size of the game's description
+      currentGameDesc.setFont(new Font("Arial", Font.PLAIN, 13));
       //Ensures that the text does not go outside of the text area horizontally
       currentGameDesc.setLineWrap(true);
 
@@ -229,14 +234,75 @@ public class GUIProject {
       mainGameInfoPanel.add(scrollCurrentGameDesc);
       scrollCurrentGameDesc.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-
-      //container.add(Box.createRigidArea(new Dimension(5, 0))); <- To space out the components
-
       //Makes the panel visible
       mainGameInfoPanel.setVisible(true);
 
-      //Sets the panel to the center in the frame's layout
+      //Sets the panel to the center in the frame's layout and adds it to the main frame
       mainFrame.getContentPane().add(mainGameInfoPanel, BorderLayout.CENTER);
       mainFrame.pack();
-    } //mainGamePanel
+    } //mainGameInfoPanel
+
+
+    @SuppressWarnings("resource") //Supresses warnings for the way the program accesses files for labels and text area
+    public static void gameButtonsAndStats() throws IOException {
+      /*Action: Creates the right-side panel that houses the play button, the settings button,
+        and a list of friends who own the game.
+        Input: None
+        Output: The creation of a play and settings button as well as a list of friends who own the game.*/
+
+      //Creates the main panel that will house the subpanels for the buttons and list
+      JPanel gameButtonsStatsFriendsPanel = new JPanel();
+
+      //Sets the layout manager of the right-side panel as a box layout, organizes the subpanels vertically
+      gameButtonsStatsFriendsPanel.setLayout(new BoxLayout(gameButtonsStatsFriendsPanel, BoxLayout.Y_AXIS));
+
+      //Creates a subpanel that will be used to house the buttons
+      JPanel playAndSettingsButtons = new JPanel();
+      
+      //Creates the play button with a properly scaled icon
+      JButton playButton = new JButton(getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\play.png", 100));
+      //Adds the play button to the playAndSettingsButtons subpanel
+      playAndSettingsButtons.add(playButton);
+      //Creates an empty border so that the play and settings buttons are spaced out
+      playAndSettingsButtons.add(Box.createRigidArea(new Dimension(5, 0)));
+      //Creates the settings button with a properly scaled icon
+      JButton settingsButton = new JButton(getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\settings.png", 100));
+      //Adds the settings button to the playAndSettingsButtons subpanel
+      playAndSettingsButtons.add(settingsButton);
+      //Add the subpanel containing the play and settings buttons to the main panel
+      gameButtonsStatsFriendsPanel.add(playAndSettingsButtons);
+
+      //Gets the user's statistics for the current game
+      String currentGameStatsString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameStats" + currentGame + ".txt")).useDelimiter("\\A").next();
+      //Creates the text area that will house the user's statistics of the game
+      JTextArea currentGameStats = new JTextArea(1, 8);
+      //Puts the text from the txt file in the text area for the user's statistics in the game
+      currentGameStats.setText(currentGameStatsString);
+      //Makes the text area uneditable
+      currentGameStats.setEditable(false);
+      //Sets the font and size of the game's description
+      currentGameStats.setFont(new Font("Arial", Font.PLAIN, 20));
+      //Ensures that the text does not go outside of the text area horizontally
+      currentGameStats.setLineWrap(true);
+      //Adds the text area with the user's statistics for the current game to the main panel
+      gameButtonsStatsFriendsPanel.add(currentGameStats);
+
+      //Creates an array containing all the names of the friends who own the current game
+      String friendsOwningCurrentGameArray[] = {"Friend 1", "Friend 2", "Friend 3", "Friend 4", "Friend 5"};
+      //Creates a JList housing the names of which friends own the current game
+      JList friendsOwningCurrentGameList = new JList<>(friendsOwningCurrentGameArray);
+      //Sets the font and font size of the list
+      friendsOwningCurrentGameList.setFont(new Font("Arial", Font.PLAIN, 20));
+      //Adds the list to the main panel
+      gameButtonsStatsFriendsPanel.add(friendsOwningCurrentGameList);
+
+      //Makes the subpanel that has the play and settings buttons visible
+      playAndSettingsButtons.setVisible(true);
+      //Makes the main panel visible
+      gameButtonsStatsFriendsPanel.setVisible(true);
+
+      //Sets the panel to the center in the frame's layout to the right and adds it to the main frame
+      mainFrame.getContentPane().add(gameButtonsStatsFriendsPanel, BorderLayout.EAST);
+      mainFrame.pack();
+    } //gameButtonsStatsFriendsPanel
 }
