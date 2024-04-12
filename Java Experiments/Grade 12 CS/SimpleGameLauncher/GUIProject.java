@@ -19,7 +19,7 @@ public class GUIProject {
     static int gameLibraryHeightSum = 0;
     //Sets the current game to the first one in the array
     static int currentGame = 0;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         //Makes it so that the program is exited when the "x" button is hit
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -244,7 +244,7 @@ public class GUIProject {
 
 
     @SuppressWarnings("resource") //Supresses warnings for the way the program accesses files for labels and text area
-    public static void gameButtonsAndStats() throws IOException {
+    public static void gameButtonsAndStats() throws InterruptedException, IOException {
       /*Action: Creates the right-side panel that houses the play button, the settings button,
         and a list of friends who own the game.
         Input: None
@@ -261,6 +261,10 @@ public class GUIProject {
       
       //Creates the play button with a properly scaled icon
       JButton playButton = new JButton(getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\play.png", 100));
+      //If the play button is clicked
+      playButton.addActionListener(e -> {
+        HTMLLauncher();
+      });
       //Adds the play button to the playAndSettingsButtons subpanel
       playAndSettingsButtons.add(playButton);
       //Creates an empty border so that the play and settings buttons are spaced out
@@ -305,4 +309,23 @@ public class GUIProject {
       mainFrame.getContentPane().add(gameButtonsStatsFriendsPanel, BorderLayout.EAST);
       mainFrame.pack();
     } //gameButtonsStatsFriendsPanel
+
+    public static void HTMLLauncher() {
+      String htmlFilePath = "Java Experiments/Grade 12 CS/SimpleGameLauncher/gameExecute" + currentGame + "/gameExecute" + currentGame + ".html";
+
+        // Check if Desktop is supported
+        if (Desktop.isDesktopSupported()) {
+            Desktop desktop = Desktop.getDesktop();
+
+            try {
+                // Open the HTML file with the default web browser
+                File htmlFile = new File(htmlFilePath);
+                desktop.open(htmlFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Desktop not supported. Cannot launch HTML file.");
+        }
+    }
 }

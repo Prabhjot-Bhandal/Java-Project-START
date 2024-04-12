@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "WordlePrototype",
+            "request": "launch",
+            "mainClass": "WordlePrototype.WordlePrototype",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "linearSearch",
             "request": "launch",
             "mainClass": "Algorithms.linearSearch",

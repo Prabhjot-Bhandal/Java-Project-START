@@ -28,7 +28,7 @@ public class WordlePrototype {
     
 
     //Reopens the file, if this statement isn't written then the computer does not go to that file to look at it
-    readFile = new BufferedReader (new FileReader ("Grade 12 CS\\WordlePrototype\\possibleWords.txt"));
+    readFile = new BufferedReader (new FileReader ("Java Experiments\\Grade 12 CS\\WordlePrototype\\possibleWords.txt"));
 
     //Gets the random word from the file using the random int generated
     String[] priorWordsToSelectedWord = new String[selectedWordLine];
@@ -71,7 +71,7 @@ public class WordlePrototype {
     Input: possibleWords.txt
     Output: Total number of lines in a file*/
     //Sets the path to read the file declare and initialize a variable readFile as a BufferedReader that reads data from the file possibleWords.txt, opens the file
-    readFile = new BufferedReader(new FileReader("Grade 12 CS\\WordlePrototype\\possibleWords.txt"));
+    readFile = new BufferedReader(new FileReader("Java Experiments\\Grade 12 CS\\WordlePrototype\\possibleWords.txt"));
     int lines = 0;
     while (readFile.readLine() != null) {
       lines++;
