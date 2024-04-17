@@ -25,20 +25,10 @@ public class WordlePrototype {
       //get random word from the list of words in text file
       selectedWordLine = (int) (Math.random() * getFileLineLength());
     } while (selectedWordLine == 0); //Ensures that the selected line is not 0
-    
 
-    //Reopens the file, if this statement isn't written then the computer does not go to that file to look at it
-    readFile = new BufferedReader (new FileReader ("Java Experiments\\Grade 12 CS\\WordlePrototype\\possibleWords.txt"));
+    //Gets the selected word by calling the method
+    selectedWord = getSelectedWord();
 
-    //Gets the random word from the file using the random int generated
-    String[] priorWordsToSelectedWord = new String[selectedWordLine];
-
-    //Writes all the words up to the selected one into an array
-    for (int index = 0; index < priorWordsToSelectedWord.length; index++) {
-        priorWordsToSelectedWord[index] = readFile.readLine();
-    }
-    //Sets the selected word equal to the last element of this array
-    selectedWord = priorWordsToSelectedWord[priorWordsToSelectedWord.length - 1];
     //Closes the file
     readFile.close();
 
@@ -48,6 +38,7 @@ public class WordlePrototype {
     //For terminating the loop early if the user gets the right answer
     boolean terminateEarly = false;
 
+    //Tried putting in a seperate method, doesn't work, HAS TO BE MAIN, if rewritten in another method, would literally just be rewriting Main
     //Runs for all of the user's guesses
     for (int currentGuess = 0; currentGuess < userGuesses.length; currentGuess++) {
       //Calls the getUserWord method to get the user's guess and store it into their array of guesses
@@ -80,6 +71,34 @@ public class WordlePrototype {
     readFile.close();
     return lines;
   } // getFileLineLength
+
+
+  public static String getSelectedWord() throws IOException {
+    /*Action: Selects a random word from the file that the user will try to guess
+      Input: No parameters but the file itself is an input.
+      Output: A string that is the selected word.*/
+
+    //Initializes selectedWordLine so that it can be checked in a do while loop
+    int selectedWordLine = -1;
+    
+    do {
+      //get random word from the list of words in text file
+      selectedWordLine = (int) (Math.random() * getFileLineLength());
+    } while (selectedWordLine == 0); //Ensures that the selected line is not 0
+
+    //Reopens the file, if this statement isn't written then the computer does not go to that file to look at it
+    readFile = new BufferedReader (new FileReader ("Java Experiments\\Grade 12 CS\\WordlePrototype\\possibleWords.txt"));
+
+    //Gets the random word from the file using the random int generated
+    String[] priorWordsToSelectedWord = new String[selectedWordLine];
+
+    //Writes all the words up to the selected one into an array
+    for (int index = 0; index < priorWordsToSelectedWord.length; index++) {
+        priorWordsToSelectedWord[index] = readFile.readLine();
+    }
+    //Sets the selected word equal to the last element of this array
+    return selectedWord = priorWordsToSelectedWord[priorWordsToSelectedWord.length - 1];
+  } //getSelectedWord
 
   //Method to facilitate user input
   public static String getUserWord(){
