@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "commonAlgorithms",
+            "request": "launch",
+            "mainClass": "Algorithms.commonAlgorithms",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "WordlePrototype",
             "request": "launch",
             "mainClass": "WordlePrototype.WordlePrototype",

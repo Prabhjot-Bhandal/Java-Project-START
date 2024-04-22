@@ -6,6 +6,8 @@ public class commonAlgorithms {
 
         //int indexOfValue = linearSearch(72, ages);
         //System.out.println("\nThe index will be: " + indexOfValue);
+        insertionSort(ages);
+        System.out.println(verifySorting(ages));
 
 
     }
@@ -68,26 +70,50 @@ public class commonAlgorithms {
         
     } //insertionArray
 
-    public static int[] sortB(int[] intArray) {
-        /*Action: Sorts an int one-dimensional array using the _______
+    public static int[] bubbleSort(int[] intArray) {
+        /*Action: Sorts an int one-dimensional array using the bubble sort
           Input: intArray
           Output: The sorted intArray*/
 
+        //Creates a temporary variable to hold an index for comparisons
         int temp;
+        //Looks at the first index
         for (int index1 = 0; index1 < intArray.length; index1++){
+            //Looks at the index right after the first index
             for(int index2 = 1; index2 < intArray.length; index2++){
-                    
-                temp = intArray[index2-1];
-                if(intArray[index2]<intArray[index2-1]){
-                                        
+                //Sets the temp variable equal to the value before index 2 in the array
+                temp = intArray[index2 - 1];
+                //Compares index 2's element to the one before it
+                if(intArray[index2] < intArray[index2-1]){
+                    //If the one before index 2 is larger then it, they swap
                     intArray[index2-1] = intArray[index2];
                     intArray[index2]  = temp;			
                 }//if			
             }//for index2 	
         }//for index1
-        return intArray;
 
-    } //sortB
+        //Returns the array
+        return intArray;
+    } //bubbleSort
+
+
+    public static boolean verifySorting(int[] intArray) {
+        /*Action: Checks if an array is sorted by looking at an element and checking if the
+          element before is greater than the current element.
+          Input: intArray
+          Output: A boolean denoting if the array is sorted or not.*/
+
+        //Starts at index 1 so that it can compare to the element before the current one
+        for (int index = 1; index < intArray.length; index++) {
+            //If the element before the current one is greater, the array is NOT sorted
+            if (intArray[index] < intArray[index - 1]) {
+                return false;
+            }
+        }
+
+        //If the loop runs fine, that means the entire array IS sorted
+        return true;
+    } //verifySorting
 
     
 }
