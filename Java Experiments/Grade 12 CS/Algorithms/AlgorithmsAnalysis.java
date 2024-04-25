@@ -47,7 +47,16 @@ class AlgorithmsAnalysis {
     
     //Closes writing 
     writeFile.close();
-    }
-}
+    } //writeNumsToFile
 
-//Create a method that creates 10000 random elements and writes it to a file
+    public static void timeElapsed() throws IOException {
+        /*Action: Runs the selected sorting algorithm and times how long it takes it to sort
+                  a large amount of integers.
+          Input: The file of randomized integers.
+          Output: The file is sorted in ascending order.*/
+
+        long start = System.currentTimeMillis();
+        commonAlgorithms.insertionSortInt()
+
+    } //timeElapsed
+}
