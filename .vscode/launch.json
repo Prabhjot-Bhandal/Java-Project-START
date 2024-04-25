@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "commonAlgorithms",
+            "request": "launch",
+            "mainClass": "Algorithms.commonAlgorithms",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
             "name": "AlgorithmsAnalysis",
             "request": "launch",
             "mainClass": "Algorithms.AlgorithmsAnalysis",

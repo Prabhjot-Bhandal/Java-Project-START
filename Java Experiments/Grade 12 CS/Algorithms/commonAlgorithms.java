@@ -6,28 +6,12 @@ public class commonAlgorithms {
 
         //int indexOfValue = linearSearch(72, ages);
         //System.out.println("\nThe index will be: " + indexOfValue);
-        //insertionSort(ages);
+        insertionSortInt(ages);
         System.out.println(verifySortingInt(ages));
+        System.out.println(binarySearch(4, ages));
+        //System.out.println(binarySearchRecursive(ages, 4, 0, ages.length - 1));
 
     } //main
-
-    public static int linearSearch(int searchValue, int[] array) {
-        /*Action: Searches through an array for a given value.
-          Input: searchValue and the array.
-          Ouput: The index at which the value was found in the array.
-        */
-
-        //Creates a for loop to search for a given value
-        for (int currentIndex = 0; currentIndex < array.length; currentIndex++) {
-            //If the value was found, it will return the index at which the value was found in the  array
-            if (searchValue == array[currentIndex]) {
-                return currentIndex;
-            }
-        }
-
-        //If the value was not found in the array, it will return a value of -1
-        return -1;
-    }
 
     public static void printOneDIntArray (int[] intArray) {
         /*Action: Prints out an int one dimensional array.
@@ -37,7 +21,156 @@ public class commonAlgorithms {
         for (int index = 0; index < intArray.length; index++) {
             System.out.print(intArray[index] + ", ");
         }
+    } //printOneDIntArray
+
+    public static boolean verifySortingInt(int[] intArray) {
+        /*Action: Checks if an array is sorted by looking at an element and checking if the
+          element before is greater than the current element.
+          Input: intArray
+          Output: A boolean denoting if the array is sorted or not.*/
+
+        //Starts at index 1 so that it can compare to the element before the current one
+        for (int index = 1; index < intArray.length; index++) {
+            //If the element before the current one is greater, the array is NOT sorted
+            if (intArray[index] < intArray[index - 1]) {
+                return false;
+            }
+        }
+
+        //If the loop runs fine, that means the entire array IS sorted
+        return true;
+    } //verifySortingInt
+
+    public static boolean verifySortingChar(char[] charArray) {
+        /*Action: Checks if an array is sorted by looking at an element and checking if the
+          element before is greater than the current element.
+          Input: charArray
+          Output: A boolean denoting if the array is sorted or not.*/
+
+        //Starts at index 1 so that it can compare to the element before the current one
+        for (int index = 1; index < charArray.length; index++) {
+            //If the element before the current one is greater, the array is NOT sorted
+            if (charArray[index] < charArray[index - 1]) {
+                return false;
+            }
+        }
+
+        //If the loop runs fine, that means the entire array IS sorted
+        return true;
+    } //verifySortingChar
+
+
+    public static boolean verifySortingStr(String[] strArray) {
+        /*Action: Checks if an array is sorted by looking at an element and checking if the
+          element before is greater than the current element.
+          Input: strArray
+          Output: A boolean denoting if the array is sorted or not.*/
+
+        //Starts at index 1 so that it can compare to the element before the current one
+        for (int index = 1; index < strArray.length; index++) {
+            //If the element before the current one is greater, the array is NOT sorted
+            if (strArray[index].compareToIgnoreCase(strArray[index - 1]) < 0) {
+                return false;
+            }
+        }
+
+        //If the loop runs fine, that means the entire array IS sorted
+        return true;
+    } //verifySortingStr
+    
+    public static int linearSearch(int searchValue, int[] intArray) {
+        /*Action: Searches through an array for a given value.
+          Input: searchValue and the array.
+          Ouput: The index at which the value was found in the array.*/
+
+        //Creates a for loop to search for a given value
+        for (int currentIndex = 0; currentIndex < intArray.length; currentIndex++) {
+            //If the value was found, it will return the index at which the value was found in the  array
+            if (searchValue == intArray[currentIndex]) {
+                return currentIndex;
+            }
+        }
+
+        //If the value was not found in the array, it will return a value of -1
+        return -1;
     }
+
+    public static int binarySearch(int searchValue, int[] intArray) {
+        /*Action: Searches for a selected value in an integer array using the binary search algorithm.
+          Input: The desired search value and the integer array.
+          Output: The index at which the value is in the array.*/
+
+        //Sets the first start index to 0, the first index in ALL arrays
+        int startIndex = 0;
+        //Sets the first end index to the last index in the array
+        int endIndex = intArray.length - 1;
+
+        /*The loop keeps running until the startIndex is greater endIndex, 
+          which occurs when the given search value cannot be found in the given array.*/
+        while (startIndex <= endIndex) {
+            //Finds the middle index by taking the average of the start and end indices
+            int midIndex = (startIndex + endIndex) / 2;
+
+            //If the search value is equal to the middle value's index, then it has been found
+            if (searchValue == intArray[midIndex]) {
+                return midIndex;
+            } 
+            /*If the search value is less than the middle index, middle index becomes the new end index,
+              discards the second half of the array*/
+            else if (searchValue < intArray[midIndex]) {
+                /*Subtracts one as we already checked the middle element, so we don't need to check it 
+                again in our search. If not done, the loop runs forever for elements not in the array.*/
+                endIndex = midIndex - 1;
+            }
+            /*If the search value is greater than the middle index, middle index becomes new start index,
+             discards the first half of the array*/
+            else if (searchValue > intArray[midIndex]) {
+                /*Adds one as we already checked the middle element, so we don't need to check it 
+                again in our search. If not done, the loop runs forever for elements not in the array.*/
+                startIndex = midIndex + 1;
+            }
+        } 
+
+        //If the search value wasn't found in the integer array, returns -1
+        return -1;
+
+    }//binarySearch
+
+    public static int binarySearchRecursive(int[] intArray, int searchValue, int startIndex, int endIndex) {
+        /*Action: Searches for a given value in an integer array using a recursive version of the binary search algorithm.
+          Input: The integer array, the search value, the start index and the end index
+          Output: The index at which the element that was being searched for is.*/
+
+        //Finds the middle index by taking the average of the startIndex and endIndex
+        int midIndex = (startIndex + endIndex) / 2;
+
+        //Only runs if the start index is less than or equal to the end index, end is smaller when an element isn't found
+        if (startIndex <= endIndex) {
+            //If the search value is equal to the middle index, that means the element has been found
+            if (searchValue == intArray[midIndex]) {
+                //Returns middle index
+                return midIndex;
+            }
+            /*If the search value is less than the middle element, then the ladder half of the array is discarded*/
+            else if (searchValue < intArray[midIndex]) {
+                /*Subtracts one as we already checked the middle element, so we don't need to check it 
+                again in our search. If not done, the loop runs forever for elements not in the array.*/
+                return binarySearchRecursive(intArray, searchValue, startIndex, midIndex - 1);
+            }
+            /*If the search value is greater than the middle element, the first half of the array is discarded*/
+            else {
+                /*Adds one as we already checked the middle element, so we don't need to check it 
+                again in our search. If not done, the loop runs forever for elements not in the array.*/
+                return binarySearchRecursive(intArray, searchValue, midIndex, endIndex + 1);
+            }
+        } 
+        //If the endIndex becomes smaller than the startIndex, the element is NOT in the array
+        else {
+            //Returns -1 if the search value is not in the array
+            return -1;
+        }
+
+    } //binarySearchRecursive
 
     public static int[] insertionSortInt(int[] intArray) {
         /*Action: Sorts a given integer array using the insertionSort algorithm
@@ -157,61 +290,4 @@ public class commonAlgorithms {
         return intArray;
     } //bubbleSort
 
-
-    public static boolean verifySortingInt(int[] intArray) {
-        /*Action: Checks if an array is sorted by looking at an element and checking if the
-          element before is greater than the current element.
-          Input: intArray
-          Output: A boolean denoting if the array is sorted or not.*/
-
-        //Starts at index 1 so that it can compare to the element before the current one
-        for (int index = 1; index < intArray.length; index++) {
-            //If the element before the current one is greater, the array is NOT sorted
-            if (intArray[index] < intArray[index - 1]) {
-                return false;
-            }
-        }
-
-        //If the loop runs fine, that means the entire array IS sorted
-        return true;
-    } //verifySortingInt
-
-    public static boolean verifySortingChar(char[] charArray) {
-        /*Action: Checks if an array is sorted by looking at an element and checking if the
-          element before is greater than the current element.
-          Input: charArray
-          Output: A boolean denoting if the array is sorted or not.*/
-
-        //Starts at index 1 so that it can compare to the element before the current one
-        for (int index = 1; index < charArray.length; index++) {
-            //If the element before the current one is greater, the array is NOT sorted
-            if (charArray[index] < charArray[index - 1]) {
-                return false;
-            }
-        }
-
-        //If the loop runs fine, that means the entire array IS sorted
-        return true;
-    } //verifySortingChar
-
-
-    public static boolean verifySortingStr(String[] strArray) {
-        /*Action: Checks if an array is sorted by looking at an element and checking if the
-          element before is greater than the current element.
-          Input: strArray
-          Output: A boolean denoting if the array is sorted or not.*/
-
-        //Starts at index 1 so that it can compare to the element before the current one
-        for (int index = 1; index < strArray.length; index++) {
-            //If the element before the current one is greater, the array is NOT sorted
-            if (strArray[index].compareToIgnoreCase(strArray[index - 1]) < 0) {
-                return false;
-            }
-        }
-
-        //If the loop runs fine, that means the entire array IS sorted
-        return true;
-    } //verifySortingStr
-
-    
 }
