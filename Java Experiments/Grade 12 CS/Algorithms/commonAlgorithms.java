@@ -172,6 +172,20 @@ public class commonAlgorithms {
 
     } //binarySearchRecursive
 
+    public static int[] selectionSort(int[] intArray) {
+        /*Action: Sorts a given integer array using the selection sort algorithm.
+          Input: An unsorted integer array.
+          Output: An integer array sorted in ascending order.*/
+        
+        for (int comparisonIndex = 0; comparisonIndex < intArray.length; comparisonIndex++) {
+            int temp;
+            for (int indexCutOff = 1; indexCutOff < intArray.length; indexCutOff++) {
+
+            }
+        }
+        
+    } //selectionSort
+
     public static int[] insertionSortInt(int[] intArray) {
         /*Action: Sorts a given integer array using the insertionSort algorithm
           Input: One dimensional int array

@@ -56,7 +56,13 @@ class AlgorithmsAnalysis {
           Output: The file is sorted in ascending order.*/
 
         long start = System.currentTimeMillis();
-        commonAlgorithms.insertionSortInt()
+        commonAlgorithms.insertionSortInt();
+
+
 
     } //timeElapsed
+
+    public static int[] getData() throws IOException {
+
+    } //getData
 }
