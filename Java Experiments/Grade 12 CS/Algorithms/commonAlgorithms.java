@@ -176,13 +176,20 @@ public class commonAlgorithms {
         /*Action: Sorts a given integer array using the selection sort algorithm.
           Input: An unsorted integer array.
           Output: An integer array sorted in ascending order.*/
-        
-        for (int comparisonIndex = 0; comparisonIndex < intArray.length; comparisonIndex++) {
-            int temp;
-            for (int indexCutOff = 1; indexCutOff < intArray.length; indexCutOff++) {
 
-            }
-        }
+        //Loops through the entire array so that we get the smallest index compared to each index
+        for (int comparisonIndex = 0; comparisonIndex < intArray.length - 1; comparisonIndex++) {
+            //Holds the index that has the smallest value in the array COMPARED TO the current comparison index
+            //The initial smallestIndex is the current comparison index
+            int smallestIndex = intArray[comparisonIndex];
+
+            /*Loops through all the indices after the current comparison index and compares them
+              to the current comparison index, finds the smallest value in that current instance.*/
+            for (int comparingToIndex = 1; comparingToIndex < intArray.length; comparingToIndex++) {
+
+            } //comparingTo for loop
+            
+        } //comparisonIndex for loop
         
     } //selectionSort
 
