@@ -180,16 +180,36 @@ public class commonAlgorithms {
         //Loops through the entire array so that we get the smallest index compared to each index
         for (int comparisonIndex = 0; comparisonIndex < intArray.length - 1; comparisonIndex++) {
             //Holds the index that has the smallest value in the array COMPARED TO the current comparison index
-            //The initial smallestIndex is the current comparison index
-            int smallestIndex = intArray[comparisonIndex];
+            //The initial smallestElement is the current comparison index's value
+            int smallestElement = intArray[comparisonIndex];
+            //Initial smallestIndex is the current comparison index
+            int smallestIndex = comparisonIndex;
 
             /*Loops through all the indices after the current comparison index and compares them
               to the current comparison index, finds the smallest value in that current instance.*/
             for (int comparingToIndex = 1; comparingToIndex < intArray.length; comparingToIndex++) {
+                //If the current comparingToIndex has an element smaller than the current smallest element, overwrites them
+                if (intArray[comparingToIndex] < smallestElement) {
+                    //Sets the smallestElement to the current comparingTo index
+                    smallestElement = intArray[comparingToIndex];
+                    //Sets the smallestIndex to the index in the array that has the new smallest element
+                    smallestIndex = comparingToIndex;
+
+                } //Overwriting smallestElement and Index if statement
 
             } //comparingTo for loop
-            
+
+            //Creates a temporary int variable to hold the value of the comparisonIndex in the array
+            int temp = intArray[comparisonIndex];
+            //Sets the comparisonIndex's element to the new smallest element
+            intArray[comparisonIndex] = smallestElement;
+            //Sets the index that had the smallest element equal to the element that was at the comparisonIndex prior to overwriting
+            intArray[smallestIndex] = temp;
+
         } //comparisonIndex for loop
+
+        //Returns the array after going through all the indices
+        return intArray;
         
     } //selectionSort
 
