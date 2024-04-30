@@ -13,5 +13,9 @@ public class highlighterTester {
 
         //Finds the physicsHighlighter's height
         System.out.println(physicsHighlighter.height);
+
+        //Creates a highlighter with specified parameters to auto-set the colour
+        Highlighter specificHighlighter = new Highlighter(255, 16, 240);
+        specificHighlighter.red = 0;
     }
 }
