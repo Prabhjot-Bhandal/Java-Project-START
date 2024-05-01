@@ -17,5 +17,11 @@ public class highlighterTester {
         //Creates a highlighter with specified parameters to auto-set the colour
         Highlighter specificHighlighter = new Highlighter(255, 16, 240);
         specificHighlighter.red = 0;
+
+        //Checks if the radius is valid, if not then will set an automatic value
+        physicsHighlighter.setRadius(-6);
+        physicsHighlighter.setRGB(-7, 256, 255);
+
+        System.out.println(physicsHighlighter.toString());
     }
 }

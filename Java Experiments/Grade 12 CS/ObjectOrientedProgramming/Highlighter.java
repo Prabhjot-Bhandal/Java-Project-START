@@ -11,7 +11,7 @@ public class Highlighter {
     int red;
     int blue;
     int green;
-    double brightness; //private makes it so that it can't be updated OUTSIDE this class, only accessed here
+    private double brightness; //private makes it so that it can't be updated OUTSIDE this class, only accessed herev   
     boolean capOrNot;
 
     //Constructer: Sets the initial values for highlighter objects
@@ -43,6 +43,78 @@ public class Highlighter {
         this.blue = blue;
         this.green = green;
 
-    }
+    } //Highlighter
+
+    //Accessors (getters) - to show the value of a variable declared private
+    public double getRadius () {
+        /*Action: Accesses a private variable, returns it.
+          Input: The object
+          Output: The object's radius*/
+        return radius;
+    } //getRadius
+
+    //Mutators (setters) - updates the value of an instance variable if it does not meet certain conditions
+    public void setRadius (double radius) {
+        /*Action: Updates the value of an instance variable (usually private) if it does not meet certain
+          conditions.
+          Input: radius
+          Output: A verified radius*/
+
+        //If the radius is greater than 0 cm and less than 3 cm, it is valid
+        if (radius > 0 && radius < 3) {
+            //This object's radius will be the given one, updates the given object's radius
+            this.radius = radius;
+        }
+        //If the radius isn't valid, updates that object's radius with a value of 1
+        else {
+            this.radius = 1;
+        }
+    } //setRadius
+
+    public void setRGB (int red, int blue, int green) {
+        /*Action: Checks if the given RGB values are valid.
+          Input: The object's red, blue and green values.
+          Output: Verified red, blue and green variables.*/
+
+        //If red between 0 and 255, it is valid
+        if (red >= 0 && red <= 255) {
+            //Updates this object's red feature with the given red
+            this.red = red;
+        }
+        //If the red isn't valid
+        else {
+            //Updates this object's red value with a value of 255
+            red = 255;
+        }
+
+        //If blue between 0 and 255, it is valid
+        if (blue >= 0 && blue <= 255) {
+            //Updates this object's blue feature with the given blue
+            this.blue = blue;
+        }
+        //If the blue isn't valid
+        else {
+            //Updates this object's blue value with a value of 255
+            blue = 1;
+        }
+
+        //If green between 0 and 255, it is valid
+        if (green >= 0 && green <= 255) {
+            //Updates this object's green feature with the given green
+            this.green = green;
+        }
+        //If the green isn't valid
+        else {
+            //Updates this object's green value with a value of 255
+            green = 1;
+        }
+
+    } //setRGB
+
+    public String toString() {
+        //Returns a string representation of the value of each feature of the object
+
+        return("This is a " + height + " cm highlighter");
+    } //toString
 
 } //highlighter
