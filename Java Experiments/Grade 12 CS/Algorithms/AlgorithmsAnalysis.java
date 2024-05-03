@@ -63,6 +63,6 @@ class AlgorithmsAnalysis {
     } //timeElapsed
 
     public static int[] getData() throws IOException {
-
+        
     } //getData
 }

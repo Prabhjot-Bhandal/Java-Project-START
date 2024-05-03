@@ -1,6 +1,6 @@
 package Algorithms;
 
-public class commonAlgorithms {
+public class commonAlgorithmsLibrary {
     public static void main(String[] args) {
         int[] ages = {7, 2, 5, 33, 19, 16, 15, 36, 46, 72};
 
@@ -14,6 +14,7 @@ public class commonAlgorithms {
 
     } //main
 
+    //Try to do intArray or sortTesterArray
     public static void printOneDIntArray (int[] intArray) {
         /*Action: Prints out an int one dimensional array.
           Input: A one-dimensional int array
@@ -300,8 +301,6 @@ public class commonAlgorithms {
         
     } //selectionSortStr
 
-
-
     public static int[] insertionSortInt(int[] intArray) {
         /*Action: Sorts a given integer array using the insertionSort algorithm
           Input: One dimensional int array
@@ -477,6 +476,27 @@ public class commonAlgorithms {
 
     } //bubbleSortStr
 
-}
+    public static SortTester[] genSortTesterArray(int arrayLength, int stringLength) {
+        /*Action: Creates an array of SortTester objects (they have a random int, string and char to
+        test all sorts).
+        Input: arrayLength and stringLength.
+        Output: The randomly generated array of SortTester objects.*/
+
+        //Instantiates the array
+        SortTester testArray[] = new SortTester[arrayLength];
+
+        //Makes the array according to how big the array is
+        for (int index = 0; index < testArray.length; index++) {
+            //Generates each element in the testArray using the SortTester class
+            testArray[index] = new SortTester(stringLength);
+
+        } //For loop for generating the array of SortTester objects
+
+        //Returns the array of randomly generated SortTester objects
+        return testArray;
+
+    } //genSortTesterArray
+
+} //commonAlgorithmsLibrary class
 
 
