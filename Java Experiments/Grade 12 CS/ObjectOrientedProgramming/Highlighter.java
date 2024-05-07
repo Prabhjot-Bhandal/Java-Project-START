@@ -3,13 +3,17 @@ package ObjectOrientedProgramming;
 public class Highlighter {
     //Represents a template for creating objects of type highlighter
 
+    //Area highlighted
+    //Longevity based on Ink Volume
+    //Determine the brightness based on how much ink is left
+    //Distance highlighted
+    //Applied force for bleeding
     //Instance variables, the FEATURES
     double height;
     double radius;
-    double thickness;
+    double tipWidth; 
     String colour;
-    private double brightness; //private makes it so that it can't be updated OUTSIDE this class, only accessed herev   
-    boolean capOrNot;
+    boolean capOrNot; //private makes it so that it can't be updated OUTSIDE this class, only accessed here
 
     //Constructer: Sets the initial values for highlighter objects
     //Class name will be your object's name
