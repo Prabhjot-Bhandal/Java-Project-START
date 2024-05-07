@@ -9,6 +9,13 @@
             "name": "commonAlgorithmsLibrary",
             "request": "launch",
             "mainClass": "Algorithms.commonAlgorithmsLibrary",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
+            "name": "commonAlgorithmsLibrary",
+            "request": "launch",
+            "mainClass": "Algorithms.commonAlgorithmsLibrary",
             "projectName": "Java-Project-START_8c052a0f"
         },
         {
