@@ -1,5 +1,7 @@
 //Name: Prabhjot Bhandal
 //Date: May 3rd, 2024
+
+//For the file directory, says that the current class is in the Algoritms file
 package Algorithms;
 
 public class SortTester {

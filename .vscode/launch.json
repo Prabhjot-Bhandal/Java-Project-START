@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "commonAlgorithmsLibrary",
+            "request": "launch",
+            "mainClass": "Algorithms.commonAlgorithmsLibrary",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
             "name": "highlighterTester",
             "request": "launch",
             "mainClass": "ObjectOrientedProgramming.highlighterTester",
