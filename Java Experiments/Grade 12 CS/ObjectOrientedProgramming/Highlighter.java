@@ -23,9 +23,8 @@ public class Highlighter {
 
         height = 0;
         radius = 0;
-        thickness = 0;
+        tipWidth = 0;
         colour = "none";
-        brightness = 0;
         capOrNot = false;
 
     }
@@ -130,5 +129,15 @@ public class Highlighter {
         return false;
 
     } //isEqual
+
+    public double areaHighlighted(double tipWidth, double lengthHighlighted, int numOfRows) {
+      /*Action: Finds the area (in cm^2) that the user has highlighted based on their highlighter's
+        tipWidth and the length that they highlighted.
+        Input: tipWidth and lengthHighlighted
+        Output: The area the user has highlighted in cm^2.*/
+
+      area = 
+      
+    } //areaHighlighted
 
 } //highlighter
