@@ -136,7 +136,7 @@ public class Highlighter {
         Input: tipWidth and lengthHighlighted
         Output: The area the user has highlighted in cm^2.*/
 
-      area = 
+      //area = 
       
     } //areaHighlighted
 

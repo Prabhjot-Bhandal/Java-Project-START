@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ShapeTester",
+            "request": "launch",
+            "mainClass": "ObjectOrientedProgramming.ShapeHierachy.ShapeTester",
+            "projectName": "Java-Project-START_806e4e8"
+        },
+        {
+            "type": "java",
             "name": "commonAlgorithmsLibrary",
             "request": "launch",
             "mainClass": "Algorithms.commonAlgorithmsLibrary",
