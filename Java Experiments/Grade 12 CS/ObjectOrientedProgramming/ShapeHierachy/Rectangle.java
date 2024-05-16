@@ -40,9 +40,20 @@ public class Rectangle extends TwoDShape{
     } //width setter
 
     //toString
-
+    public String toString() {
+        return ("Length: " + length + "\nWidth: " + width);
+    }
 
     //Other Instance Methods
+    //Finds the area of the current rectangle
+    public double rectangleArea(double width, double length) {
+        return length * width;
+    } //rectangleArea
+
+    //Finds the perimeter of the current rectangle
+    public double recatanglePerimeter(double width, double length) {
+        return (2 * width) + (2 * length);
+    } //rectanglePerimeter
 
 
 } //Rectangle
