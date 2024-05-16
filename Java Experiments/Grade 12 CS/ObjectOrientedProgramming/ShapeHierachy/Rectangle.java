@@ -1,4 +1,5 @@
 package ObjectOrientedProgramming.ShapeHierachy;
+//Name: Prabhjot Bhandal and Sijaanth Raventhiran
 
 public class Rectangle extends TwoDShape{
     //Instance Variables
@@ -10,6 +11,7 @@ public class Rectangle extends TwoDShape{
         //Default settings 
         length = 0.1;
         width = 0.1;
+        name = "rectangle";
     }
 
     //Setters and Getters 
@@ -46,14 +48,14 @@ public class Rectangle extends TwoDShape{
 
     //Other Instance Methods
     //Finds the area of the current rectangle
-    public double rectangleArea(double width, double length) {
+    public double rectangleArea() {
         return length * width;
     } //rectangleArea
 
     //Finds the perimeter of the current rectangle
-    public double recatanglePerimeter(double width, double length) {
+    public double rectanglePerimeter() {
         return (2 * width) + (2 * length);
     } //rectanglePerimeter
 
 
-} //Rectangle
+} //Rectangle class

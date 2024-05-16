@@ -2,7 +2,7 @@ package ObjectOrientedProgramming.ShapeHierachy;
 
 public class Shape {
     //Instance Variables
-    private String name;
+    public String name; //Name of the shape
     private double size;
     private int numDims; //Number of dimensions a shape has
 
