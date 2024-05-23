@@ -9,11 +9,11 @@ public class Highlighter {
     //Distance highlighted
     //Applied force for bleeding
     //Instance variables, the FEATURES
-    double height;
-    double radius;
-    double tipWidth; 
-    String colour;
-    boolean capOrNot; //private makes it so that it can't be updated OUTSIDE this class, only accessed here
+    private double height;
+    private double radius;
+    private double tipWidth; 
+    private String colour;
+    private boolean capOrNot; //private makes it so that it can't be updated OUTSIDE this class, only accessed here
 
     //Constructer: Sets the initial values for highlighter objects
     //Class name will be your object's name
@@ -43,11 +43,52 @@ public class Highlighter {
 
     //Accessors (getters) - to show the value of a variable declared private
     public double getRadius () {
-        /*Action: Accesses a private variable, returns it.
-          Input: The object
-          Output: The object's radius*/
+        /*Action: Accesses the radius instance variable.
+          Input: A highlighter object
+          Output: The highlighter's radius*/
         return radius;
     } //getRadius
+
+    public double getHeight() {
+      /*Action: Acceseses the height instance variable.
+        Input: A highlighter object
+        Output: The highligher's height*/
+      return height;
+    } //getHeight
+
+    public double getTipWidth() {
+      /*Action: Acceseses the tipWidth instance variable.
+        Input: A highlighter object
+        Output: The highligher's tip width.*/
+      return tipWidth;
+    } //getTipWidth
+
+    public String getColour() {
+       /*Action: Acceseses the getColour instance variable.
+        Input: A highlighter object
+        Output: The highligher's colour*/
+      return colour;
+    }
+
+    public void setHeight(double height) {
+      this.height = height;
+    }
+
+    public void setTipWidth(double tipWidth) {
+      this.tipWidth = tipWidth;
+    }
+
+    public void setColour(String colour) {
+      this.colour = colour;
+    }
+
+    public boolean isCapOrNot() {
+      return capOrNot;
+    }
+
+    public void setCapOrNot(boolean capOrNot) {
+      this.capOrNot = capOrNot;
+    }
 
     //Mutators (setters) - updates the value of an instance variable if it does not meet certain conditions
     public void setRadius (double radius) {
@@ -66,46 +107,6 @@ public class Highlighter {
             this.radius = 1;
         }
     } //setRadius
-
-    /*public void setRGB (int red, int blue, int green) {
-        /*Action: Checks if the given RGB values are valid.
-          Input: The object's red, blue and green values.
-          Output: Verified red, blue and green variables.*/
-
-        //If red between 0 and 255, it is valid
-      //  if (red >= 0 && red <= 255) {
-            //Updates this object's red feature with the given red
-      //      this.colour = red;
-      //  }
-        //If the red isn't valid
-      //  else {
-            //Updates this object's red value with a value of 255
-      //      red = 255;
-      //  }
-
-        //If blue between 0 and 255, it is valid
-     //   if (blue >= 0 && blue <= 255) {
-            //Updates this object's blue feature with the given blue
-      //      this.blue = blue;
-     //   }
-        //If the blue isn't valid
-      //  else {
-            //Updates this object's blue value with a value of 255
-       //     blue = 1;
-      //  }
-
-        //If green between 0 and 255, it is valid
-     //   if (green >= 0 && green <= 255) {
-            //Updates this object's green feature with the given green
-      //      this.green = green;
-      //  }
-        //If the green isn't valid
-       // else {
-            //Updates this object's green value with a value of 255
-            //green = 1;
-       // }
-
-  //  } //setRGB*/
 
     public String toString() {
         //Returns a string representation of the value of each feature of the object
