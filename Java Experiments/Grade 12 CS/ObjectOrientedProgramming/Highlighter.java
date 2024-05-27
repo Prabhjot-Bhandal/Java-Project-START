@@ -3,17 +3,20 @@ package ObjectOrientedProgramming;
 public class Highlighter {
     //Represents a template for creating objects of type highlighter
 
-    //Area highlighted
-    //Longevity based on Ink Volume, average ink volume is 10 mL
-    //Determine the brightness based on how much ink is left
-    //Distance highlighted
-    //Applied force for bleeding
     //Instance variables, the FEATURES, all numeric variables are in cm
     private double height;
     private double radius; //private makes it so that it can't be updated OUTSIDE this class, only accessed here
     private double tipWidth; 
-    private String tipType;
-    private String colour;
+    public String tipType;
+    public String colour;
+
+    /*This constant is based on the following statistics:
+      Average Ink Volume: 10 mL
+      Highlighter Dimensions for this Ink Volume:
+      Height: 12.8 cm 
+      Radius: 0.35 cm*/
+    //Multiply this constant by any volume to get how much ink 
+    final double INK_VOL_CONSTANT = 10 / (Math.pow(0.35, 2) * 12.8 * Math.PI);
 
     //Constructer: Sets the initial values for highlighter objects
     //Class name will be your object's name
@@ -199,6 +202,58 @@ public class Highlighter {
 
   } //areaHighlighted
 
-     
+  public double highlighterVolume(double height, double radius) {
+    /*Action: Finds the volume (in mL, 1 cm^3 = 1 mL) of a highlighter object.
+      Input: height and radius
+      Output: It's volume*/
+
+    //Uses a cylinder formula as most highlighters are cylinders
+    return Math.PI * Math.pow(radius, 2) * height;
+
+  } //volume
+
+  public double startingInkVol(double height, double radius) {
+    /*Action: Finds the volume of ink in mL a highlighter object starts with based on its volume.
+      Input: height and radius.
+      Output: The highlighter's starting volume of ink in mL.*/
+
+    /*Multiplies the highlighter's volume by the ink constant, constant determined with the data of
+      how much ink a highlighter has based on its volume*/
+    return INK_VOL_CONSTANT * highlighterVolume(height, radius);
+
+  } //startingInkVol
+
+  public int startingNumOfWords(double height, double radius) {
+    /*Action: Finds the total number of words a brand new highlighter can highlight.
+      Input: height and radius.
+      Output: The total number of words a brand new highlighter can highlight.*/
+
+    /*Multiplies the highlighter's volume by the ink constant, constant determined with the data of
+      how much ink a highlighter has based on its volume*/
+    return INK_VOL_CONSTANT * highlighterVolume(height, radius);
+
+  } //startingInkVol
+
+  public double remainingInkVol(double height, double radius, int wordsHighlighted) {
+    /*Action: Finds the remaining volume of ink (in mL) left in a highlighter object, based on
+      the number of words its highlighted.
+      Input: Height, Radius, wordsHighlighted
+      Output: The remaining amount of ink left in the highlighter in mL.*/
+    
+    /*On average, 0.0002 mL of ink is used to highlight a word, so the remaining amount of
+      ink left would be its starting volume subtracted by volume of ink already used.*/
+    return startingInkVol(height, radius) - (0.0002 * wordsHighlighted);
+
+  } //remainingInkVol
+
+  public int remainingNumOfWords(double height, double radius, int wordsHighlighted) {
+    /*Action: Finds the remaining number of words the current highlighter can highlight.
+      Input: height, radius, wordsHighlighted
+      Output: The remaining number of words the current highlighter can highlight.*/
+
+      int 
+      return ()
+  } //
+  
 
 } //highlighter
