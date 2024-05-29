@@ -4,9 +4,11 @@ public class Highlighter {
     //Represents a template for creating objects of type highlighter
 
     //Instance variables, the FEATURES, all numeric variables are in cm
+    //private makes it so that it can't be updated OUTSIDE this class, only accessed here
     private double height;
-    private double radius; //private makes it so that it can't be updated OUTSIDE this class, only accessed here
+    private double radius; 
     private double tipWidth; 
+    //Made strings public as they don't have important calculations
     public String tipType;
     public String colour;
 
@@ -40,12 +42,13 @@ public class Highlighter {
         Input: A colour string.
         Output: A highlighter object that has the same features as a Sharpie highlighter*/
 
-        //This refers the the object's parameter
-        //Every constructor made with the colour given, its colour values will be the given ones
-        this.radius = 0.6;
-        this.height = 11.9;
+        /*This refers the the object's parameter. Every constructor made with the colour given, 
+        its colour values will be the given ones. These measruements are based off of the average
+        highlighter.*/
+        this.radius = 0.35;
+        this.height = 12.8;
         this.tipType = "chisel";
-        this.tipWidth = 0.5;
+        this.tipWidth = 0.3;
     } //Highlighter overloaded constructor
 
 
@@ -70,13 +73,6 @@ public class Highlighter {
         Output: The highligher's tip width.*/
       return tipWidth;
     } //getTipWidth
-
-    public String getColour() {
-       /*Action: Acceseses the getColour instance variable.
-        Input: A highlighter object
-        Output: The highligher's colour*/
-      return colour;
-    } //getColour
 
 
     //Mutators (setters) - updates the value of an instance variable if it does not meet certain conditions
@@ -129,6 +125,7 @@ public class Highlighter {
         }
     } //setRadius
 
+
     //TOSTRING METHOD
     public String toString() {
         /*Action: Returns a string representation of the value of each feature of the object.
@@ -170,7 +167,7 @@ public class Highlighter {
       //If no features of the current highlighter's numerical features is less than the argument highlighter, it is not smaller
       return false;
 
-  } //isSmallerThan
+    } //isSmallerThan
 
     public boolean isGreaterThan(Highlighter highlighter) {
       /*Action: Checks if one highlighter is greater than another.
@@ -189,71 +186,72 @@ public class Highlighter {
     } //isGreaterThan
 
 
-  //SPECIAL METHODS
-  public double areaHighlighted(double tipWidth, int numOfRows) {
-    /*Action: Finds the area (in cm^2) that the user has highlighted based on their highlighter's
-      tipWidth and the number of rows highlighted.
-      Input: tipWidth and numOfRows
-      Output: The area the user has highlighted in cm^2.*/
+    //SPECIAL METHODS
+    public double areaHighlighted(double tipWidth, double numOfRows) {
+      /*Action: Finds the area (in cm^2) that the user has highlighted based on their highlighter's
+        tipWidth and the number of rows highlighted.
+        Input: tipWidth and numOfRows
+        Output: The area the user has highlighted in cm^2.*/
 
-    /*Finds the area by multiplying the highlighter's tipwidth by the number of rows highlighted.
-      1 row is 17 cm.*/
-    return tipWidth * (17 * numOfRows);
+      /*Finds the area by multiplying the highlighter's tipwidth by the number of rows highlighted.
+        1 row is 17 cm.*/
+      return tipWidth * (17 * numOfRows);
 
-  } //areaHighlighted
+    } //areaHighlighted
 
-  public double highlighterVolume(double height, double radius) {
-    /*Action: Finds the volume (in mL, 1 cm^3 = 1 mL) of a highlighter object.
-      Input: height and radius
-      Output: It's volume*/
+    public double highlighterVolume(double height, double radius) {
+      /*Action: Finds the volume (in mL, 1 cm^3 = 1 mL) of a highlighter object.
+        Input: height and radius
+        Output: It's volume*/
 
-    //Uses a cylinder formula as most highlighters are cylinders
-    return Math.PI * Math.pow(radius, 2) * height;
+      //Uses a cylinder formula as most highlighters are cylinders
+      return Math.PI * Math.pow(radius, 2) * height;
 
-  } //volume
+    } //highlighterVolume
 
-  public double startingInkVol(double height, double radius) {
-    /*Action: Finds the volume of ink in mL a highlighter object starts with based on its volume.
-      Input: height and radius.
-      Output: The highlighter's starting volume of ink in mL.*/
+    public double startingInkVol(double height, double radius) {
+      /*Action: Finds the volume of ink in mL a highlighter object starts with based on its volume.
+        Input: height and radius.
+        Output: The highlighter's starting volume of ink in mL.*/
 
-    /*Multiplies the highlighter's volume by the ink constant, constant determined with the data of
-      how much ink a highlighter has based on its volume*/
-    return INK_VOL_CONSTANT * highlighterVolume(height, radius);
+      /*Multiplies the highlighter's volume by the ink constant, constant determined with the data of
+        how much ink a highlighter has based on its volume*/
+      return INK_VOL_CONSTANT * highlighterVolume(height, radius);
 
-  } //startingInkVol
+    } //startingInkVol
 
-  public int startingNumOfWords(double height, double radius) {
-    /*Action: Finds the total number of words a brand new highlighter can highlight.
-      Input: height and radius.
-      Output: The total number of words a brand new highlighter can highlight.*/
+    public int startingNumOfWords(double height, double radius) {
+      /*Action: Finds the total number of words a brand new highlighter can highlight.
+        Input: height and radius.
+        Output: The total number of words a brand new highlighter can highlight.*/
 
-    /*Multiplies the highlighter's volume by the ink constant, constant determined with the data of
-      how much ink a highlighter has based on its volume*/
-    return INK_VOL_CONSTANT * highlighterVolume(height, radius);
+      /*On average, 0.0002 mL of ink is used to highlight a word, so it will be the volume
+        of ink in the highlighter divided by how many mL's of ink is used per word*/
+      return (int) (highlighterVolume(height, radius) / 0.0002);
 
-  } //startingInkVol
+    } //startingInkVol
 
-  public double remainingInkVol(double height, double radius, int wordsHighlighted) {
-    /*Action: Finds the remaining volume of ink (in mL) left in a highlighter object, based on
-      the number of words its highlighted.
-      Input: Height, Radius, wordsHighlighted
-      Output: The remaining amount of ink left in the highlighter in mL.*/
-    
-    /*On average, 0.0002 mL of ink is used to highlight a word, so the remaining amount of
-      ink left would be its starting volume subtracted by volume of ink already used.*/
-    return startingInkVol(height, radius) - (0.0002 * wordsHighlighted);
+    public double remainingInkVol(double height, double radius, int wordsHighlighted) {
+      /*Action: Finds the remaining volume of ink (in mL) left in a highlighter object, based on
+        the number of words its highlighted.
+        Input: Height, Radius, wordsHighlighted
+        Output: The remaining amount of ink left in the highlighter in mL.*/
+      
+      /*On average, 0.0002 mL of ink is used to highlight a word, so the remaining amount of
+        ink left would be its starting volume subtracted by volume of ink already used.*/
+      return startingInkVol(height, radius) - (0.0002 * wordsHighlighted);
 
-  } //remainingInkVol
+    } //remainingInkVol
 
-  public int remainingNumOfWords(double height, double radius, int wordsHighlighted) {
-    /*Action: Finds the remaining number of words the current highlighter can highlight.
-      Input: height, radius, wordsHighlighted
-      Output: The remaining number of words the current highlighter can highlight.*/
+    public int remainingNumOfWords(double height, double radius, int wordsHighlighted) {
+      /*Action: Finds the remaining number of words the current highlighter can highlight.
+        Input: height, radius, wordsHighlighted
+        Output: The remaining number of words the current highlighter can highlight.*/
 
-      int 
-      return ()
-  } //
+      /*Gets the remaining number of words left in a highlighter object's lifespan by
+        subtracting from its starting amount with the number of words that have already 
+        been highlighted.*/
+      return (int) (startingNumOfWords(height, radius) - wordsHighlighted);
+    } //remainingNumOfWords
   
-
-} //highlighter
+} //highlighter class
