@@ -49,6 +49,7 @@ public class Highlighter {
         this.height = 12.8;
         this.tipType = "chisel";
         this.tipWidth = 0.3;
+        this.colour = colour;
     } //Highlighter overloaded constructor
 
 
@@ -97,9 +98,9 @@ public class Highlighter {
         Input: A highlighter object and a tipWidth.
         Output: Ensures the highlighter object has a valid tipWidth.*/
 
-        /*If the tipWidth inputted is above 0 cm, sets the current highlighter's
-        tipWidth to the one inputted*/
-        if (tipWidth > 0) {
+        /*If the tipWidth inputted is above 0 cm and less than or equal to 2 cm, sets the current 
+        highlighter's tipWidth to the one inputted*/
+        if (tipWidth > 0 && tipWidth <= 2) {
           this.tipWidth = tipWidth;
         }
         else {
@@ -131,7 +132,7 @@ public class Highlighter {
         /*Action: Returns a string representation of the value of each feature of the object.
           Input: A highlighter object.
           Output: The highlighter object's features.*/
-        return("This highlighter has the following features,\nHeight: " + height + "cm \nRadius: " + radius + " cm \nTip Type: " + tipType + "\n Tip Width: " + tipWidth + " cm\nColour: " + colour);
+        return("This highlighter has the following features,\nHeight: " + height + "cm \nRadius: " + radius + " cm \nTip Type: " + tipType + "\nTip Width: " + tipWidth + " cm\nColour: " + colour);
     } //toString
 
 
@@ -227,7 +228,7 @@ public class Highlighter {
 
       /*On average, 0.0002 mL of ink is used to highlight a word, so it will be the volume
         of ink in the highlighter divided by how many mL's of ink is used per word*/
-      return (int) (highlighterVolume(height, radius) / 0.0002);
+      return (int) (startingInkVol(height, radius) / 0.0002);
 
     } //startingInkVol
 
@@ -236,22 +237,79 @@ public class Highlighter {
         the number of words its highlighted.
         Input: Height, Radius, wordsHighlighted
         Output: The remaining amount of ink left in the highlighter in mL.*/
-      
-      /*On average, 0.0002 mL of ink is used to highlight a word, so the remaining amount of
+
+        /*On average, 0.0002 mL of ink is used to highlight a word, so the remaining amount of
         ink left would be its starting volume subtracted by volume of ink already used.*/
-      return startingInkVol(height, radius) - (0.0002 * wordsHighlighted);
+        double inkLeft = startingInkVol(height, radius) - (0.0002 * wordsHighlighted);
+
+        //If the inkLeft is negative, just returns 0, otherwise, returns the amount of inkLeft
+        if (inkLeft <= 0) {
+          return 0;
+        }
+        else {
+          return inkLeft;
+        }
+
+    } //remainingInkVol
+
+    public double remainingInkVol(double height, double radius, double inkVolUsed) {
+      /*Action: Finds the remaining volume of ink (in mL) left in a highlighter object, based on
+        the amount of ink used in mL.
+        Input: Height, Radius, inkVolUsed
+        Output: The remaining amount of ink left in the highlighter in mL.*/
+
+      /*Subtract the amount of ink used by the starting amount to get the amount remaining.*/
+      double inkLeft = startingInkVol(height, radius) - inkVolUsed;
+
+      //If the inkLeft is negative, just returns 0, otherwise, returns the amount of inkLeft
+      if (inkLeft <= 0) {
+        return 0;
+      }
+      else {
+        return inkLeft;
+      }
 
     } //remainingInkVol
 
     public int remainingNumOfWords(double height, double radius, int wordsHighlighted) {
-      /*Action: Finds the remaining number of words the current highlighter can highlight.
+      /*Action: Finds the remaining number of words the current highlighter can highlight,
+        based on the number of words highlighted.
         Input: height, radius, wordsHighlighted
         Output: The remaining number of words the current highlighter can highlight.*/
 
       /*Gets the remaining number of words left in a highlighter object's lifespan by
         subtracting from its starting amount with the number of words that have already 
         been highlighted.*/
-      return (int) (startingNumOfWords(height, radius) - wordsHighlighted);
+      int wordsLeft = (int) (startingNumOfWords(height, radius) - wordsHighlighted);
+
+      //If the wordsLeft is negative, just returns 0, otherwise, returns the amount of inkLeft
+      if (wordsLeft <= 0) {
+        return 0;
+      }
+      else {
+        return wordsLeft;
+      }
+
+    } //remainingNumOfWords
+
+    public int remainingNumOfWords(double height, double radius, double inkVolUsed) {
+      /*Action: Finds the remaining number of words the current highlighter can highlight,
+        based on the volume of ink used in mL.
+        Input: height, radius, inkVolUsed
+        Output: The remaining number of words the current highlighter can highlight.*/
+
+      /*Finds the number of words highlighted from the amount of ink used. Then, it subtracts the
+        starting number of words by that quotient.*/
+      int wordsLeft =  (int) (startingNumOfWords(height, radius) - (inkVolUsed / 0.0002));
+
+      //If the wordsLeft is negative, just returns 0, otherwise, returns the amount of inkLeft
+      if (wordsLeft <= 0) {
+        return 0;
+      }
+      else {
+        return wordsLeft;
+      }
+
     } //remainingNumOfWords
   
 } //highlighter class
