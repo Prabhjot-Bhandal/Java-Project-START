@@ -54,6 +54,20 @@ public class Highlighter {
         this.colour = colour;
     } //Highlighter overloaded constructor
 
+    public Highlighter(double height, double radius, double tipWidth, String colour, String tipType) {
+      /*Action: Creates a highlighter object that has all of its features defined by a user/external data source.
+        Input: height, radius, tipWidth, colour, tipType
+        Output: A highlighter object with all of its features defined by the user.*/
+
+        //Sets the objects features to the  data put in by the user/program
+        this.radius = radius;
+        this.height = height;
+        this.tipType = tipType;
+        this.tipWidth = tipWidth;
+        this.colour = colour;
+
+    } //Highlighter overloaded constructor #2
+
 
     //Accessors (getters) - to show the value of a variable declared private
     public double getRadius () {
