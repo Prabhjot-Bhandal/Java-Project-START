@@ -79,11 +79,15 @@ public class HighlighterSet {
     } //getArrayLength
 
 
-    //SETTERS
-    public void toString() {
+    //TOSTRING METHOD
+    public String toString() {
+      /*Action: */
         
+
+      
     }
 
-    //TOSTRING METHOD
 
+    //INSTANCE METHODS
+    public Highlighter[] selection
 }
