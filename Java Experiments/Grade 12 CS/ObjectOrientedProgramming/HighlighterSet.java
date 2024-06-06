@@ -80,7 +80,7 @@ public class HighlighterSet {
 
   
   //SETTERS
-  public int setArrayLength(int arrayLength) {
+  public void setArrayLength(int arrayLength) {
     /*Action: Sets the array length to whatever the user inputs IF it is between 0 and 16 elements.
       Otherwise, it sets an automatic value of 3.
       Input: An integer
@@ -90,9 +90,9 @@ public class HighlighterSet {
     if (arrayLength > 0 && arrayLength < 16) {
       this.arrayLength = arrayLength;
     } 
-    //If an invalid arrayLength is inputted, sets the arrayLength to an automatic number of 3
+    //If an invalid arrayLength is inputted, sets the arrayLength to an automatic number of 2
     else {
-      arrayLength = 3;
+      arrayLength = 2;
     }
 
   } //setArrayLength
@@ -114,9 +114,9 @@ public class HighlighterSet {
     for (int index = 0; index < highlighterArray.length; index++) {
       /*Numbers the current highlighter and appends the the current highlighter's string representation
         to its number.*/
-      currentHighlighter = ("Highlighter " + index + ":\n" + highlighterArray[index].toString());
+      currentHighlighter = ("\n\nHighlighter " + index + ":\n" + highlighterArray[index].toString());
       //Concatenates the current highlighter's string representation to the string that will be returned
-      returnString.concat(currentHighlighter + "\n\n");
+      returnString += currentHighlighter; 
     }
 
     //Returns the now filled returnString will all string representations of every highlighter in the array
@@ -126,5 +126,98 @@ public class HighlighterSet {
 
 
   //INSTANCE METHODS
-  public Highlighter[] selection
+  public void insertionSortHighlighterHeight (Highlighter[] highlighterArray) {
+    /*Action: Sorts a given array of highlighters (from smallest to biggest) based on their 
+              heights.
+      Input: One dimensional highlighter object array.
+      Output: The sorted one dimensional highlighter object array.*/
+
+      //Loops through the entire given highlighter object array
+      for (int index = 1 ; index < highlighterArray.length ; index++) {
+        //Stores the current element the loop is on in an empty highlighter object
+        Highlighter item = highlighterArray[index];
+        //Stores the current index in a seperate variable so that it can be used to swap later on
+        int toPlace = index;
+
+        /*While loop runs through all previous indices before the current one and compares the 
+        current object's height to the heights of all the previous ones*/
+        while (toPlace > 0 && item.getHeight() < highlighterArray[toPlace - 1].getHeight()) {
+            //Assigns previous (and thus smaller) elements before the current element in the aray
+            highlighterArray[toPlace] = highlighterArray[toPlace - 1];
+            //Subtracts 1 so that we can look at the next element, works from the current index to the first
+            toPlace--;
+        } //While loop stops once the current comparison item is no longer smaller than the one before it
+
+        //Switches the current element to the index where all of the ones after it are greater than it
+        highlighterArray[toPlace] = item;
+      }//for index
+
+      //Returns the array
+      this.highlighterArray = highlighterArray;
+
+  } //insertionSortHighlighterHeight
+
+  public Highlighter[] insertionSortHighlighterRadius (Highlighter[] highlighterArray) {
+    /*Action: Sorts a given array of highlighters (from smallest to biggest) based on their 
+              radii.
+      Input: One dimensional highlighter object array.
+      Output: The sorted one dimensional highlighter object array.*/
+
+      //Loops through the entire given highlighter object array
+      for (int index = 1 ; index < highlighterArray.length ; index++) {
+        //Stores the current element the loop is on in an empty highlighter object
+        Highlighter item = highlighterArray[index];
+        //Stores the current index in a seperate variable so that it can be used to swap later on
+        int toPlace = index;
+
+        /*While loop runs through all previous indices before the current one and compares the 
+        current object's radius to the radii of all the previous ones*/
+        while (toPlace > 0 && item.getRadius() < highlighterArray[toPlace - 1].getRadius()) {
+            //Assigns previous (and thus smaller) elements before the current element in the aray
+            highlighterArray[toPlace] = highlighterArray[toPlace - 1];
+            //Subtracts 1 so that we can look at the next element, works from the current index to the first
+            toPlace--;
+        } //While loop stops once the current comparison item is no longer smaller than the one before it
+
+        //Switches the current element to the index where all of the ones after it are greater than it
+        highlighterArray[toPlace] = item;
+      }//for index
+
+      //Returns the array
+      return highlighterArray;
+
+  } //insertionSortHighlighterRadius
+
+  public Highlighter[] insertionSortHighlighterTipWidth (Highlighter[] highlighterArray) {
+    /*Action: Sorts a given array of highlighters (from smallest to biggest) based on their 
+              tip widths.
+      Input: One dimensional highlighter object array.
+      Output: The sorted one dimensional highlighter object array.*/
+
+      //Loops through the entire given highlighter object array
+      for (int index = 1 ; index < highlighterArray.length ; index++) {
+        //Stores the current element the loop is on in an empty highlighter object
+        Highlighter item = highlighterArray[index];
+        //Stores the current index in a seperate variable so that it can be used to swap later on
+        int toPlace = index;
+
+        /*While loop runs through all previous indices before the current one and compares the 
+        current object's tip width to the tip widths of all the previous ones*/
+        while (toPlace > 0 && item.getTipWidth() < highlighterArray[toPlace - 1].getTipWidth()) {
+            //Assigns previous (and thus smaller) elements before the current element in the aray
+            highlighterArray[toPlace] = highlighterArray[toPlace - 1];
+            //Subtracts 1 so that we can look at the next element, works from the current index to the first
+            toPlace--;
+        } //While loop stops once the current comparison item is no longer smaller than the one before it
+
+        //Switches the current element to the index where all of the ones after it are greater than it
+        highlighterArray[toPlace] = item;
+      }//for index
+
+      //Returns the array
+      return highlighterArray;
+
+  } //insertionSortHighlighterTipWidth
+
+
 }

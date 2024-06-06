@@ -13,6 +13,8 @@ public class Highlighter {
     //Made strings public as they don't have important calculations
     public String tipType;
     public String colour;
+    public boolean capOn; //Checks if the cap of the 
+    public final String[] COLOURS = {"red", "blue", "yellow", "green", "purple", "orange", "grey", "black", "white"}; //Array containing the possible colours of highlighter
 
     /*This constant is based on the following statistics:
       Average Ink Volume: 10 mL
@@ -32,6 +34,7 @@ public class Highlighter {
         tipWidth = 0;
         colour = "none";
         tipType = "none"; //Valid types: chisel, widnow, bullet, double-ended
+        capOn = true; 
     } //Highlighter
 
     /*We can make multiple constructor methods because we may want to make specific types of objects.
@@ -53,6 +56,7 @@ public class Highlighter {
         this.tipWidth = 0.3;
         this.colour = colour;
     } //Highlighter overloaded constructor
+
 
     public Highlighter(double height, double radius, double tipWidth, String colour, String tipType) {
       /*Action: Creates a highlighter object that has all of its features defined by a user/external data source.
