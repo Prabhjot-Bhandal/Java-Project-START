@@ -3,11 +3,10 @@
 
 package ObjectOrientedProgramming;
 
-public class HighlighterSet {
+public class HighlighterSet extends Highlighter{
   //INSTANCE VARIABLES
   private Highlighter[] highlighterArray; //Actually holds the array
   private int arrayLength; //Length of the highlighter array
-  final String[] COLOURS = {"red", "blue", "yellow", "green", "purple", "orange", "grey", "black", "white"}; //Array containing the possible colours of highlighter
 
 
   //CONSTRUCTORS
@@ -58,6 +57,40 @@ public class HighlighterSet {
       }
 
   } //HighlighterSet Constructor: Average Dimensions with Random Colours or A Complete Highlighter Set
+
+  public HighlighterSet(String[] colourOptions, String[] tipTypeOptions) {
+    /*Action: Constructs an array of highlighter objects using the randomized highlighter constructor.
+      This will create a randomized number of highlighters with randomized features.
+      Input: colourOptions array, tipTypeOptions array
+      Output: A filled highlighterArray of randomized highlighters.*/
+
+      /*Determines a random array length from 0 to 15 elements*/
+      arrayLength = (int) (Math.random() * 16);
+      //Instatiates the array's elements with the proper length of the array
+      highlighterArray = new Highlighter[arrayLength];
+
+      //Goes through each index of the highlighterArray and creates a blank highlighter for each index
+      for (int index = 0; index < highlighterArray.length; index++) {
+          highlighterArray[index] = new Highlighter(colourOptions, tipTypeOptions);
+      }
+
+  } //HighlighterSet Constructor: Randomized Highlighters
+
+  public HighlighterSet(String[] colourOptions, String[] tipTypeOptions, int arrayLength) {
+    /*Action: Constructs an array of highlighter objects using the randomized highlighter constructor.
+      This will create a set number of highlighters with randomized features.
+      Input: colourOptions array, tipTypeOptions array, arrayLength
+      Output: A filled highlighterArray of randomized highlighters.*/
+
+      //Instatiates the array's elements with the proper length of the array
+      highlighterArray = new Highlighter[arrayLength];
+
+      //Goes through each index of the highlighterArray and creates a blank highlighter for each index
+      for (int index = 0; index < highlighterArray.length; index++) {
+          highlighterArray[index] = new Highlighter(colourOptions, tipTypeOptions);
+      }
+
+  } //HighlighterSet Constructor: A Set Amount of Randomized Highlighters
 
 
   //GETTERS
@@ -218,6 +251,22 @@ public class HighlighterSet {
       return highlighterArray;
 
   } //insertionSortHighlighterTipWidth
+
+  public double totalVolume () {
+    /*Action: Finds the total volume of all of the highlighters in the array.
+      Input: A highlighter object.
+      Output: The total volume of all the highlighters.*/
+  
+
+      
+    double totalVolume = 0;
+
+    for (int index = 0; index < this.highlighterArray.length; index++) {
+      totalVolume += this.highlighterArray[index].highlighterVolume();
+    } 
+
+    return totalVolume;
+  } //totalVolume
 
 
 }
