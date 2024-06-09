@@ -139,15 +139,15 @@ public class HighlighterSet extends Highlighter{
       the array holds.*/
 
     //Creates a string that will hold the string that will be returned
-    String returnString = ("This set has " + arrayLength + " highlighters. \n");
+    String returnString = ("This set has " + this.highlighterArray.length + " highlighters. \n");
     //Instantiates a string variable that will hold the current highlighter object's string representation
     String currentHighlighter;
 
     //Goes through each element in the highlighterArray
-    for (int index = 0; index < highlighterArray.length; index++) {
+    for (int index = 0; index < this.highlighterArray.length; index++) {
       /*Numbers the current highlighter and appends the the current highlighter's string representation
         to its number.*/
-      currentHighlighter = ("\n\nHighlighter " + index + ":\n" + highlighterArray[index].toString());
+      currentHighlighter = ("\n\nHighlighter " + index + ":\n" + this.highlighterArray[index].toString());
       //Concatenates the current highlighter's string representation to the string that will be returned
       returnString += currentHighlighter; 
     }
@@ -159,61 +159,61 @@ public class HighlighterSet extends Highlighter{
 
 
   //INSTANCE METHODS
-  public void insertionSortHighlighterHeight (Highlighter[] highlighterArray) {
+  public Highlighter[] insertionSortHighlighterHeight() {
     /*Action: Sorts a given array of highlighters (from smallest to biggest) based on their 
               heights.
       Input: One dimensional highlighter object array.
       Output: The sorted one dimensional highlighter object array.*/
 
       //Loops through the entire given highlighter object array
-      for (int index = 1 ; index < highlighterArray.length ; index++) {
+      for (int index = 1 ; index < this.highlighterArray.length ; index++) {
         //Stores the current element the loop is on in an empty highlighter object
-        Highlighter item = highlighterArray[index];
+        Highlighter item = this.highlighterArray[index];
         //Stores the current index in a seperate variable so that it can be used to swap later on
         int toPlace = index;
 
         /*While loop runs through all previous indices before the current one and compares the 
         current object's height to the heights of all the previous ones*/
-        while (toPlace > 0 && item.getHeight() < highlighterArray[toPlace - 1].getHeight()) {
+        while (toPlace > 0 && item.getHeight() < this.highlighterArray[toPlace - 1].getHeight()) {
             //Assigns previous (and thus smaller) elements before the current element in the aray
-            highlighterArray[toPlace] = highlighterArray[toPlace - 1];
+            this.highlighterArray[toPlace] = this.highlighterArray[toPlace - 1];
             //Subtracts 1 so that we can look at the next element, works from the current index to the first
             toPlace--;
         } //While loop stops once the current comparison item is no longer smaller than the one before it
 
         //Switches the current element to the index where all of the ones after it are greater than it
-        highlighterArray[toPlace] = item;
+        this.highlighterArray[toPlace] = item;
       }//for index
 
       //Returns the array
-      this.highlighterArray = highlighterArray;
+      return highlighterArray;
 
   } //insertionSortHighlighterHeight
 
-  public Highlighter[] insertionSortHighlighterRadius (Highlighter[] highlighterArray) {
+  public Highlighter[] insertionSortHighlighterRadius() {
     /*Action: Sorts a given array of highlighters (from smallest to biggest) based on their 
               radii.
       Input: One dimensional highlighter object array.
       Output: The sorted one dimensional highlighter object array.*/
 
       //Loops through the entire given highlighter object array
-      for (int index = 1 ; index < highlighterArray.length ; index++) {
+      for (int index = 1 ; index < this.highlighterArray.length ; index++) {
         //Stores the current element the loop is on in an empty highlighter object
-        Highlighter item = highlighterArray[index];
+        Highlighter item = this.highlighterArray[index];
         //Stores the current index in a seperate variable so that it can be used to swap later on
         int toPlace = index;
 
         /*While loop runs through all previous indices before the current one and compares the 
         current object's radius to the radii of all the previous ones*/
-        while (toPlace > 0 && item.getRadius() < highlighterArray[toPlace - 1].getRadius()) {
+        while (toPlace > 0 && item.getRadius() < this.highlighterArray[toPlace - 1].getRadius()) {
             //Assigns previous (and thus smaller) elements before the current element in the aray
-            highlighterArray[toPlace] = highlighterArray[toPlace - 1];
+            this.highlighterArray[toPlace] = this.highlighterArray[toPlace - 1];
             //Subtracts 1 so that we can look at the next element, works from the current index to the first
             toPlace--;
         } //While loop stops once the current comparison item is no longer smaller than the one before it
 
         //Switches the current element to the index where all of the ones after it are greater than it
-        highlighterArray[toPlace] = item;
+        this.highlighterArray[toPlace] = item;
       }//for index
 
       //Returns the array
@@ -221,30 +221,30 @@ public class HighlighterSet extends Highlighter{
 
   } //insertionSortHighlighterRadius
 
-  public Highlighter[] insertionSortHighlighterTipWidth (Highlighter[] highlighterArray) {
+  public Highlighter[] insertionSortHighlighterTipWidth() {
     /*Action: Sorts a given array of highlighters (from smallest to biggest) based on their 
               tip widths.
       Input: One dimensional highlighter object array.
       Output: The sorted one dimensional highlighter object array.*/
 
       //Loops through the entire given highlighter object array
-      for (int index = 1 ; index < highlighterArray.length ; index++) {
+      for (int index = 1 ; index < this.highlighterArray.length ; index++) {
         //Stores the current element the loop is on in an empty highlighter object
-        Highlighter item = highlighterArray[index];
+        Highlighter item = this.highlighterArray[index];
         //Stores the current index in a seperate variable so that it can be used to swap later on
         int toPlace = index;
 
         /*While loop runs through all previous indices before the current one and compares the 
         current object's tip width to the tip widths of all the previous ones*/
-        while (toPlace > 0 && item.getTipWidth() < highlighterArray[toPlace - 1].getTipWidth()) {
+        while (toPlace > 0 && item.getTipWidth() < this.highlighterArray[toPlace - 1].getTipWidth()) {
             //Assigns previous (and thus smaller) elements before the current element in the aray
-            highlighterArray[toPlace] = highlighterArray[toPlace - 1];
+            this.highlighterArray[toPlace] = this.highlighterArray[toPlace - 1];
             //Subtracts 1 so that we can look at the next element, works from the current index to the first
             toPlace--;
         } //While loop stops once the current comparison item is no longer smaller than the one before it
 
         //Switches the current element to the index where all of the ones after it are greater than it
-        highlighterArray[toPlace] = item;
+        this.highlighterArray[toPlace] = item;
       }//for index
 
       //Returns the array
@@ -252,21 +252,80 @@ public class HighlighterSet extends Highlighter{
 
   } //insertionSortHighlighterTipWidth
 
-  public double totalVolume () {
+  public int linearSearchHighlighterColour(String findColour) {
+    /*Action: Searches through the highlighter set for a highlighter with the given colour.
+      Input: The colour to find and the highlighter object.
+      Ouput: The index at which the the colour highlighter is in the array.*/
+
+    //Creates a for loop to search for the highlighter with the given colour
+    for (int currentIndex = 0; currentIndex < this.highlighterArray.length; currentIndex++) {
+        /*If the highlighter with the desired colour is found, it will return the index at which 
+        the highlighter was found in the array*/
+        if (findColour.equals(this.highlighterArray[currentIndex].colour)) {
+            return currentIndex;
+        }
+    }
+
+    //If the value was not found in the array, it will return a value of -1
+    return -1;
+
+  } //linearSearchHighlighterColour
+
+  public double totalVolume() {
     /*Action: Finds the total volume of all of the highlighters in the array.
-      Input: A highlighter object.
+      Input: A highlighter set.
       Output: The total volume of all the highlighters.*/
   
-
-      
+    //Instantiates the variable that holds the total volume of all the highlighters
     double totalVolume = 0;
 
+    //Goes through every highlighter in the set
     for (int index = 0; index < this.highlighterArray.length; index++) {
+      //Finds the volume of the current highlighter and adds it to the total volume
       totalVolume += this.highlighterArray[index].highlighterVolume();
     } 
 
+    //Returns the total volume of all the highlighters
     return totalVolume;
+
   } //totalVolume
 
+  public double totalInkVol() {
+    /*Action: Finds the total ink volume of all of the highlighters in the array.
+      Input: A highlighter set.
+      Output: The total ink volume of all the highlighters.*/
+  
+    //Instantiates the variable that holds the total ink volume of all the highlighters
+    double totalInkVol = 0;
 
-}
+    //Goes through every highlighter in the set
+    for (int index = 0; index < this.highlighterArray.length; index++) {
+      //Finds the ink volume of the current highlighter and adds it to the total volume
+      totalInkVol += this.highlighterArray[index].startingInkVol();
+    } 
+
+    //Returns the total ink volume of all the highlighters
+    return totalInkVol;
+
+  } //totalInkVol
+
+  public double totalNumOfWords() {
+    /*Action: Finds the total number of words of all of the highlighters in the array.
+      Input: A highlighter set.
+      Output: The total number of words of all the highlighters.*/
+  
+    //Instantiates the variable that holds the total number of words of all the highlighters
+    double totalNumOfWords = 0;
+
+    //Goes through every highlighter in the set
+    for (int index = 0; index < this.highlighterArray.length; index++) {
+      //Finds the number of words of the current highlighter and adds it to the total number of words
+      totalNumOfWords += this.highlighterArray[index].startingNumOfWords();
+    } 
+
+    //Returns the total number of words of all the highlighters
+    return totalNumOfWords;
+
+  } //totalNumOfWords
+
+} //highlighterSet class

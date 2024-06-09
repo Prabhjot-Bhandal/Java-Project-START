@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "highlighterTester",
+            "request": "launch",
+            "mainClass": "ObjectOrientedProgramming.highlighterTester",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
             "name": "ShapeTester",
             "request": "launch",
             "mainClass": "ObjectOrientedProgramming.ShapeHierachy.ShapeTester",

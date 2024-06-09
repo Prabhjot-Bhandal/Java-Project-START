@@ -13,7 +13,6 @@ public class Highlighter {
     //Made strings public as they don't have important calculations
     public String tipType;
     public String colour;
-    public boolean randomized;
     //Array containing the possible colours of highlighter
     final String[] COLOURS = {"red", "blue", "yellow", "green", "purple", "orange", "grey", "black", "white"};
     //Array containing all possible tip types
@@ -44,7 +43,7 @@ public class Highlighter {
         Input: An empty highlighter object
         Output: A highlighter object with randomized features.*/
 
-      height = Math.random() + 3 * 10; //Within the height bounds between 3 cm and 10 cm
+      height = Math.random() * 10 + 3; //Within the height bounds between 3 cm and 10 cm
       radius = Math.random() * 3; //Within the radius bounds between 0 cm and 3 cm
       tipWidth = Math.random() * 2; //Within the the tip width 0 cm and 2 cm
       colour = colourOptions[(int) (Math.random() * colourOptions.length)]; //Picks a colour within the colourOptions array given

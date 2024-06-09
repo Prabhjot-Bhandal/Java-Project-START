@@ -9,7 +9,7 @@ public class highlighterTester {
     public static void main(String[] args) {
         HighlighterSet highlighterArr = new HighlighterSet(5);
         Highlighter highlighter = new Highlighter("orange");
-        System.out.println("" + highlighterArr.totalVolume());
+        System.out.println("" + highlighterArr.totalNumOfWords());
         
     }
 }
