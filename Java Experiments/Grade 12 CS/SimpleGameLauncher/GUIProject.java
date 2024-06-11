@@ -1,5 +1,5 @@
 //Prabhjot Bhandal
-//April 9th, 2024
+//April 9, 2024
 //My GUI Project based on a game launcher for computers
 
 package SimpleGameLauncher;
@@ -158,7 +158,7 @@ public class GUIProject {
             /*Sets the current element to be a scaled version of the game banners stored in the file.
               The game banners stored in the file are numbered to make it easier to access them in a loop.
               The getScaledIcon method is accessed using the correct measurements so that the icons are not distorted.*/
-            gameBanners[currentGameBanner] = getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameBanner" + currentGameBanner + ".png", gameIconWidth);
+            gameBanners[currentGameBanner] = getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameBanners\\gameBanner" + currentGameBanner + ".png", gameIconWidth);
         }
 
         //Sets the gameLibrary panel's size, makes the height equal to how tall each game is by how many games there are
@@ -200,12 +200,12 @@ public class GUIProject {
       mainGameInfoPanel.setLayout(new BoxLayout(mainGameInfoPanel, BoxLayout.Y_AXIS));
 
       //Gets and stores the image in a JLabel so it can be accessed later
-      JLabel currentGameDescImageLabel = new JLabel(getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameDescImg" + currentGame + ".png", 500));
+      JLabel currentGameDescImageLabel = new JLabel(getScaledIcon("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameDescImages\\gameDescImg" + currentGame + ".png", 500));
       //Adds the image label to the panel
       mainGameInfoPanel.add(currentGameDescImageLabel);
 
       //Gets the name for the current game
-      String currentGameNameString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameName" + currentGame + ".txt")).useDelimiter("\\A").next();
+      String currentGameNameString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameNames\\gameName" + currentGame + ".txt")).useDelimiter("\\A").next();
 
       //Creates a label for the game's name, SwingConstraints forces the position of the title to be in the center
       JLabel currentGameName = new JLabel(currentGameNameString);
@@ -215,7 +215,7 @@ public class GUIProject {
       mainGameInfoPanel.add(currentGameName);
 
       //Gets the desription for the current game
-      String currentGameDescString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameDesc" + currentGame + ".txt")).useDelimiter("\\A").next();
+      String currentGameDescString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameDescriptions\\gameDesc" + currentGame + ".txt")).useDelimiter("\\A").next();
       //Creates the text area that will house the description of the game
       JTextArea currentGameDesc = new JTextArea(50, 8);
       //Makes the text area uneditable
@@ -277,7 +277,7 @@ public class GUIProject {
       gameButtonsStatsFriendsPanel.add(playAndSettingsButtons);
 
       //Gets the user's statistics for the current game
-      String currentGameStatsString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameStats" + currentGame + ".txt")).useDelimiter("\\A").next();
+      String currentGameStatsString = new Scanner(new File("Java Experiments\\Grade 12 CS\\SimpleGameLauncher\\gameStats\\gameStats" + currentGame + ".txt")).useDelimiter("\\A").next();
       //Creates the text area that will house the user's statistics of the game
       JTextArea currentGameStats = new JTextArea(1, 8);
       //Puts the text from the txt file in the text area for the user's statistics in the game
@@ -313,12 +313,12 @@ public class GUIProject {
     public static void HTMLLauncher() {
       String htmlFilePath = "Java Experiments/Grade 12 CS/SimpleGameLauncher/gameExecute" + currentGame + "/gameExecute" + currentGame + ".html";
 
-        // Check if Desktop is supported
+        //Check if Desktop is supported
         if (Desktop.isDesktopSupported()) {
             Desktop desktop = Desktop.getDesktop();
 
             try {
-                // Open the HTML file with the default web browser
+                //Open the HTML file with the default web browser
                 File htmlFile = new File(htmlFilePath);
                 desktop.open(htmlFile);
             } catch (IOException e) {
