@@ -19,32 +19,99 @@ public class GameLauncherREBORN {
     static int gameLibraryHeightSum = 0;
     //Sets the current game to the first one in the array
     static int currentGame = 0;
+    //Instantiates the number of games the user has in their library
+    static int numOfGames = 7;
+    /*Creates a 2D array that contains all the available assets.
+      Each row will represent each game, their assets will be in that row (ex. game 0 is represented by the 0th
+      row). Each column will represent the type of asset (ex. coloumn zero houses all game banners).*/
+    static String gameAssetsFiles[][];
+
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        //Makes it so that the program is exited when the "x" button is hit
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      //Fills the gameAssetsFiles 2D array to be used later to access game assets
+      fillGameAssetsFilesTwoDArray();
 
-        //Sets the size of the frame
-        mainFrame.setSize(1280, 720);
+      //Makes it so that the program is exited when the "x" button is hit
+      mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //Sets the layout of the main frame
-        mainFrame.getContentPane().setLayout(new BorderLayout()); 
+      //Sets the size of the frame
+      mainFrame.setSize(1280, 720);
 
-        //Creates the menuBar in its entirety, appends to the mainFrame
-        menuBar();
+      //Sets the layout of the main frame
+      mainFrame.getContentPane().setLayout(new BorderLayout()); 
 
-        //Creates the gameLibrary side view and adds it to the left-side of the main frame
-        gameLibrarySideView();
+      //Creates the menuBar in its entirety, appends to the mainFrame
+      menuBar();
 
-        //Creates the current game's info panel and adds it to the center of the main frame
-        mainGameInfo();
+      //Creates the gameLibrary side view and adds it to the left-side of the main frame
+      gameLibrarySideView();
 
-        //Creates the panel that houses the play and settings buttons and the list of friends who own the game you're looking at and adds it to the right-side of the main frame
-        gameButtonsAndStats();
+      //Creates the current game's info panel and adds it to the center of the main frame
+      mainGameInfo();
 
-        //Makes the mainFrame visible
-        mainFrame.setVisible(true);
+      //Creates the panel that houses the play and settings buttons and the list of friends who own the game you're looking at and adds it to the right-side of the main frame
+      gameButtonsAndStats();
+
+      //Makes the mainFrame visible
+      mainFrame.setVisible(true);
     } //main
+
+    public static void fillGameAssetsFilesTwoDArray() {
+      /*Action: Fills the gameAssets two dimensional array with all of the required file paths.
+        Input: An empty string type two dimensional array.
+        Output: A filled string type two dimensional array containing all of the required assets
+        for the launcher.*/
+      
+      String generalGameAssetsFilePaths[] = {"Java Experiments\\Grade 12 CS\\GameLauncherREBORN\\assets\\gameBanners\\",
+        "Java Experiments\\Grade 12 CS\\GameLauncherREBORN\\assets\\gameNames\\",
+        "Java Experiments\\Grade 12 CS\\GameLauncherREBORN\\assets\\gameDescriptions\\",
+        "Java Experiments\\Grade 12 CS\\GameLauncherREBORN\\assets\\gameDescImages\\",
+        "Java Experiments\\Grade 12 CS\\GameLauncherREBORN\\assets\\gameStats\\"};
+      
+      //As each row is a different game, sets the number of rows to the number of games in the library
+      gameAssetsFiles = new String[numOfGames][generalGameAssetsFilePaths.length];
+
+      /*Columns Legend:
+        Column 0 = Game Banners
+        Column 1 = Names
+        Column 2 = Descriptions
+        Column 3 = Description Images
+        Column 4 = gameStats*/
+      
+      for(int currentRow = 0; currentRow < generalGameAssetsFilePaths.length; currentRow++) {
+        /*Starts at the first game and banner*/
+        for(int currentColumn = 0; currentColumn < gameAssetsFiles[currentRow].length; currentColumn++) {
+            gameAssetsFiles[currentRow][currentColumn]
+        }
+      }
+    } //fillGameAssetsFilesTwoDArray
+
+    } 
+
+    public static ImageIcon getScaledIcon(String imagePath, int width) throws IOException {
+      /*Action: Gets images from the computer and scales them according to the dimensions of their button
+        Input: The image's file path, and the width of the button
+        Output: A new, properly scaled, ImageIcon*/
+  
+      //Takes in the original image from the specified file path
+      ImageIcon originalIcon = new ImageIcon(imagePath);
+      //Creates a seperate image var to get the original's dimensions
+      Image originalImage = originalIcon.getImage();
+      
+      //Get the aspect ratio of the original image, observer isn't mainFrame since it isn't visible yet, making the aspectRatio 0
+      double aspectRatio = (double) originalImage.getWidth(null) / originalImage.getHeight(null);
+      
+      //Calculate the height using the given width and aspect ratio
+      int height = (int) (width / aspectRatio);
+      //Adds this icons height to the height sum
+      gameLibraryHeightSum += height;
+      
+      //Scale the original images to the desired dimensions while upholding its aspect ratio
+      Image scaledImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+      
+      //Creates an ImageIcon using the new scaled image and returns it
+      return new ImageIcon(scaledImage);
+  }
 
     public static void menuBar() {
         /*Action: Makes the menuBar at the top of the screen
@@ -112,31 +179,6 @@ public class GameLauncherREBORN {
 
     } //menuBar
 
-    public static ImageIcon getScaledIcon(String imagePath, int width) throws IOException {
-        /*Action: Gets images from the computer and scales them according to the dimensions of their button
-          Input: The image's file path, and the width of the button
-          Output: A new, properly scaled, ImageIcon*/
-    
-        //Takes in the original image from the specified file path
-        ImageIcon originalIcon = new ImageIcon(imagePath);
-        //Creates a seperate image var to get the original's dimensions
-        Image originalImage = originalIcon.getImage();
-        
-        //Get the aspect ratio of the original image, observer isn't mainFrame since it isn't visible yet, making the aspectRatio 0
-        double aspectRatio = (double) originalImage.getWidth(null) / originalImage.getHeight(null);
-        
-        //Calculate the height using the given width and aspect ratio
-        int height = (int) (width / aspectRatio);
-        //Adds this icons height to the height sum
-        gameLibraryHeightSum += height;
-        
-        //Scale the original images to the desired dimensions while upholding its aspect ratio
-        Image scaledImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        
-        //Creates an ImageIcon using the new scaled image and returns it
-        return new ImageIcon(scaledImage);
-    }
-
     public static void gameLibrarySideView() throws IOException {
         /*Action: Makes the right most panel that houses all of the user's games
           Input: None
@@ -147,8 +189,6 @@ public class GameLauncherREBORN {
         //Sets the layout manager of the gameLibrary as a box layout, organizes the subpanels vertically
         gameLibrary.setLayout(new BoxLayout(gameLibrary, BoxLayout.Y_AXIS));
 
-        //Instantiates the number of games the user has in their library
-        int numOfGames = 6;
         //Creates arrays for the game banners and buttons that have the same amount of games the user owns
         ImageIcon gameBanners[] = new ImageIcon[numOfGames];
         JButton gameButtons[] = new JButton[numOfGames];
