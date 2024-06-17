@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Checker",
+            "request": "launch",
+            "mainClass": "GameLauncherREBORN.Checker",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "JFrameJPanelAndActionExploration",
+            "request": "launch",
+            "mainClass": "GUIExploration.JFrameJPanelAndActionExploration",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "GameLauncherREBORN",
+            "request": "launch",
+            "mainClass": "GameLauncherREBORN.GameLauncherREBORN",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
+            "name": "launcherMethodTester",
+            "request": "launch",
+            "mainClass": "GameLauncherREBORN.launcherMethodTester",
+            "projectName": "Java-Project-START_8c052a0f"
+        },
+        {
+            "type": "java",
             "name": "highlighterTester",
             "request": "launch",
             "mainClass": "ObjectOrientedProgramming.highlighterTester",

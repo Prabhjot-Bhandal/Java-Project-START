@@ -1,5 +1,5 @@
 //Name: Prabhjot Bhandal
-//Date: May 31, 2024
+//Date: June 15, 2024
 
 package ObjectOrientedProgramming;
 
@@ -270,6 +270,43 @@ public class HighlighterSet extends Highlighter{
     return -1;
 
   } //linearSearchHighlighterColour
+
+  public String binarySearchRecursiveHighlighterColour(String searchValue, int startIndex, int endIndex) {
+    /*Action: Searches for a given value in an array of highlighters using a recursive version of the binary search algorithm.
+      Input: The highlighter array, the search value, the start index and the end index
+      Output: The index at which the element that was being searched for is.*/
+
+    //Only runs if the start index is less than or equal to the end index, end is smaller when an element isn't found
+    if (startIndex <= endIndex) {
+
+        //Finds the middle index by taking the average of the startIndex and endIndex
+        int midIndex = (startIndex + endIndex) / 2;
+
+        //If the search value is equal to the middle index, that means the element has been found
+        if (searchValue.equalsIgnoreCase(this.highlighterArray[midIndex].colour)) {
+            //Returns middle index
+            return ("Highlighter " + midIndex + ":\n" + highlighterArray[midIndex].toString());
+        }
+        /*If the search value is less than the middle element, then the ladder half of the array is discarded*/
+        else if (searchValue.compareToIgnoreCase(this.highlighterArray[midIndex].colour) < 0) {
+            /*Subtracts one as we already checked the middle element, so we don't need to check it 
+            again in our search. If not done, the loop runs forever for elements not in the array.*/
+            return binarySearchRecursiveHighlighterColour(searchValue, startIndex, midIndex - 1);
+        }
+        /*If the search value is greater than the middle element, the first half of the array is discarded*/
+        else {
+            /*Adds one as we already checked the middle element, so we don't need to check it 
+            again in our search. If not done, the loop runs forever for elements not in the array.*/
+            return binarySearchRecursiveHighlighterColour(searchValue, midIndex + 1, endIndex);
+        }
+    } 
+    //If the endIndex becomes smaller than the startIndex, the element is NOT in the array
+    else {
+        //Returns -1 if the search value is not in the array
+        return null;
+    }
+
+  } //binarySearchRecursiveHighlighter
 
   public double totalVolume() {
     /*Action: Finds the total volume of all of the highlighters in the array.

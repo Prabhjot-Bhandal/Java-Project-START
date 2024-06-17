@@ -8,8 +8,9 @@ public class highlighterTester {
     final static String[] TIP_TYPES = {"chisel", "window", "bullet", "double-ended"};
     public static void main(String[] args) {
         HighlighterSet highlighterArr = new HighlighterSet(5);
-        Highlighter highlighter = new Highlighter("orange");
-        System.out.println("" + highlighterArr.totalNumOfWords());
+        System.out.println(highlighterArr.toString() + "\n\n");
+        System.out.println("********SEARCH*********");
+        System.out.println(highlighterArr.binarySearchRecursiveHighlighterColour(COLOURS[6], 0, highlighterArr.getArrayLength()-1));
         
     }
 }
